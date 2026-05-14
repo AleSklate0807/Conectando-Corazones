@@ -53,9 +53,7 @@
 		misAportes[index].expanded = !misAportes[index].expanded;
 	}
 
-	let esEstadoPermitido = $derived(
-		data.proyecto?.estado === 'en_curso' || data.proyecto?.estado === 'pendiente_solicitud_cierre'
-	);
+	let esEstadoPermitido = $derived(data.proyecto?.estado === 'en_curso');
 
 	function irANuevoAporte(participacionId?: number) {
 		const query = participacionId ? `?participacion=${participacionId}` : '';

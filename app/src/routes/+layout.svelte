@@ -6,11 +6,11 @@
 	import Header from '$lib/components/layout/Header.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import Breadcrumbs from '$lib/components/ui/navegacion/Breadcrumbs.svelte';
-	import { breadcrumbs, clearBreadcrumbs } from '$lib/stores/breadcrumbs';
+	import { breadcrumbs } from '$lib/stores/breadcrumbs';
 	import { shouldShowBreadcrumbs } from '$lib/infrastructure/config/breadcrumbs.config';
 	import { page } from '$app/state';
 	import ScrollToTop from '$lib/components/ui/navegacion/ScrollToTop.svelte';
-	import { beforeNavigate, invalidate } from '$app/navigation';
+	import { invalidate } from '$app/navigation';
 	import { browser } from '$app/environment';
 	import { syncAuthState } from '$lib/stores/auth';
 	import { toastStore } from '$lib/stores/toast';
@@ -44,10 +44,6 @@
 	);
 
 	let showBreadcrumbs = $derived(shouldShowBreadcrumbs(page.url) && $breadcrumbs.length >= 2);
-
-	$effect(() => {
-		beforeNavigate(untrack(() => clearBreadcrumbs));
-	});
 
 	$effect(() => {
 		if (!supabase) {

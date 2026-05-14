@@ -44,7 +44,7 @@
 <div
 	use:reveal
 	onreveal={handleReveal}
-	class="reveal-hidden flex h-full flex-col rounded-[2rem] border border-amber-500/10 bg-white/[0.02] p-8 shadow-2xl backdrop-blur-sm"
+	class="reveal-hidden flex h-full flex-col rounded-4xl border border-amber-500/10 bg-white/2 p-8 shadow-2xl backdrop-blur-sm"
 >
 	<h2 class="mb-6 w-full text-center text-xl font-semibold tracking-tight text-white md:text-left">
 		Porcentaje de tipos de ayuda

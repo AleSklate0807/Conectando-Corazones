@@ -38,7 +38,7 @@
 			href={urlGuiaAfip}
 			target="_blank"
 			rel="noopener noreferrer"
-			class="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-amber-700 focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:outline-none"
+			class="inline-flex items-center gap-2 rounded-lg bg-amber-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-amber-700 focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 focus:outline-hidden"
 		>
 			Ver cómo solicitar la deducción
 			<ExternalLink class="h-4 w-4" />

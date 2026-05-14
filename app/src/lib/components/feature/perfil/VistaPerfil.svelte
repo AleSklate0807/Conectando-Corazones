@@ -308,7 +308,7 @@
 		aria-hidden="true"
 	>
 		<div
-			class="absolute inset-0 bg-gradient-to-br from-[#007FFF]/20 via-[#42A1FF]/10 to-transparent"
+			class="absolute inset-0 bg-linear-to-br from-[#007FFF]/20 via-[#42A1FF]/10 to-transparent"
 		></div>
 		<div class="absolute -top-16 -left-16 h-64 w-64 rounded-full bg-[#007FFF]/8 blur-3xl"></div>
 		<div class="absolute top-0 -right-10 h-56 w-56 rounded-full bg-[#42A1FF]/12 blur-2xl"></div>
@@ -604,14 +604,14 @@
 			<div class="flex items-center justify-center gap-3 border-t border-gray-100 px-6 py-4">
 				<button
 					type="button"
-					class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-gray-300 focus:outline-none"
+					class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-gray-300 focus:outline-hidden"
 					onclick={cancelarEliminarResena}
 				>
 					Cancelar
 				</button>
 				<button
 					type="button"
-					class="inline-flex items-center justify-center rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-700 focus:ring-2 focus:ring-red-300 focus:outline-none"
+					class="inline-flex items-center justify-center rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-700 focus:ring-2 focus:ring-red-300 focus:outline-hidden"
 					onclick={confirmarEliminarResena}
 				>
 					Eliminar

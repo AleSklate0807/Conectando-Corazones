@@ -252,7 +252,7 @@
 					id="certificado-arca"
 					type="file"
 					accept=".pdf"
-					class="block w-full cursor-pointer rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-gray-700 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+					class="block w-full cursor-pointer rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-gray-700 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
 					onchange={seleccionarArchivo}
 					aria-describedby="ayuda-arca"
 				/>

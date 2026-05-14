@@ -345,7 +345,7 @@ interface DocumentoExistente {
 						id="documentos"
 						name="documentos"
 						type="file"
-						class="block w-full cursor-pointer rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-gray-700 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+						class="block w-full cursor-pointer rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm text-gray-700 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
 						accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
 						multiple
 						onchange={actualizarArchivos}
@@ -368,7 +368,7 @@ interface DocumentoExistente {
 										>
 										<button
 											type="button"
-											class="text-gray-400 transition hover:text-red-500 focus:text-red-500 focus:outline-none"
+											class="text-gray-400 transition hover:text-red-500 focus:text-red-500 focus:outline-hidden"
 											onclick={() => removerArchivo(i)}
 											aria-label={`Quitar archivo ${archivo.name}`}
 										>

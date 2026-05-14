@@ -54,20 +54,20 @@
 		/>
 	{:else}
 		<div
-			class="flex h-full w-full items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-100"
+			class="flex h-full w-full items-center justify-center bg-linear-to-br from-blue-100 to-indigo-100"
 		>
 			<Icon src={Photo} class="h-16 w-16 text-blue-300" />
 		</div>
 	{/if}
 
-	<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+	<div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent"></div>
 
 	{#if $usuario && !esCreador && !esAdministrador}
 		<div class="absolute top-4 right-4 z-10">
 			<div class="relative" use:clickOutside={() => (mostrarMenuReportar = false)}>
 				<button
 					type="button"
-					class="flex h-8 w-8 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-colors hover:bg-black/60 focus:ring-2 focus:ring-white/50 focus:outline-none"
+					class="flex h-8 w-8 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-colors hover:bg-black/60 focus:ring-2 focus:ring-white/50 focus:outline-hidden"
 					onclick={() => (mostrarMenuReportar = !mostrarMenuReportar)}
 					aria-label="Más acciones"
 					aria-expanded={mostrarMenuReportar}
@@ -77,7 +77,7 @@
 
 				{#if mostrarMenuReportar}
 					<div
-						class="absolute top-full right-0 mt-2 w-48 origin-top-right rounded-lg bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
+						class="absolute top-full right-0 mt-2 w-48 origin-top-right rounded-lg bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-hidden"
 						role="menu"
 						aria-orientation="vertical"
 						aria-labelledby="user-menu-button"

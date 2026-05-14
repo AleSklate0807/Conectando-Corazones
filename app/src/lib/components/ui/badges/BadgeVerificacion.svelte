@@ -68,7 +68,7 @@
 {#if href}
 	<a
 		href={href}
-		class="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-sm font-medium {config.color} transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+		class="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-sm font-medium {config.color} transition hover:brightness-95 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-amber-400"
 		title={`${labelMostrado} - Ir a gestión`}
 		aria-label={`${labelMostrado}. Ir a gestionar verificación`}
 	>

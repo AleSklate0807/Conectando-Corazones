@@ -336,7 +336,7 @@
 										onclick={() => toggleExpand(i)}
 									>
 										<div
-											class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-blue-50 font-black text-blue-600 uppercase md:h-12 md:w-12 md:rounded-xl"
+											class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 font-black text-blue-600 uppercase md:h-12 md:w-12 md:rounded-xl"
 										>
 											#{i + 1}
 										</div>
@@ -610,7 +610,7 @@
 						type="text"
 						bind:value={newDescription}
 						placeholder="Ej: Comprobante de transferencia..."
-						class="w-full rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm font-medium text-slate-700 shadow-inner transition-all outline-none placeholder:text-slate-300 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10"
+						class="w-full rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm font-medium text-slate-700 shadow-inner transition-all outline-hidden placeholder:text-slate-300 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10"
 					/>
 				</div>
 			</div>
@@ -642,7 +642,7 @@
 <!-- Modal de Confirmación de Eliminación -->
 {#if showDeleteModal}
 	<div
-		class="fixed inset-0 z-[60] flex items-end justify-center bg-slate-900/60 p-0 backdrop-blur-md sm:items-center sm:p-4"
+		class="fixed inset-0 z-60 flex items-end justify-center bg-slate-900/60 p-0 backdrop-blur-md sm:items-center sm:p-4"
 		transition:fade
 		role="button"
 		tabindex="-1"

@@ -168,7 +168,7 @@
 			<div
 				in:fly={{ y: 20, duration: 300 }}
 				out:fade={{ duration: 150 }}
-				class="transition-transform hover:scale-[1.02]"
+				class="transition-transform hover:scale-102"
 			>
 				{@render card({ proyecto })}
 			</div>

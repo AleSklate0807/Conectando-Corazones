@@ -290,7 +290,7 @@
 											</p>
 											<a
 												href={`/proyectos/${proyecto.id_proyecto}?desde=evaluar-cierre#titulo-resenas-proyecto`}
-												class="mt-3 inline-flex items-center gap-2 rounded-lg bg-sky-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-700 focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+												class="mt-3 inline-flex items-center gap-2 rounded-lg bg-sky-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-700 focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:outline-hidden"
 											>
 												Dejar mi reseña ahora
 											</a>

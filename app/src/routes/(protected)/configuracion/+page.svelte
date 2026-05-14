@@ -207,7 +207,7 @@
 													id="passActual"
 													type={mostrarPassActual ? 'text' : 'password'}
 													bind:value={passActual}
-													customClass="block w-full rounded-xl border border-gray-200 px-4 py-3 pr-12 shadow-sm transition focus:border-[#007FFF] focus:ring-2 focus:ring-[#007FFF]/20 focus:outline-none"
+													customClass="block w-full rounded-xl border border-gray-200 px-4 py-3 pr-12 shadow-sm transition focus:border-[#007FFF] focus:ring-2 focus:ring-[#007FFF]/20 focus:outline-hidden"
 												/>
 												<button
 													type="button"
@@ -233,7 +233,7 @@
 													id="passNueva"
 													type={mostrarPassNueva ? 'text' : 'password'}
 													bind:value={passNueva}
-													customClass="block w-full rounded-xl border border-gray-200 px-4 py-3 pr-12 shadow-sm transition focus:border-[#007FFF] focus:ring-2 focus:ring-[#007FFF]/20 focus:outline-none"
+													customClass="block w-full rounded-xl border border-gray-200 px-4 py-3 pr-12 shadow-sm transition focus:border-[#007FFF] focus:ring-2 focus:ring-[#007FFF]/20 focus:outline-hidden"
 												/>
 												<button
 													type="button"
@@ -259,7 +259,7 @@
 													id="passConfirm"
 													type={mostrarPassConfirm ? 'text' : 'password'}
 													bind:value={passConfirm}
-													customClass="block w-full rounded-xl border border-gray-200 px-4 py-3 pr-12 shadow-sm transition focus:border-[#007FFF] focus:ring-2 focus:ring-[#007FFF]/20 focus:outline-none"
+													customClass="block w-full rounded-xl border border-gray-200 px-4 py-3 pr-12 shadow-sm transition focus:border-[#007FFF] focus:ring-2 focus:ring-[#007FFF]/20 focus:outline-hidden"
 												/>
 												<button
 													type="button"

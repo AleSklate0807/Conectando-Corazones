@@ -61,7 +61,7 @@
 </script>
 
 <div
-	class="pointer-events-none fixed inset-0 z-[9999] flex flex-col items-end justify-end gap-3 p-4 sm:p-6"
+	class="pointer-events-none fixed inset-0 z-9999 flex flex-col items-end justify-end gap-3 p-4 sm:p-6"
 >
 	{#each toasts as toast (toast.id)}
 		{@const IconComponent = VARIANT_STYLES[toast.variant].icon as ComponentType}

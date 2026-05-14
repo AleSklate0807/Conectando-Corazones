@@ -67,7 +67,7 @@
 			<div class="relative" use:clickOutside={() => (mostrarMenuReportar = false)}>
 				<button
 					type="button"
-					class="flex h-8 w-8 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-colors hover:bg-black/60 focus:ring-2 focus:ring-white/50 focus:outline-none"
+					class="flex h-8 w-8 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-colors hover:bg-black/60 focus:ring-2 focus:ring-white/50 focus:outline-hidden"
 					onclick={() => (mostrarMenuReportar = !mostrarMenuReportar)}
 					aria-label="Más acciones"
 					aria-expanded={mostrarMenuReportar}
@@ -77,7 +77,7 @@
 
 				{#if mostrarMenuReportar}
 					<div
-						class="absolute top-full right-0 mt-2 w-48 origin-top-right rounded-lg bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
+						class="absolute top-full right-0 mt-2 w-48 origin-top-right rounded-lg bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-hidden"
 						role="menu"
 						aria-orientation="vertical"
 						aria-labelledby="user-menu-button"

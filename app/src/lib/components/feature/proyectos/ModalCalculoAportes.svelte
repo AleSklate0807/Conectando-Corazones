@@ -60,7 +60,7 @@
 				</h2>
 				<button
 					type="button"
-					class="rounded-full p-1 text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-700 focus:ring-2 focus:ring-gray-300 focus:outline-none"
+					class="rounded-full p-1 text-gray-500 transition-all hover:bg-gray-100 hover:text-gray-700 focus:ring-2 focus:ring-gray-300 focus:outline-hidden"
 					onclick={close}
 					aria-label="Cerrar modal"
 				>
@@ -151,7 +151,7 @@
 				{#if step > 0}
 					<button
 						type="button"
-						class="flex cursor-pointer items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm text-gray-600 transition-colors hover:text-gray-800 focus:ring-2 focus:ring-gray-200 focus:outline-none"
+						class="flex cursor-pointer items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm text-gray-600 transition-colors hover:text-gray-800 focus:ring-2 focus:ring-gray-200 focus:outline-hidden"
 						onclick={() => step--}
 					>
 						<svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

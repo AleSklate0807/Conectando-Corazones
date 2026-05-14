@@ -136,7 +136,7 @@
 			<div class="inline-flex rounded-full bg-gray-100/80 p-1.5 shadow-inner backdrop-blur-sm">
 				{#each tabs as tab}
 					<button
-						class="relative flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-medium whitespace-nowrap transition-all duration-300 focus:outline-none
+						class="relative flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-medium whitespace-nowrap transition-all duration-300 focus:outline-hidden
                         {activeTab === tab.id ? tab.activeClass : tab.inactiveClass}"
 						onclick={() => (activeTab = tab.id as any)}
 					>

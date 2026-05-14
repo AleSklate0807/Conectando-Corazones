@@ -447,7 +447,7 @@
 						id="participacion"
 						bind:value={selectedParticipacionPermitidaId}
 						disabled={estaGuardando}
-						class="w-full cursor-pointer appearance-none rounded-xl border-2 border-slate-100 bg-slate-50 p-4 font-medium text-slate-700 transition-all outline-none focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 disabled:cursor-not-allowed disabled:opacity-50"
+						class="w-full cursor-pointer appearance-none rounded-xl border-2 border-slate-100 bg-slate-50 p-4 font-medium text-slate-700 transition-all outline-hidden focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 disabled:cursor-not-allowed disabled:opacity-50"
 					>
 						<option value={null} disabled>Seleccioná una opción...</option>
 						{#each data.participacionesPermitidas as p}
@@ -479,7 +479,7 @@
 								bind:value={cantidadAporte}
 								disabled={estaGuardando}
 								placeholder="0"
-								class="w-full rounded-xl border-2 border-slate-100 bg-slate-50 p-4 font-medium text-slate-700 transition-all outline-none focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 disabled:cursor-not-allowed disabled:opacity-50"
+								class="w-full rounded-xl border-2 border-slate-100 bg-slate-50 p-4 font-medium text-slate-700 transition-all outline-hidden focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10 disabled:cursor-not-allowed disabled:opacity-50"
 							/>
 							<div
 								class="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 text-sm font-medium text-slate-400"
@@ -822,7 +822,7 @@
 											actualizarDescripcionArchivo(archivo.id_archivo!, e.currentTarget.value)}
 										placeholder="Ej: Foto del material entregado"
 										class="w-full rounded-xl border border-slate-200 bg-white p-3 text-sm font-medium text-slate-700
-											   transition-all outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
+											   transition-all outline-hidden focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
 									/>
 								</div>
 							</div>

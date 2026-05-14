@@ -152,7 +152,7 @@
 			<div class="mt-2 text-right">
 				<button
 					type="button"
-					class="inline-flex cursor-pointer items-center rounded px-1.5 py-0.5 text-xs text-sky-600 transition-colors hover:text-sky-800 focus:underline focus:ring-2 focus:ring-sky-200 focus:outline-none"
+					class="inline-flex cursor-pointer items-center rounded px-1.5 py-0.5 text-xs text-sky-600 transition-colors hover:text-sky-800 focus:underline focus:ring-2 focus:ring-sky-200 focus:outline-hidden"
 					onclick={() => (showModal = true)}
 					aria-label="Ver cómo se calcula el progreso"
 				>

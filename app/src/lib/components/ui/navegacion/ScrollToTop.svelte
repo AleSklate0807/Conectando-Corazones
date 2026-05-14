@@ -30,7 +30,7 @@
 <button
 	onclick={scrollToTop}
 	aria-label="Volver arriba"
-	class="fixed right-5 z-[120] cursor-pointer rounded-full p-[3px] transition-all duration-700 {$layoutStore.hasStickyBottomBar
+	class="fixed right-5 z-120 cursor-pointer rounded-full p-[3px] transition-all duration-700 {$layoutStore.hasStickyBottomBar
 		? 'bottom-32 lg:bottom-7'
 		: 'bottom-7'}"
 	style="

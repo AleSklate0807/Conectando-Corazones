@@ -527,7 +527,7 @@
 								goto(`/institucion/proyectos/${newId}/aportes/evidencias/nueva`);
 							}
 						}}
-						class="w-full cursor-pointer appearance-none rounded-2xl border-2 border-slate-200 bg-white p-4 font-bold text-slate-700 shadow-sm transition-all outline-none hover:border-slate-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 md:p-5"
+						class="w-full cursor-pointer appearance-none rounded-2xl border-2 border-slate-200 bg-white p-4 font-bold text-slate-700 shadow-sm transition-all outline-hidden hover:border-slate-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 md:p-5"
 					>
 						{#each data.proyectosDisponibles as proyecto (proyecto.id_proyecto)}
 							<option value={proyecto.id_proyecto}>{proyecto.titulo}</option>
@@ -546,7 +546,7 @@
 					<select
 						id="tipo"
 						bind:value={selectedTipoParticipacion}
-						class="w-full cursor-pointer appearance-none rounded-2xl border-2 border-slate-200 bg-white p-4 font-bold text-slate-700 shadow-sm transition-all outline-none hover:border-slate-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 md:p-5"
+						class="w-full cursor-pointer appearance-none rounded-2xl border-2 border-slate-200 bg-white p-4 font-bold text-slate-700 shadow-sm transition-all outline-hidden hover:border-slate-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 md:p-5"
 					>
 						<option value="" disabled>Seleccionar tipo</option>
 						{#each data.tiposParticipacion as tipo (tipo)}
@@ -567,7 +567,7 @@
 						<select
 							id="participacion"
 							bind:value={selectedParticipacionPermitidaId}
-							class="w-full cursor-pointer appearance-none rounded-2xl border-2 border-slate-200 bg-white p-4 font-bold text-slate-700 shadow-sm transition-all outline-none hover:border-slate-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 md:p-5"
+							class="w-full cursor-pointer appearance-none rounded-2xl border-2 border-slate-200 bg-white p-4 font-bold text-slate-700 shadow-sm transition-all outline-hidden hover:border-slate-300 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 md:p-5"
 						>
 							<option value={null} disabled>Seleccionar meta</option>
 							{#each filteredParticipaciones as p (p.id_participacion_permitida)}
@@ -939,7 +939,7 @@
 									value={archivo.descripcion} 
 									oninput={(e) => actualizarDescripcionArchivo(archivo.id_archivo!, e.currentTarget.value)}
 									placeholder="Descripción breve (ej: Factura de compra)" 
-									class="w-full rounded-xl border border-slate-200 bg-white p-3 text-sm font-medium outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
+									class="w-full rounded-xl border border-slate-200 bg-white p-3 text-sm font-medium outline-hidden focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10"
 								/>
 							</div>
 						{/each}

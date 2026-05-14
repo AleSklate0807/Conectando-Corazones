@@ -166,7 +166,7 @@
 		</ol>
 
 		<!--  *DESKTOP  -->
-		<ol class="hidden items-center gap-2 text-[16px] font-medium whitespace-nowrap sm:flex">
+		<ol class="hidden items-center gap-2 text-base font-medium whitespace-nowrap sm:flex">
 			{#if breadcrumbs.length <= visibleCrumbsCount}
 				<!-- ! todos entran -->
 				{#each breadcrumbs as item, index (item.href ?? item.label)}

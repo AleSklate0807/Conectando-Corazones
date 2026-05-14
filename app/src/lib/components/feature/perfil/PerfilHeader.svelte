@@ -179,7 +179,7 @@ let textoBadgeVerificacion = $derived(
 		{#if esMiPerfil}
 			<button
 				onclick={onEditarClick}
-				class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 shadow-sm transition-all duration-200 hover:border-[#007FFF]/40 hover:bg-blue-50 hover:text-[#007FFF] active:scale-[0.98] md:hidden"
+				class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 shadow-sm transition-all duration-200 hover:border-[#007FFF]/40 hover:bg-blue-50 hover:text-[#007FFF] active:scale-98 md:hidden"
 			>
 				<Pencil class="h-4 w-4" />
 				Editar perfil

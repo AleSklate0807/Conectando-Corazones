@@ -162,7 +162,7 @@
 					{@const Icono = accion.icon}
 					<a
 						href={accion.href}
-						class="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl p-4 text-white shadow-lg backdrop-blur-xl transition-all duration-300 active:scale-[0.98]
+						class="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl p-4 text-white shadow-lg backdrop-blur-xl transition-all duration-300 active:scale-98
 						{accion.primary
 							? 'border border-blue-500/30 bg-linear-to-br from-blue-500/90 via-blue-600/90 to-blue-800/90 shadow-blue-500/25 hover:shadow-blue-500/40'
 							: 'border border-rose-500/30 bg-linear-to-br from-rose-500/90 via-rose-600/90 to-rose-800/90 shadow-rose-500/25 hover:shadow-rose-500/40'}"
@@ -178,7 +178,7 @@
 					{@const Icono = accion.icon}
 					<button
 						onclick={accion.onClick}
-						class="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl p-4 text-white shadow-lg backdrop-blur-xl transition-all duration-300 active:scale-[0.98]
+						class="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl p-4 text-white shadow-lg backdrop-blur-xl transition-all duration-300 active:scale-98
 						{accion.primary
 							? 'border border-blue-500/30 bg-linear-to-br from-blue-500/90 via-blue-600/90 to-blue-800/90 shadow-blue-500/25 hover:shadow-blue-500/40'
 							: 'border border-rose-500/30 bg-linear-to-br from-rose-500/90 via-rose-600/90 to-rose-800/90 shadow-rose-500/25 hover:shadow-rose-500/40'}"
@@ -204,7 +204,7 @@
 							{@const Icono = accion.icon}
 							<a
 								href={accion.href}
-								class="flex flex-col items-center justify-center gap-2 rounded-xl border border-white/5 bg-white/5 p-4 text-slate-300 backdrop-blur-md transition-all active:scale-[0.98] active:bg-white/10"
+								class="flex flex-col items-center justify-center gap-2 rounded-xl border border-white/5 bg-white/5 p-4 text-slate-300 backdrop-blur-md transition-all active:scale-98 active:bg-white/10"
 							>
 								<Icono size={20} />
 								<span class="text-center text-xs font-medium">{accion.label}</span>
@@ -213,7 +213,7 @@
 							{@const Icono = accion.icon}
 							<button
 								onclick={accion.onClick}
-								class="flex w-full flex-col items-center justify-center gap-2 rounded-xl border border-white/5 bg-white/5 p-4 text-slate-300 backdrop-blur-md transition-all active:scale-[0.98] active:bg-white/10"
+								class="flex w-full flex-col items-center justify-center gap-2 rounded-xl border border-white/5 bg-white/5 p-4 text-slate-300 backdrop-blur-md transition-all active:scale-98 active:bg-white/10"
 							>
 								<Icono size={20} />
 								<span class="text-center text-xs font-medium">{accion.label}</span>

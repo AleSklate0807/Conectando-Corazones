@@ -111,7 +111,7 @@
 		class="reveal-hidden group relative w-full cursor-pointer overflow-hidden rounded-4xl border border-emerald-500/20 bg-emerald-500/10 p-6 text-left backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-500/10"
 	>
 		<div
-			class="absolute -top-6 -right-6 h-32 w-32 rounded-full bg-emerald-500/10 blur-[40px] transition-all duration-700 group-hover:bg-emerald-500/20"
+			class="absolute -top-6 -right-6 h-32 w-32 rounded-full bg-emerald-500/10 blur-2xl transition-all duration-700 group-hover:bg-emerald-500/20"
 		></div>
 
 		<div class="relative z-10 flex h-full flex-col justify-between">
@@ -143,7 +143,7 @@
 		class="reveal-hidden group relative w-full cursor-pointer overflow-hidden rounded-4xl border border-blue-500/20 bg-blue-500/10 p-6 text-left backdrop-blur-md transition-all delay-100 duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10"
 	>
 		<div
-			class="absolute -top-6 -right-6 h-32 w-32 rounded-full bg-blue-500/10 blur-[40px] transition-all duration-700 group-hover:bg-blue-500/20"
+			class="absolute -top-6 -right-6 h-32 w-32 rounded-full bg-blue-500/10 blur-2xl transition-all duration-700 group-hover:bg-blue-500/20"
 		></div>
 
 		<div class="relative z-10 flex h-full flex-col justify-between">
@@ -175,7 +175,7 @@
 		class="reveal-hidden group relative w-full cursor-pointer overflow-hidden rounded-4xl border border-amber-500/20 bg-amber-500/10 p-6 text-left backdrop-blur-md transition-all delay-200 duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/10"
 	>
 		<div
-			class="absolute -top-6 -right-6 h-32 w-32 rounded-full bg-amber-500/10 blur-[40px] transition-all duration-700 group-hover:bg-amber-500/20"
+			class="absolute -top-6 -right-6 h-32 w-32 rounded-full bg-amber-500/10 blur-2xl transition-all duration-700 group-hover:bg-amber-500/20"
 		></div>
 
 		<div class="relative z-10 flex h-full flex-col justify-between">

@@ -77,7 +77,7 @@
 						class="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/5 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-500/30 hover:bg-white/10 hover:shadow-lg hover:shadow-cyan-900/20"
 					>
 						<div
-							class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-violet-500/10 blur-[40px] transition-opacity duration-300 group-hover:opacity-70"
+							class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-violet-500/10 blur-2xl transition-opacity duration-300 group-hover:opacity-70"
 						></div>
 
 						<div class="relative z-10 mb-4 flex items-center justify-between">

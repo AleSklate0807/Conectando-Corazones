@@ -156,7 +156,7 @@
 										size="sm"
 										onclick={() => abrirResolucion(reporte)}
 										disabled={loading}
-										class="!bg-emerald-600 !hover:bg-emerald-700 !text-white !rounded-full shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40"
+										class="bg-emerald-600! hover:bg-emerald-700! text-white! rounded-full! shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40"
 									/>
 								{:else}
 									<span class="text-xs font-bold text-slate-500 italic">Resuelto</span>
@@ -209,14 +209,14 @@
 				variant="secondary"
 				size="sm"
 				onclick={() => (modalAbierto = false)}
-				class="!rounded-full"
+				class="rounded-full!"
 			/>
 			<Button
 				label="Confirmar Resolución"
 				variant="primary"
 				size="sm"
 				onclick={confirmarResolucion}
-				class="!bg-blue-600 !hover:bg-blue-700 !text-white !rounded-full shadow-lg"
+				class="bg-blue-600! hover:bg-blue-700! text-white! rounded-full! shadow-lg"
 			/>
 		</div>
 	{/snippet}

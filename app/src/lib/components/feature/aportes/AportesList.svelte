@@ -227,7 +227,7 @@
 
 												<div class="pt-2">
 													<button
-														class="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-4 py-3 text-sm font-bold text-white shadow-sm transition-all hover:bg-slate-800 active:scale-[0.98] md:text-base"
+														class="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-4 py-3 text-sm font-bold text-white shadow-sm transition-all hover:bg-slate-800 active:scale-98 md:text-base"
 														onclick={() => abrirEvidencias(colab.id_usuario)}
 													>
 														<Eye size={18} />
@@ -255,7 +255,7 @@
 		</div>
 
 		<section
-			class="mt-10 overflow-hidden rounded-[1.5rem] border border-white/5 bg-slate-900 shadow-2xl md:mt-16 md:rounded-[2.5rem]"
+			class="mt-10 overflow-hidden rounded-3xl border border-white/5 bg-slate-900 shadow-2xl md:mt-16 md:rounded-[2.5rem]"
 		>
 			<div class="grid items-center md:grid-cols-2">
 				<div class="space-y-6 p-6 md:space-y-8 md:p-14">
@@ -365,7 +365,7 @@
 								<img
 									src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=800"
 									alt="Impacto comunitario"
-									class="h-full w-full object-cover opacity-60 grayscale-[10%] md:opacity-100"
+									class="h-full w-full object-cover opacity-60 grayscale-10 md:opacity-100"
 								/>
 								<div
 									class="absolute inset-0 bg-linear-to-t from-slate-900 via-transparent to-transparent md:from-[#0f1029]/80"
@@ -379,7 +379,7 @@
 							<img
 								src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=800"
 								alt="Impacto comunitario"
-								class="h-full w-full object-cover opacity-60 grayscale-[10%] md:opacity-100"
+								class="h-full w-full object-cover opacity-60 grayscale-10 md:opacity-100"
 							/>
 							<div
 								class="absolute inset-0 bg-linear-to-t from-slate-900 via-transparent to-transparent md:from-[#0f1029]/80"

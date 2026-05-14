@@ -66,16 +66,16 @@
 <div class="relative flex h-full w-full overflow-hidden bg-[#0F1029] text-slate-100">
 	<!-- Decoración de fondo idéntica al dashboard -->
 	<div
-		class="pointer-events-none fixed inset-0 z-0 opacity-[0.03]"
+		class="pointer-events-none fixed inset-0 z-0 opacity-3"
 		style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%221%22/%3E%3C/svg%3E');"
 	></div>
-	<div class="fixed top-0 left-1/4 -z-0 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-[#007FFF]/10 blur-[130px]"></div>
-	<div class="fixed bottom-0 right-1/4 -z-0 h-[400px] w-[400px] translate-y-1/2 rounded-full bg-emerald-500/5 blur-[120px]"></div>
+	<div class="fixed top-0 left-1/4 z-0 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-[#007FFF]/10 blur-[130px]"></div>
+	<div class="fixed bottom-0 right-1/4 z-0 h-[400px] w-[400px] translate-y-1/2 rounded-full bg-emerald-500/5 blur-[120px]"></div>
 
 	<aside
 		class="relative z-10 shrink-0 border-r border-white/5 bg-white/2 backdrop-blur-xl transition-all duration-300 {isInChat
 			? 'hidden md:flex md:flex-col'
-			: 'flex flex-col'} {$chatStore.sidebarCollapsed ? 'md:w-0 md:opacity-0' : 'w-full md:w-[22rem]'}"
+			: 'flex flex-col'} {$chatStore.sidebarCollapsed ? 'md:w-0 md:opacity-0' : 'w-full md:w-88'}"
 	>
 		<div class="message-enter shrink-0 border-b border-white/5 bg-white/3 p-5" style="--message-enter-delay: 40ms;">
 			<div class="flex items-center justify-between gap-3">
@@ -117,7 +117,7 @@
 					<span>Activos</span>
 					{#if activeChats.length > 0}
 						<span
-							class="inline-flex h-5 min-w-[1.25rem] shrink-0 items-center justify-center rounded-full {!$chatStore.showArchived
+							class="inline-flex h-5 min-w-5 shrink-0 items-center justify-center rounded-full {!$chatStore.showArchived
 								? 'bg-[#007FFF]/20 text-[#42A1FF]'
 								: 'bg-white/5 text-slate-400'} px-1.5 text-xs leading-none font-bold"
 						>
@@ -137,7 +137,7 @@
 					<span>Archivados</span>
 					{#if archivedChats.length > 0}
 						<span
-							class="inline-flex h-5 min-w-[1.25rem] shrink-0 items-center justify-center rounded-full {$chatStore.showArchived
+							class="inline-flex h-5 min-w-5 shrink-0 items-center justify-center rounded-full {$chatStore.showArchived
 								? 'bg-[#007FFF]/20 text-[#42A1FF]'
 								: 'bg-white/5 text-slate-400'} px-1.5 text-xs leading-none font-bold"
 						>

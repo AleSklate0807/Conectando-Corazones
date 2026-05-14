@@ -211,7 +211,7 @@
 						aria-haspopup="true"
 						aria-expanded={mostrarDropdown}
 						onclick={toggleDropdown}
-						class="flex items-center gap-2 rounded-full border border-transparent bg-transparent p-1 pr-3 pl-2 transition-all hover:bg-blue-500/10 focus:ring-2 focus:ring-blue-400/50 focus:outline-none active:scale-95 {mostrarDropdown
+						class="flex items-center gap-2 rounded-full border border-transparent bg-transparent p-1 pr-3 pl-2 transition-all hover:bg-blue-500/10 focus:ring-2 focus:ring-blue-400/50 focus:outline-hidden active:scale-95 {mostrarDropdown
 							? 'bg-blue-500/10 ring-2 ring-blue-400/50'
 							: ''}"
 					>

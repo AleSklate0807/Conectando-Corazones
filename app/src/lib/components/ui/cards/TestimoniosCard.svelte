@@ -30,7 +30,7 @@
     {active && !locked ? 'z-10 scale-105 ring-1 ring-blue-100/60' : ''}
     {locked
 		? 'pointer-events-none opacity-75 blur-[0.5px]'
-		: ' hover:-translate-y-1.5 focus-visible:ring-4 focus-visible:ring-blue-50/70 focus-visible:outline-none'}
+		: ' hover:-translate-y-1.5 focus-visible:ring-4 focus-visible:ring-blue-50/70 focus-visible:outline-hidden'}
   "
 >
 	<div class="mb-5 flex justify-center gap-1.5">

@@ -210,7 +210,7 @@
 										size="sm"
 										onclick={() => manejarAprobar(item)}
 										disabled={loading}
-										class="!bg-emerald-600 !hover:bg-emerald-700 !text-white !rounded-full shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40"
+										class="bg-emerald-600! hover:bg-emerald-700! text-white! rounded-full! shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40"
 									/>
 									<Button
 										label="Rechazar"
@@ -218,7 +218,7 @@
 										variant="danger"
 										onclick={() => abrirRechazo(item.id_verificacion)}
 										disabled={loading}
-										class="!bg-rose-600 !hover:bg-rose-700 !text-white !rounded-full shadow-lg shadow-rose-500/20 hover:shadow-rose-500/40"
+										class="bg-rose-600! hover:bg-rose-700! text-white! rounded-full! shadow-lg shadow-rose-500/20 hover:shadow-rose-500/40"
 									/>
 								</div>
 							</td>
@@ -259,7 +259,7 @@
 				type="date"
 				min={hoyISO}
 				bind:value={fechaVencimientoArca}
-				class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+				class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
 			/>
 		</div>
 		{#if errorFechaArca}<p class="text-sm text-red-600">{errorFechaArca}</p>{/if}

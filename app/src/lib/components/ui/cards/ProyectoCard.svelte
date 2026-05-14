@@ -89,7 +89,7 @@
 	<!-- Link principal del contenido -->
 	<a
 		href={`/proyectos/${proyecto.id_proyecto}`}
-		class="flex grow flex-col text-inherit no-underline focus:ring-2 focus:ring-blue-500 focus:outline-none focus:ring-inset"
+		class="flex grow flex-col text-inherit no-underline focus:ring-2 focus:ring-blue-500 focus:outline-hidden focus:ring-inset"
 	>
 		<!-- Imagen Cover -->
 		<div class="relative h-48 overflow-hidden bg-gray-100">
@@ -99,7 +99,7 @@
 					alt={proyecto.titulo}
 					class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
 					class:opacity-90={estaInactivo}
-					class:grayscale-[0.8]={estaInactivo}
+					class:grayscale-80={estaInactivo}
 					loading="lazy"
 				/>
 			{:else}
@@ -362,7 +362,7 @@
 		<div class="flex items-center justify-center border-t border-gray-100 px-6 py-4">
 			<button
 				type="button"
-				class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-gray-300 focus:outline-none"
+				class="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-gray-300 focus:outline-hidden"
 				onclick={() => (mostrarJustificacion = false)}
 			>
 				Cerrar

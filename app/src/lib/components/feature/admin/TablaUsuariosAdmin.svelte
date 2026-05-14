@@ -230,7 +230,7 @@
 										variant="secondary"
 										onclick={() => onVerPerfil?.({ username: user.username })}
 										disabled={loading}
-										class="!bg-white/10 !text-white !border-white/20 hover:!bg-white/20 !rounded-full shadow-lg"
+										class="bg-white/10! text-white! border-white/20! hover:bg-white/20! rounded-full! shadow-lg"
 									/>
 									{#if tooltipInhabilitar(user)}
 										<span title={tooltipInhabilitar(user) ?? ''} class="cursor-not-allowed">
@@ -240,7 +240,7 @@
 												variant="danger"
 												onclick={() => {}}
 												disabled={true}
-												class="!bg-rose-600/40 !text-white/40 !rounded-full pointer-events-none"
+												class="bg-rose-600/40! text-white/40! rounded-full! pointer-events-none"
 											/>
 										</span>
 									{:else}
@@ -251,8 +251,8 @@
 											onclick={() => confirmarCambioEstado(user)}
 											disabled={loading}
 											class={user.estado_gestion === 'inhabilitado'
-												? '!bg-emerald-600 !hover:bg-emerald-700 !text-white !rounded-full shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40'
-												: '!bg-rose-600 !hover:bg-rose-700 !text-white !rounded-full shadow-lg shadow-rose-500/20 hover:shadow-rose-500/40'}
+												? 'bg-emerald-600! hover:bg-emerald-700! text-white! rounded-full! shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40'
+												: 'bg-rose-600! hover:bg-rose-700! text-white! rounded-full! shadow-lg shadow-rose-500/20 hover:shadow-rose-500/40'}
 										/>
 									{/if}
 								</div>
@@ -294,7 +294,7 @@
 	bind:this={dialogo}
 	onclose={cancelarCambio}
 	onclick={(e) => { if (e.target === dialogo) cancelarCambio(); }}
-	class="m-auto w-full max-w-md rounded-2xl bg-transparent p-0 px-4 outline-none backdrop:bg-black/60 backdrop:backdrop-blur-sm"
+	class="m-auto w-full max-w-md rounded-2xl bg-transparent p-0 px-4 outline-hidden backdrop:bg-black/60 backdrop:backdrop-blur-sm"
 >
 	{#if modalConfirmar.abierto && modalConfirmar.usuario}
 		{@const user = modalConfirmar.usuario}

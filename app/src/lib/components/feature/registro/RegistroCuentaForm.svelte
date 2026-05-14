@@ -1168,7 +1168,7 @@
 						tabindex={obtenerTabIndexMetodo(metodo.id, metodo.disponible)}
 						onclick={() => seleccionarMetodoAcceso(metodo.id)}
 						onkeydown={(event) => manejarKeydownMetodo(event, metodo.id, metodo.disponible)}
-						class={`group flex h-full flex-col gap-4 rounded-2xl border px-6 py-6 text-left transition duration-200 focus-visible:ring-2 focus-visible:ring-[#7CB9FF]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-none ${
+						class={`group flex h-full flex-col gap-4 rounded-2xl border px-6 py-6 text-left transition duration-200 focus-visible:ring-2 focus-visible:ring-[#7CB9FF]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white focus-visible:outline-hidden ${
 							metodo.disponible
 								? 'hover:shadow-[0_12px_30px_rgba(15,23,42,0.08)]'
 								: 'cursor-not-allowed opacity-70'
@@ -1621,7 +1621,7 @@
 								/>
 								<label
 									for={`tipo-institucion-${opcion.value}`}
-									class={`group relative flex cursor-pointer flex-col gap-4 rounded-2xl border-2 p-5 transition-all active:scale-[0.98] ${
+									class={`group relative flex cursor-pointer flex-col gap-4 rounded-2xl border-2 p-5 transition-all active:scale-98 ${
 										tipoInstitucionSeleccion === opcion.value
 											? 'border-sky-500 bg-sky-50/10 shadow-[0_8px_20px_rgba(14,165,233,0.08)]'
 											: 'border-slate-200 bg-white hover:border-sky-300'
@@ -1774,7 +1774,7 @@
 							{@const Icon = opcion.icon}
 							<div>
 								<label
-									class={`relative flex cursor-pointer flex-col gap-4 rounded-2xl border-2 p-5 transition-all active:scale-[0.98] lg:flex-row lg:items-center ${
+									class={`relative flex cursor-pointer flex-col gap-4 rounded-2xl border-2 p-5 transition-all active:scale-98 lg:flex-row lg:items-center ${
 										tipoColaborador === opcion.value
 											? 'border-sky-500 bg-sky-50/20 shadow-[0_8px_20px_rgba(14,165,233,0.06)]'
 											: 'border-slate-200 bg-white hover:border-sky-300'
@@ -1931,7 +1931,7 @@
 
 {#if mostrarModalPassword}
 	<div
-		class="fixed inset-0 z-[10000] flex items-center justify-center bg-slate-900/60 px-4 py-10 backdrop-blur-sm"
+		class="fixed inset-0 z-10000 flex items-center justify-center bg-slate-900/60 px-4 py-10 backdrop-blur-sm"
 		aria-live="assertive"
 	>
 		<div
@@ -1960,7 +1960,7 @@
 							id="modal_password"
 							name="modal_password"
 							type={mostrarModalPasswordTexto ? 'text' : 'password'}
-							class={`w-full rounded-2xl border px-4 py-3 pr-12 text-sm transition outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-primary))] ${
+							class={`w-full rounded-2xl border px-4 py-3 pr-12 text-sm transition outline-hidden focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-primary))] ${
 								modalPasswordError ? 'border-red-300' : 'border-slate-200'
 							}`}
 							placeholder="Ingresá una contraseña segura"
@@ -1993,7 +1993,7 @@
 							id="modal_password_confirm"
 							name="modal_password_confirm"
 							type={mostrarModalPasswordConfirmTexto ? 'text' : 'password'}
-							class={`w-full rounded-2xl border px-4 py-3 pr-12 text-sm transition outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-primary))] ${
+							class={`w-full rounded-2xl border px-4 py-3 pr-12 text-sm transition outline-hidden focus-visible:ring-2 focus-visible:ring-[rgb(var(--color-primary))] ${
 								modalPasswordConfirmError ? 'border-red-300' : 'border-slate-200'
 							}`}
 							placeholder="Repetí la contraseña"

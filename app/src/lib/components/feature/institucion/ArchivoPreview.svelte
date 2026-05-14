@@ -159,7 +159,7 @@
 					<button
 						type="button"
 						onclick={abrirArchivo}
-						class="inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium text-blue-600 transition-colors hover:bg-blue-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 focus:outline-none"
+						class="inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium text-blue-600 transition-colors hover:bg-blue-50 focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 focus:outline-hidden"
 					>
 						<svg
 							class="h-3.5 w-3.5"
@@ -180,7 +180,7 @@
 				<button
 					type="button"
 					onclick={descargarArchivo}
-					class="inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-gray-500 focus:ring-offset-1 focus:outline-none"
+					class="inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium text-gray-700 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-gray-500 focus:ring-offset-1 focus:outline-hidden"
 				>
 					<svg
 						class="h-3.5 w-3.5"

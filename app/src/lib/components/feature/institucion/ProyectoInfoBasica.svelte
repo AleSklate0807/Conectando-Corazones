@@ -274,7 +274,7 @@
 				<button
 					type="button"
 					disabled={esEdicionRestringida && !esAdmin}
-					class="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 py-8 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-blue-500/20 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60"
+					class="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 py-8 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-blue-500/20 focus:ring-offset-2 focus:outline-hidden disabled:cursor-not-allowed disabled:opacity-60"
 					class:border-red-300={errores.urlPortada}
 					onclick={() => document.getElementById('portada-upload')?.click()}
 					onkeydown={(e) =>
@@ -438,7 +438,7 @@
 				disabled={esEdicionRestringida && !esAdmin}
 				class="group relative flex items-center rounded-lg border-2 p-3 transition-all duration-200 {clases.border} {clases.bg} {clases.hover} {esEdicionRestringida &&
 				!esAdmin
-					? 'cursor-not-allowed opacity-75 grayscale-[0.5]'
+					? 'cursor-not-allowed opacity-75 grayscale-50'
 					: ''}"
 				class:hover:shadow-none={esEdicionRestringida && !esAdmin}
 			>

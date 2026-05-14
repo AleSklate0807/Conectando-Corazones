@@ -596,14 +596,14 @@
 			<div class="flex flex-col-reverse justify-end gap-2 sm:flex-row">
 				<button
 					type="button"
-					class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-none sm:mt-0 sm:w-auto sm:text-sm"
+					class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden sm:mt-0 sm:w-auto sm:text-sm"
 					onclick={cerrarModalResolucion}
 				>
 					Cancelar
 				</button>
 				<button
 					type="button"
-					class={`inline-flex w-full justify-center rounded-md border border-transparent px-4 py-2 text-base font-medium text-white shadow-sm focus:ring-2 focus:ring-offset-2 focus:outline-none sm:w-auto sm:text-sm ${
+					class={`inline-flex w-full justify-center rounded-md border border-transparent px-4 py-2 text-base font-medium text-white shadow-sm focus:ring-2 focus:ring-offset-2 focus:outline-hidden sm:w-auto sm:text-sm ${
 						resolucionEstado === 'verificado'
 							? 'bg-green-600 hover:bg-green-700 focus:ring-green-500'
 							: 'bg-red-600 hover:bg-red-700 focus:ring-red-500'

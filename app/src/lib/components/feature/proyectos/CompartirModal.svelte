@@ -154,7 +154,7 @@
 					<div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
 						<button
 							type="button"
-							class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 font-semibold text-white shadow-sm transition hover:brightness-105 focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 focus:outline-none active:translate-y-[1px]"
+							class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-4 py-3 font-semibold text-white shadow-sm transition hover:brightness-105 focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2 focus:outline-none active:translate-y-px"
 							onclick={compartirWhatsApp}
 						>
 							<Icon src={ChatBubbleLeftRight} class="h-5 w-5" aria-hidden="true" />
@@ -163,7 +163,7 @@
 
 						<button
 							type="button"
-							class="inline-flex items-center justify-center gap-2 rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-700 shadow-sm transition hover:bg-gray-200 focus:ring-2 focus:ring-gray-300 focus:ring-offset-2 focus:outline-none active:translate-y-[1px]"
+							class="inline-flex items-center justify-center gap-2 rounded-xl bg-gray-100 px-4 py-3 font-semibold text-gray-700 shadow-sm transition hover:bg-gray-200 focus:ring-2 focus:ring-gray-300 focus:ring-offset-2 focus:outline-none active:translate-y-px"
 							onclick={compartirEmail}
 						>
 							<Icon src={Envelope} class="h-5 w-5" aria-hidden="true" />
@@ -174,7 +174,7 @@
 					<div class="flex flex-col gap-3 border-t border-gray-100 pt-4 sm:flex-row">
 						<button
 							type="button"
-							class="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 focus:ring-2 focus:ring-gray-300 focus:outline-none active:translate-y-[1px]"
+							class="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 focus:ring-2 focus:ring-gray-300 focus:outline-none active:translate-y-px"
 							onclick={copiarAlPortapapeles}
 						>
 							<Icon src={ClipboardDocument} class="h-4 w-4" aria-hidden="true" />
@@ -184,7 +184,7 @@
 						{#if typeof navigator !== 'undefined' && 'share' in navigator}
 							<button
 								type="button"
-								class="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 focus:ring-2 focus:ring-gray-300 focus:outline-none active:translate-y-[1px]"
+								class="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 focus:ring-2 focus:ring-gray-300 focus:outline-none active:translate-y-px"
 								onclick={compartirNativo}
 							>
 								<Icon src={EllipsisHorizontal} class="h-4 w-4" aria-hidden="true" />

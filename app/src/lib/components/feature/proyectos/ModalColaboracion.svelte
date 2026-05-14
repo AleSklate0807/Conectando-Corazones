@@ -142,7 +142,7 @@
 				</button>
 				<button
 					type="button"
-					class="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-tr from-sky-600 to-sky-400 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-sky-200 transition hover:brightness-110 focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:outline-none active:translate-y-[1px] disabled:pointer-events-none disabled:opacity-50 sm:w-auto"
+					class="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-tr from-sky-600 to-sky-400 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-sky-200 transition hover:brightness-110 focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:outline-none active:translate-y-px disabled:pointer-events-none disabled:opacity-50 sm:w-auto"
 					onclick={enviar}
 					disabled={enviando || mensajeColaboracion.length > 500}
 				>

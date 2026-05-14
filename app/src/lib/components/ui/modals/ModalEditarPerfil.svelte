@@ -469,7 +469,7 @@
 					</div>
 
 					<h4 class="mb-1 text-lg font-bold text-gray-900">{nombreUsuario}</h4>
-					<p class="mb-6 text-sm break-words text-gray-500 capitalize">{perfilUsuario.rol}</p>
+					<p class="mb-6 text-sm wrap-break-word text-gray-500 capitalize">{perfilUsuario.rol}</p>
 				</div>
 
 				<div class="col-span-1 flex flex-col overflow-hidden bg-white md:col-span-9">

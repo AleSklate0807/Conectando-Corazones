@@ -170,7 +170,7 @@
 		<div class="flex flex-col p-3 pb-0 sm:p-4">
 			<div class="mb-3">
 				<h3
-					class="mb-1.5 line-clamp-2 text-lg leading-tight font-bold break-words text-gray-900 transition-colors group-hover:text-blue-600"
+					class="mb-1.5 line-clamp-2 text-lg leading-tight font-bold wrap-break-word text-gray-900 transition-colors group-hover:text-blue-600"
 					title={proyecto.titulo}
 				>
 					{proyecto.titulo}

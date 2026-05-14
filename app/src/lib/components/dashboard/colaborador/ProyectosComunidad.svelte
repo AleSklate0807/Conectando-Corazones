@@ -17,7 +17,7 @@
 </script>
 
 <div
-	class="relative h-full overflow-hidden rounded-4xl border border-white/5 bg-white/[0.03] p-5 shadow-2xl backdrop-blur-sm sm:p-8"
+	class="relative h-full overflow-hidden rounded-4xl border border-white/5 bg-white/3 p-5 shadow-2xl backdrop-blur-sm sm:p-8"
 >
 	<div
 		class="absolute inset-0 bg-linear-to-br from-violet-500/10 via-transparent to-cyan-500/10 opacity-50"

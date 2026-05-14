@@ -786,7 +786,7 @@
 			{#if esAdministrador}
 				<div
 					class="sticky z-40 -mt-6 mb-6 flex w-full items-center justify-center bg-blue-800 px-4 py-2 text-center text-sm font-medium text-white shadow-md transition-all duration-500 sm:-mt-10 sm:mb-10 {$layoutStore.headerVisible
-						? 'top-[4.5rem]'
+						? 'top-18'
 						: 'top-0'}"
 					role="alert"
 				>
@@ -802,7 +802,7 @@
 			{#if estadoCodigo === 'en_auditoria' && !esAdministrador}
 				<div
 					class="sticky z-40 -mt-6 mb-6 flex w-full items-center justify-center bg-purple-800 px-4 py-3 text-center text-sm font-medium text-purple-50 shadow-md transition-all duration-500 sm:-mt-10 sm:mb-10 {$layoutStore.headerVisible
-						? 'top-[4.5rem]'
+						? 'top-18'
 						: 'top-0'}"
 					role="alert"
 				>
@@ -1188,7 +1188,7 @@
 					<!-- Columna lateral -->
 					<div class="animate-fade-up order-1 space-y-6 lg:order-2" style="animation-delay: 100ms">
 						<div
-							class="hidden lg:sticky lg:top-6 lg:z-[1] lg:block lg:rounded-2xl lg:bg-white/60 lg:p-1 lg:backdrop-blur lg:supports-[backdrop-filter]:bg-white/40"
+							class="hidden lg:sticky lg:top-6 lg:z-1 lg:block lg:rounded-2xl lg:bg-white/60 lg:p-1 lg:backdrop-blur lg:supports-backdrop-filter:bg-white/40"
 							role="group"
 							aria-label="Acciones principales del proyecto"
 						>
@@ -1201,7 +1201,7 @@
 											<button
 												type="button"
 												onclick={() => (mostrarModalJustificacion = true)}
-												class="inline-flex h-11 flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl bg-red-100 font-semibold text-red-700 shadow-sm transition hover:bg-red-200 focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:outline-none active:translate-y-[1px]"
+												class="inline-flex h-11 flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl bg-red-100 font-semibold text-red-700 shadow-sm transition hover:bg-red-200 focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-2 focus-visible:outline-none active:translate-y-px"
 												aria-label="Ver motivo del rechazo"
 											>
 												<Icon src={XCircle} class="h-4 w-4" aria-hidden="true" />
@@ -1211,7 +1211,7 @@
 											<button
 												type="button"
 												disabled
-												class="inline-flex h-11 flex-1 cursor-wait items-center justify-center gap-2 rounded-xl bg-orange-100 font-semibold text-orange-700 decoration-inherit opacity-80 shadow-sm focus-visible:outline-none active:translate-y-[1px]"
+												class="inline-flex h-11 flex-1 cursor-wait items-center justify-center gap-2 rounded-xl bg-orange-100 font-semibold text-orange-700 decoration-inherit opacity-80 shadow-sm focus-visible:outline-none active:translate-y-px"
 												aria-label="Solicitud anulada"
 											>
 												<Icon src={XCircle} class="h-4 w-4" aria-hidden="true" />
@@ -1223,8 +1223,8 @@
 												onclick={manejarClickSolicitud}
 												disabled={estadoCodigo !== 'en_curso' || solicitudRecienEnviada}
 												class={tieneSolicitudPendiente || solicitudRecienEnviada
-													? 'inline-flex h-11 flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl bg-amber-100 font-semibold text-amber-700 shadow-sm transition hover:bg-amber-200 focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:outline-none active:translate-y-[1px]'
-													: 'inline-flex h-11 flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl bg-linear-to-tr from-sky-600 to-sky-400 font-semibold text-white shadow-[0_8px_24px_rgba(2,132,199,.35)] transition hover:brightness-110 focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:outline-none active:translate-y-[1px] disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:grayscale'}
+													? 'inline-flex h-11 flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl bg-amber-100 font-semibold text-amber-700 shadow-sm transition hover:bg-amber-200 focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:outline-none active:translate-y-px'
+													: 'inline-flex h-11 flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl bg-linear-to-tr from-sky-600 to-sky-400 font-semibold text-white shadow-[0_8px_24px_rgba(2,132,199,.35)] transition hover:brightness-110 focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:outline-none active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:grayscale'}
 												aria-label={tieneSolicitudPendiente || solicitudRecienEnviada
 													? 'Ver estado de solicitud'
 													: 'Colaborar ahora en este proyecto'}
@@ -1242,7 +1242,7 @@
 												<button
 													type="button"
 													onclick={anularSolicitud}
-													class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-red-50 text-red-600 shadow-sm transition hover:bg-red-100 active:translate-y-[1px]"
+													class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-red-50 text-red-600 shadow-sm transition hover:bg-red-100 active:translate-y-px"
 													title="Anular solicitud"
 													aria-label="Anular solicitud"
 												>
@@ -1255,7 +1255,7 @@
 									<button
 										type="button"
 										onclick={compartirProyecto}
-										class="inline-flex h-11 w-12 items-center justify-center rounded-xl border border-gray-200 bg-white text-gray-700 shadow-sm transition hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:outline-none active:translate-y-[1px]"
+										class="inline-flex h-11 w-12 items-center justify-center rounded-xl border border-gray-200 bg-white text-gray-700 shadow-sm transition hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:outline-none active:translate-y-px"
 										aria-label="Compartir este proyecto"
 									>
 										<Icon src={Share} class="h-4 w-4" aria-hidden="true" />

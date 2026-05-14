@@ -353,14 +353,14 @@
 											class="mb-2 block text-sm font-bold tracking-widest text-gray-400 uppercase"
 											>Descripción Detallada</span
 										>
-										<p class="break-words text-lg leading-relaxed text-gray-700">{reporte.descripcion}</p>
+										<p class="wrap-break-word text-lg leading-relaxed text-gray-700">{reporte.descripcion}</p>
 									</div>
 								</div>
 
 								<div class="flex flex-col gap-4">
 									{#if reporte.estado === 'verificado' || reporte.estado === 'desestimado'}
 										<div class="h-full rounded-2xl border border-gray-100 bg-gray-50 p-4 shadow-sm md:p-6">
-											<h4 class="mb-4 flex items-center gap-2 break-words text-lg font-bold text-gray-900">
+											<h4 class="mb-4 flex items-center gap-2 wrap-break-word text-lg font-bold text-gray-900">
 												<AlertCircle class="text-primary-500 h-5 w-5" />
 												Resolución Administrativa
 											</h4>

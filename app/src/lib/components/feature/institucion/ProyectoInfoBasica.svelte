@@ -204,7 +204,7 @@
 				maxlength="60"
 				onblur={() => normalizarTitulo(titulo)}
 				disabled={esEdicionRestringida && !esAdmin}
-				class="focus:ring-opacity-20 w-full rounded-lg border px-3 py-2 text-sm transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+				class="w-full rounded-lg border px-3 py-2 text-sm transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
 				class:border-gray-300={!esEdicionRestringida || esAdmin}
 				class:border-red-300={errores.titulo && (!esEdicionRestringida || esAdmin)}
 				class:cursor-not-allowed={esEdicionRestringida && !esAdmin}
@@ -226,7 +226,7 @@
 				id="descripcion"
 				bind:value={descripcion}
 				rows="4"
-				class="focus:ring-opacity-20 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+				class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
 				placeholder="Describa su proyecto, objetivos y cómo ayudará a la comunidad..."
 				class:border-red-300={errores.descripcion}
 			></textarea>
@@ -274,7 +274,7 @@
 				<button
 					type="button"
 					disabled={esEdicionRestringida && !esAdmin}
-					class="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 py-8 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60"
+					class="flex w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 py-8 transition-colors hover:bg-gray-100 focus:ring-2 focus:ring-blue-500/20 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-60"
 					class:border-red-300={errores.urlPortada}
 					onclick={() => document.getElementById('portada-upload')?.click()}
 					onkeydown={(e) =>
@@ -350,7 +350,7 @@
 					lang="es-AR"
 					bind:value={fechaFinTentativa}
 					min={esEdicionRestringida && fechaOriginal && !esAdmin ? fechaOriginal : fechaMinima}
-					class="focus:ring-opacity-20 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+					class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
 					class:border-red-300={errores.fechaFinTentativa}
 					aria-invalid={!!errores.fechaFinTentativa}
 				/>
@@ -389,7 +389,7 @@
 							e.preventDefault();
 						}
 					}}
-					class="focus:ring-opacity-20 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+					class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
 					class:border-red-300={errores.beneficiarios}
 					aria-invalid={!!errores.beneficiarios}
 					aria-describedby="beneficiarios-help"
@@ -500,7 +500,7 @@
 				maxlength="60"
 				onblur={normalizarCategoriaOtra}
 				disabled={esEdicionRestringida && !esAdmin}
-				class="focus:ring-opacity-20 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+				class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm transition-colors focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
 				class:border-red-300={errores.categoria_otra}
 				class:cursor-not-allowed={esEdicionRestringida && !esAdmin}
 				class:bg-gray-50={esEdicionRestringida && !esAdmin}

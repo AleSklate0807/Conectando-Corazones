@@ -125,14 +125,12 @@ export class PostgresSolicitudFinalizacionRepository
 				}
 			});
 
-			for (const evidenciaId of solicitud.evidencia_ids) {
-				await tx.solicitudFinalizacionEvidencia.create({
-					data: {
-						evidencia_id: evidenciaId,
-						solicitud_finalizacion_id: nuevaSolicitud.id_solicitud
-					}
-				});
-			}
+			await tx.solicitudFinalizacionEvidencia.createMany({
+				data: solicitud.evidencia_ids.map((evidenciaId) => ({
+					evidencia_id: evidenciaId,
+					solicitud_finalizacion_id: nuevaSolicitud.id_solicitud
+				}))
+			});
 
 			const withRelations = await tx.solicitudFinalizacion.findUnique({
 				where: { id_solicitud: nuevaSolicitud.id_solicitud },

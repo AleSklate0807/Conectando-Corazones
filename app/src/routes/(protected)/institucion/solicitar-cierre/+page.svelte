@@ -219,14 +219,8 @@
 			}
 
 			errorSolicitud = null;
-
-			// Si todo salió bien, mostramos mensaje de éxito y reseteamos estados locales
 			enviandoSolicitud = false;
 			solicitudEnviada = true;
-
-			const url = new URL(window.location.href);
-			url.searchParams.delete('proyecto');
-			window.location.href = url.toString();
 
 			checks = {
 				evidenciasSuficientes: false,
@@ -238,7 +232,10 @@
 
 			setTimeout(() => {
 				solicitudEnviada = false;
-			}, 5000);
+				const url = new URL(window.location.href);
+				url.searchParams.delete('proyecto');
+				window.location.href = url.toString();
+			}, 3000);
 		} catch (err) {
 			console.error('Error inesperado al enviar la solicitud de cierre', err);
 			enviandoSolicitud = false;

@@ -132,10 +132,10 @@
 
 			<div class="space-y-5 px-6 pt-5 pb-6">
 				{#if !compartido && !copiado}
-					<div class="rounded-xl bg-gradient-to-br from-sky-50 to-blue-50 p-4 ring-1 ring-sky-100">
+					<div class="rounded-xl bg-linear-to-br from-sky-50 to-blue-50 p-4 ring-1 ring-sky-100">
 						<div class="flex items-start gap-3">
 							<span
-								class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-sky-100"
+								class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sky-100"
 							>
 								<Icon src={Share} class="h-5 w-5 text-sky-600" />
 							</span>

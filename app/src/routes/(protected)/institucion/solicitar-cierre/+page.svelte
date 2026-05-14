@@ -343,7 +343,7 @@
 						{#if formularioBloqueadoPorAuditoria}
 							<div class="mt-6 rounded-xl border border-red-200 bg-red-50 p-4">
 								<div class="flex gap-3">
-									<AlertTriangle class="h-5 w-5 flex-shrink-0 text-red-600" />
+									<AlertTriangle class="h-5 w-5 shrink-0 text-red-600" />
 									<div>
 										<h3 class="text-sm font-bold text-red-800">Revisión administrativa</h3>
 										<p class="mt-1 text-sm text-red-700">
@@ -371,7 +371,7 @@
 						{:else if muchosRechazos}
 							<div class="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4">
 								<div class="flex gap-3">
-									<Info class="h-5 w-5 flex-shrink-0 text-amber-700" />
+									<Info class="h-5 w-5 shrink-0 text-amber-700" />
 									<div>
 										<h3 class="text-sm font-bold text-amber-900">Podés volver a intentar</h3>
 										<p class="mt-1 text-sm text-amber-800">
@@ -393,7 +393,7 @@
 						{:else if solicitudPendienteExistente}
 							<div class="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4">
 								<div class="flex gap-3">
-									<Info class="h-5 w-5 flex-shrink-0 text-amber-600" />
+									<Info class="h-5 w-5 shrink-0 text-amber-600" />
 									<div>
 										<h3 class="text-sm font-bold text-amber-800">Solicitud pendiente</h3>
 										<p class="mt-1 text-sm text-amber-700">
@@ -432,7 +432,7 @@
 								{#if !todosLosObjetivosTienenEvidenciasCompletas}
 									<div class="rounded-xl border border-amber-200 bg-amber-50 p-4">
 										<div class="flex gap-3">
-											<AlertTriangle class="h-5 w-5 flex-shrink-0 text-amber-600" />
+											<AlertTriangle class="h-5 w-5 shrink-0 text-amber-600" />
 											<div>
 												<h3 class="text-sm font-bold text-amber-800">
 													Atención: Faltan evidencias
@@ -515,7 +515,7 @@
 							{#if !formularioBloqueadoPorAuditoria && !tieneSolicitudPendiente}
 								<div class="mt-6 rounded-xl border border-blue-100 bg-blue-50 p-4">
 									<div class="flex gap-3">
-										<Info class="h-5 w-5 flex-shrink-0 text-blue-600" />
+										<Info class="h-5 w-5 shrink-0 text-blue-600" />
 										<div class="text-sm text-slate-800">
 											<p class="font-semibold text-blue-900">Información importante</p>
 											<p class="mt-1 text-sm leading-relaxed text-slate-700">

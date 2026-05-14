@@ -171,7 +171,7 @@
 								class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
 							/>
 							<div
-								class="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent opacity-60"
+								class="absolute inset-0 bg-linear-to-t from-gray-900/60 via-transparent to-transparent opacity-60"
 							></div>
 
 							<!-- Etiqueta de Estado (Arriba a la izquierda) -->

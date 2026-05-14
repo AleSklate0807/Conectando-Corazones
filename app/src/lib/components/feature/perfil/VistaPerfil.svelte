@@ -308,7 +308,7 @@
 		aria-hidden="true"
 	>
 		<div
-			class="absolute inset-0 bg-gradient-to-br from-[#007FFF]/20 via-[#42A1FF]/10 to-transparent"
+			class="absolute inset-0 bg-linear-to-br from-[#007FFF]/20 via-[#42A1FF]/10 to-transparent"
 		></div>
 		<div class="absolute -top-16 -left-16 h-64 w-64 rounded-full bg-[#007FFF]/8 blur-3xl"></div>
 		<div class="absolute top-0 -right-10 h-56 w-56 rounded-full bg-[#42A1FF]/12 blur-2xl"></div>

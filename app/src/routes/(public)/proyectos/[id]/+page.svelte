@@ -915,7 +915,7 @@
 												role="group"
 												aria-label={`Progreso de ${p.unidad_medida}`}
 											>
-												<div class="flex-shrink-0" aria-hidden="true">
+												<div class="shrink-0" aria-hidden="true">
 													{#if estadoObjetivo(p.actual || 0, p.objetivo) === 'completo'}
 														<span
 															class="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100"
@@ -1080,7 +1080,7 @@
 														<ul class="flex flex-col gap-4">
 															{#each listadoAprendizajes as item (item)}
 																<li class="flex gap-4">
-																	<div class="relative mt-2 flex-shrink-0">
+																	<div class="relative mt-2 shrink-0">
 																		<div
 																			class="flex h-2 w-2 items-center justify-center rounded-full bg-amber-400 ring-4 ring-amber-100"
 																		></div>
@@ -1224,7 +1224,7 @@
 												disabled={estadoCodigo !== 'en_curso' || solicitudRecienEnviada}
 												class={tieneSolicitudPendiente || solicitudRecienEnviada
 													? 'inline-flex h-11 flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl bg-amber-100 font-semibold text-amber-700 shadow-sm transition hover:bg-amber-200 focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 focus-visible:outline-none active:translate-y-[1px]'
-													: 'inline-flex h-11 flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl bg-gradient-to-tr from-sky-600 to-sky-400 font-semibold text-white shadow-[0_8px_24px_rgba(2,132,199,.35)] transition hover:brightness-110 focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:outline-none active:translate-y-[1px] disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:grayscale'}
+													: 'inline-flex h-11 flex-1 cursor-pointer items-center justify-center gap-2 rounded-xl bg-linear-to-tr from-sky-600 to-sky-400 font-semibold text-white shadow-[0_8px_24px_rgba(2,132,199,.35)] transition hover:brightness-110 focus-visible:ring-2 focus-visible:ring-sky-400 focus-visible:ring-offset-2 focus-visible:outline-none active:translate-y-[1px] disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:grayscale'}
 												aria-label={tieneSolicitudPendiente || solicitudRecienEnviada
 													? 'Ver estado de solicitud'
 													: 'Colaborar ahora en este proyecto'}
@@ -1583,7 +1583,7 @@
 								type="button"
 								onclick={manejarClickSolicitud}
 								disabled={estadoCodigo !== 'en_curso' || solicitudRecienEnviada}
-								class="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-tr from-sky-600 to-sky-400 px-4 py-3 font-bold text-white shadow-lg transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:grayscale"
+								class="flex flex-1 items-center justify-center gap-2 rounded-xl bg-linear-to-tr from-sky-600 to-sky-400 px-4 py-3 font-bold text-white shadow-lg transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:grayscale"
 							>
 								{#if tieneSolicitudPendiente || solicitudRecienEnviada}
 									<Icon src={Clock} class="h-5 w-5" aria-hidden="true" />

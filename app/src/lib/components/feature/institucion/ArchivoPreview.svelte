@@ -67,7 +67,7 @@
 	<!-- Información del archivo -->
 	<div class="flex items-start gap-3">
 		<!-- Ícono según tipo -->
-		<div class="flex-shrink-0">
+		<div class="shrink-0">
 			{#if esImagenArchivo}
 				<div class="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50">
 					<svg

@@ -98,9 +98,9 @@
 						href={accion.href}
 						class="group flex h-full items-center justify-center gap-3 rounded-full px-5 py-3 backdrop-blur-md transition-all duration-300
 					{accion.primary
-							? 'border border-blue-500/30 bg-gradient-to-r from-blue-600/80 to-blue-500/80 text-white shadow-[0_4px_20px_-4px_rgba(59,130,246,0.5)] hover:-translate-y-0.5 hover:bg-blue-500 hover:shadow-[0_6px_25px_-4px_rgba(59,130,246,0.6)]'
+							? 'border border-blue-500/30 bg-linear-to-r from-blue-600/80 to-blue-500/80 text-white shadow-[0_4px_20px_-4px_rgba(59,130,246,0.5)] hover:-translate-y-0.5 hover:bg-blue-500 hover:shadow-[0_6px_25px_-4px_rgba(59,130,246,0.6)]'
 							: accion.secondary && accion.color === 'rose'
-								? 'border border-rose-500/30 bg-gradient-to-r from-rose-600/80 to-rose-500/80 text-white shadow-[0_4px_20px_-4px_rgba(244,63,94,0.5)] hover:-translate-y-0.5 hover:bg-rose-500 hover:shadow-[0_6px_25px_-4px_rgba(244,63,94,0.6)]'
+								? 'border border-rose-500/30 bg-linear-to-r from-rose-600/80 to-rose-500/80 text-white shadow-[0_4px_20px_-4px_rgba(244,63,94,0.5)] hover:-translate-y-0.5 hover:bg-rose-500 hover:shadow-[0_6px_25px_-4px_rgba(244,63,94,0.6)]'
 								: 'border border-white/5 bg-white/5 text-slate-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10 hover:text-white'}"
 					>
 						<div
@@ -118,9 +118,9 @@
 						onclick={accion.onClick}
 						class="group flex h-full w-full items-center justify-center gap-3 rounded-full px-5 py-3 backdrop-blur-md transition-all duration-300
 					{accion.primary
-							? 'border border-blue-500/30 bg-gradient-to-r from-blue-600/80 to-blue-500/80 text-white shadow-[0_4px_20px_-4px_rgba(59,130,246,0.5)] hover:-translate-y-0.5 hover:bg-blue-500 hover:shadow-[0_6px_25px_-4px_rgba(59,130,246,0.6)]'
+							? 'border border-blue-500/30 bg-linear-to-r from-blue-600/80 to-blue-500/80 text-white shadow-[0_4px_20px_-4px_rgba(59,130,246,0.5)] hover:-translate-y-0.5 hover:bg-blue-500 hover:shadow-[0_6px_25px_-4px_rgba(59,130,246,0.6)]'
 							: accion.secondary && accion.color === 'rose'
-								? 'border border-rose-500/30 bg-gradient-to-r from-rose-600/80 to-rose-500/80 text-white shadow-[0_4px_20px_-4px_rgba(244,63,94,0.5)] hover:-translate-y-0.5 hover:bg-rose-500 hover:shadow-[0_6px_25px_-4px_rgba(244,63,94,0.6)]'
+								? 'border border-rose-500/30 bg-linear-to-r from-rose-600/80 to-rose-500/80 text-white shadow-[0_4px_20px_-4px_rgba(244,63,94,0.5)] hover:-translate-y-0.5 hover:bg-rose-500 hover:shadow-[0_6px_25px_-4px_rgba(244,63,94,0.6)]'
 								: 'border border-white/5 bg-white/5 text-slate-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10 hover:text-white'}"
 					>
 						<div
@@ -164,11 +164,11 @@
 						href={accion.href}
 						class="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl p-4 text-white shadow-lg backdrop-blur-xl transition-all duration-300 active:scale-[0.98]
 						{accion.primary
-							? 'border border-blue-500/30 bg-gradient-to-br from-blue-500/90 via-blue-600/90 to-blue-800/90 shadow-blue-500/25 hover:shadow-blue-500/40'
-							: 'border border-rose-500/30 bg-gradient-to-br from-rose-500/90 via-rose-600/90 to-rose-800/90 shadow-rose-500/25 hover:shadow-rose-500/40'}"
+							? 'border border-blue-500/30 bg-linear-to-br from-blue-500/90 via-blue-600/90 to-blue-800/90 shadow-blue-500/25 hover:shadow-blue-500/40'
+							: 'border border-rose-500/30 bg-linear-to-br from-rose-500/90 via-rose-600/90 to-rose-800/90 shadow-rose-500/25 hover:shadow-rose-500/40'}"
 					>
 						<div
-							class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+							class="absolute inset-0 bg-linear-to-tr from-white/0 via-white/5 to-white/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
 						></div>
 
 						<Icono size={22} weight="bold" />
@@ -180,12 +180,12 @@
 						onclick={accion.onClick}
 						class="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl p-4 text-white shadow-lg backdrop-blur-xl transition-all duration-300 active:scale-[0.98]
 						{accion.primary
-							? 'border border-blue-500/30 bg-gradient-to-br from-blue-500/90 via-blue-600/90 to-blue-800/90 shadow-blue-500/25 hover:shadow-blue-500/40'
-							: 'border border-rose-500/30 bg-gradient-to-br from-rose-500/90 via-rose-600/90 to-rose-800/90 shadow-rose-500/25 hover:shadow-rose-500/40'}"
+							? 'border border-blue-500/30 bg-linear-to-br from-blue-500/90 via-blue-600/90 to-blue-800/90 shadow-blue-500/25 hover:shadow-blue-500/40'
+							: 'border border-rose-500/30 bg-linear-to-br from-rose-500/90 via-rose-600/90 to-rose-800/90 shadow-rose-500/25 hover:shadow-rose-500/40'}"
 					>
 						<!-- Efecto sutil de brillo -->
 						<div
-							class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+							class="absolute inset-0 bg-linear-to-tr from-white/0 via-white/5 to-white/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
 						></div>
 
 						<Icono size={22} weight="bold" />

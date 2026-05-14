@@ -393,7 +393,7 @@
 												/>
 											{:else}
 												<div
-													class="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-gray-100 to-gray-200 text-lg font-bold text-gray-600 shadow-sm"
+													class="flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-br from-gray-100 to-gray-200 text-lg font-bold text-gray-600 shadow-sm"
 												>
 													{getIniciales(colaboracion.colaborador?.username)}
 												</div>
@@ -532,7 +532,7 @@
 											/>
 										{:else}
 											<div
-												class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-50 to-blue-100 text-sm font-bold text-blue-600 shadow-sm"
+												class="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-blue-50 to-blue-100 text-sm font-bold text-blue-600 shadow-sm"
 											>
 												{getIniciales(colaboracion.colaborador?.username)}
 											</div>
@@ -623,7 +623,7 @@
 			<div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
 				<div class="sm:flex sm:items-start">
 					<div
-						class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
+						class="mx-auto flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
 					>
 						<Icon src={XCircle} class="h-6 w-6 text-red-600" />
 					</div>

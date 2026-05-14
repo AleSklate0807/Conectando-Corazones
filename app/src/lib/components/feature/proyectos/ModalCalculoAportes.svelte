@@ -81,11 +81,11 @@
 					<p class="text-gray-800">El progreso combina dos métricas:</p>
 					<ul class="space-y-2 text-sm">
 						<li class="flex items-start gap-3">
-							<div class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-sky-500"></div>
+							<div class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-sky-500"></div>
 							<span><strong>Objetivos cumplidos:</strong> progreso real de los resultados.</span>
 						</li>
 						<li class="flex items-start gap-3">
-							<div class="mt-1.5 h-2 w-2 flex-shrink-0 rounded-full bg-emerald-500"></div>
+							<div class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-emerald-500"></div>
 							<span><strong>Tiempo transcurrido:</strong> avance cronológico del proyecto.</span>
 						</li>
 					</ul>

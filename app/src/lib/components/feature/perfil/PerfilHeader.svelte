@@ -158,7 +158,7 @@ let textoBadgeVerificacion = $derived(
 			<!-- Botón editar (desktop) -->
 			{#if esMiPerfil}
 				<button
-					class="group hidden shrink-0 items-center gap-2 rounded-xl border border-[#007FFF]/20 bg-gradient-to-r from-[#007FFF] to-[#42A1FF] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:from-[#42A1FF] hover:to-[#007FFF] hover:shadow-md md:inline-flex"
+					class="group hidden shrink-0 items-center gap-2 rounded-xl border border-[#007FFF]/20 bg-linear-to-r from-[#007FFF] to-[#42A1FF] px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:from-[#42A1FF] hover:to-[#007FFF] hover:shadow-md md:inline-flex"
 					onclick={onEditarClick}
 					type="button"
 				>

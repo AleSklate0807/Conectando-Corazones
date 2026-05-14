@@ -45,7 +45,7 @@
 
 <div
 	use:reveal
-	class="reveal-hidden h-full rounded-[2rem] border border-emerald-500/10 bg-white/[0.02] p-8 shadow-2xl backdrop-blur-sm"
+	class="reveal-hidden h-full rounded-4xl border border-emerald-500/10 bg-white/2 p-8 shadow-2xl backdrop-blur-sm"
 >
 	<div class="mb-8 flex items-center justify-between gap-2">
 		<div class="flex items-center gap-2">

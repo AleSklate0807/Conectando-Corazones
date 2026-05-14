@@ -12,10 +12,10 @@
 </script>
 
 <div
-	class="relative h-full overflow-hidden rounded-[2rem] border border-white/5 bg-white/[0.03] p-8 shadow-2xl backdrop-blur-sm"
+	class="relative h-full overflow-hidden rounded-4xl border border-white/5 bg-white/[0.03] p-8 shadow-2xl backdrop-blur-sm"
 >
 	<div
-		class="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-cyan-500/10 opacity-50"
+		class="absolute inset-0 bg-linear-to-br from-violet-500/10 via-transparent to-cyan-500/10 opacity-50"
 	></div>
 	<div
 		class="pointer-events-none absolute -top-10 -right-10 h-64 w-64 rounded-full bg-violet-500/10 blur-[80px]"
@@ -52,7 +52,7 @@
 						class="absolute inset-0 animate-pulse rounded-full bg-violet-500/20 blur-2xl filter"
 					></div>
 					<div
-						class="relative flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-violet-500/20 to-cyan-500/20 backdrop-blur-sm"
+						class="relative flex h-20 w-20 items-center justify-center rounded-full bg-linear-to-br from-violet-500/20 to-cyan-500/20 backdrop-blur-sm"
 					>
 						<BookOpen size={32} class="text-violet-400" />
 					</div>

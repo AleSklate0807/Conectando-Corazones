@@ -25,8 +25,8 @@
 	class={clsx(
 		'group relative overflow-hidden rounded-2xl border p-4 transition-all duration-300 sm:p-5',
 		variant === 'primary'
-			? 'border-sky-100 bg-gradient-to-br from-sky-50 to-white shadow-sm hover:border-sky-200 hover:shadow-md'
-			: 'border-amber-100 bg-gradient-to-br from-amber-50 to-white shadow-sm hover:border-amber-200 hover:shadow-md'
+			? 'border-sky-100 bg-linear-to-br from-sky-50 to-white shadow-sm hover:border-sky-200 hover:shadow-md'
+			: 'border-amber-100 bg-linear-to-br from-amber-50 to-white shadow-sm hover:border-amber-200 hover:shadow-md'
 	)}
 	role="region"
 	aria-label={title}

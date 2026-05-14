@@ -71,7 +71,7 @@
 </script>
 
 <div class="overflow-hidden rounded-2xl border border-white/5 bg-white/5 backdrop-blur-md shadow-sm">
-	<div class="border-b border-white/10 bg-gradient-to-r from-[#1a1b3b] to-[#252a5a] px-6 py-5">
+	<div class="border-b border-white/10 bg-linear-to-r from-[#1a1b3b] to-[#252a5a] px-6 py-5">
 		<h3 class="text-xl font-bold text-white">Denuncias y Reportes</h3>
 		<p class="text-sm text-slate-400">Revisión de contenido reportado y acciones disciplinarias.</p>
 	</div>

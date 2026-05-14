@@ -336,7 +336,7 @@
 										onclick={() => toggleExpand(i)}
 									>
 										<div
-											class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-blue-50 font-black text-blue-600 uppercase md:h-12 md:w-12 md:rounded-xl"
+											class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 font-black text-blue-600 uppercase md:h-12 md:w-12 md:rounded-xl"
 										>
 											#{i + 1}
 										</div>
@@ -642,7 +642,7 @@
 <!-- Modal de Confirmación de Eliminación -->
 {#if showDeleteModal}
 	<div
-		class="fixed inset-0 z-[60] flex items-end justify-center bg-slate-900/60 p-0 backdrop-blur-md sm:items-center sm:p-4"
+		class="fixed inset-0 z-60 flex items-end justify-center bg-slate-900/60 p-0 backdrop-blur-md sm:items-center sm:p-4"
 		transition:fade
 		role="button"
 		tabindex="-1"

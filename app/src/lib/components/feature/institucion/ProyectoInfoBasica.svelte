@@ -442,7 +442,7 @@
 					: ''}"
 				class:hover:shadow-none={esEdicionRestringida && !esAdmin}
 			>
-				<span class="mr-2 flex-shrink-0 text-lg {clases.iconColor}">
+				<span class="mr-2 shrink-0 text-lg {clases.iconColor}">
 					<Icon src={obtenerIconoCategoria(categoria.descripcion || '')} class="h-5 w-5" />
 				</span>
 				<div class="min-w-0 flex-1 text-left">
@@ -454,7 +454,7 @@
 						{categoria.descripcion}
 					</span>
 				</div>
-				<div class="ml-1 flex-shrink-0">
+				<div class="ml-1 shrink-0">
 					{#if seleccionado}
 						<div class="flex h-4 w-4 items-center justify-center rounded-full {clases.iconBg}">
 							<svg class="h-2.5 w-2.5 {clases.iconColor}" fill="currentColor" viewBox="0 0 20 20">
@@ -477,7 +477,7 @@
 
 	{#if (!esEdicionRestringida || esAdmin) && categoriasSeleccionadas.length >= 5}
 		<div class="mt-4 flex items-center rounded-lg bg-yellow-50 p-3 text-sm text-yellow-800">
-			<svg class="mr-2 h-5 w-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+			<svg class="mr-2 h-5 w-5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
 				<path
 					fill-rule="evenodd"
 					d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"

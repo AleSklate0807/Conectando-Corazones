@@ -89,7 +89,7 @@
 	<!-- Link principal del contenido -->
 	<a
 		href={`/proyectos/${proyecto.id_proyecto}`}
-		class="flex flex-grow flex-col text-inherit no-underline focus:ring-2 focus:ring-blue-500 focus:outline-none focus:ring-inset"
+		class="flex grow flex-col text-inherit no-underline focus:ring-2 focus:ring-blue-500 focus:outline-none focus:ring-inset"
 	>
 		<!-- Imagen Cover -->
 		<div class="relative h-48 overflow-hidden bg-gray-100">
@@ -149,7 +149,7 @@
 			</div>
 			<!-- Franja inferior: ARCA (izquierda) + fechas (derecha) -->
 			<div
-				class="absolute right-0 bottom-0 left-0 flex items-end justify-between bg-gradient-to-t from-black/70 via-black/30 to-transparent p-3 pt-12"
+				class="absolute right-0 bottom-0 left-0 flex items-end justify-between bg-linear-to-t from-black/70 via-black/30 to-transparent p-3 pt-12"
 			>
 				{#if proyecto.esDeducible}
 					<BadgeArca />

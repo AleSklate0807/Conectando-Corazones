@@ -232,7 +232,7 @@
 					class="font-display mb-6 text-3xl font-bold tracking-tight text-white drop-shadow-sm md:mb-8 md:text-5xl lg:text-6xl"
 				>
 					Hola, <span
-						class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
+						class="bg-linear-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
 						>{data.info.nombre}</span
 					>
 				</h1>
@@ -396,12 +396,12 @@
 				<!-- Indicadores de Scroll -->
 				{#if showLeftGradient}
 					<div
-						class="from-bg-[#0F1029] via-bg-[#0F1029]/80 pointer-events-none absolute top-0 bottom-0 left-0 z-10 w-8 bg-gradient-to-r to-transparent md:hidden"
+						class="from-bg-[#0F1029] via-bg-[#0F1029]/80 pointer-events-none absolute top-0 bottom-0 left-0 z-10 w-8 bg-linear-to-r to-transparent md:hidden"
 					></div>
 				{/if}
 				{#if showRightGradient}
 					<div
-						class="to-bg-[#0F1029] via-bg-[#0F1029]/80 pointer-events-none absolute top-0 right-0 bottom-0 z-10 flex w-12 items-center justify-end bg-gradient-to-r from-transparent p-2 md:hidden"
+						class="to-bg-[#0F1029] via-bg-[#0F1029]/80 pointer-events-none absolute top-0 right-0 bottom-0 z-10 flex w-12 items-center justify-end bg-linear-to-r from-transparent p-2 md:hidden"
 					>
 						<ChevronRight size={16} class="text-primary animate-pulse" />
 					</div>

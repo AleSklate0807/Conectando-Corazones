@@ -174,7 +174,7 @@
 				>
 					{label}
 					<span
-						class="absolute bottom-0 left-0 h-0.5 w-0 rounded-full bg-gradient-to-r from-blue-400 to-cyan-300 transition-all duration-300 group-hover:w-full"
+						class="absolute bottom-0 left-0 h-0.5 w-0 rounded-full bg-linear-to-r from-blue-400 to-cyan-300 transition-all duration-300 group-hover:w-full"
 					></span>
 				</a>
 			{/each}

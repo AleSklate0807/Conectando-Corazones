@@ -106,7 +106,7 @@
 			{#if breadcrumbs.length > 2}
 				<!-- separador -->
 				{#if useIconSeparator}
-					<ChevronRight class="mx-1 h-4 w-4 flex-shrink-0 text-blue-200" />
+					<ChevronRight class="mx-1 h-4 w-4 shrink-0 text-blue-200" />
 				{:else}
 					<span class="mx-1 text-blue-200">/</span>
 				{/if}
@@ -147,7 +147,7 @@
 
 				<!-- separador -->
 				{#if useIconSeparator}
-					<ChevronRight class="mx-1 h-4 w-4 flex-shrink-0 text-blue-200" />
+					<ChevronRight class="mx-1 h-4 w-4 shrink-0 text-blue-200" />
 				{:else}
 					<span class="mx-1 text-blue-200">/</span>
 				{/if}
@@ -173,7 +173,7 @@
 					<li class="flex min-w-0 items-center">
 						{#if index}
 							{#if useIconSeparator}
-								<ChevronRight class="mx-1 h-4 w-4 flex-shrink-0 text-blue-300" />
+								<ChevronRight class="mx-1 h-4 w-4 shrink-0 text-blue-300" />
 							{:else}
 								<span class="mx-1 text-blue-300">/</span>
 							{/if}
@@ -212,7 +212,7 @@
 
 				<!-- separador -->
 				{#if useIconSeparator}
-					<ChevronRight class="mx-1 h-4 w-4 flex-shrink-0 text-blue-300" />
+					<ChevronRight class="mx-1 h-4 w-4 shrink-0 text-blue-300" />
 				{:else}
 					<span class="mx-1 text-blue-300">/</span>
 				{/if}
@@ -254,7 +254,7 @@
 
 					<!-- separador -->
 					{#if useIconSeparator}
-						<ChevronRight class="mx-1 h-4 w-4 flex-shrink-0 text-blue-300" />
+						<ChevronRight class="mx-1 h-4 w-4 shrink-0 text-blue-300" />
 					{:else}
 						<span class="mx-1 text-blue-300">/</span>
 					{/if}
@@ -275,7 +275,7 @@
 
 				<!-- separador -->
 				{#if useIconSeparator}
-					<ChevronRight class="mx-1 h-4 w-4 flex-shrink-0 text-blue-300" />
+					<ChevronRight class="mx-1 h-4 w-4 shrink-0 text-blue-300" />
 				{:else}
 					<span class="mx-1 text-blue-300">/</span>
 				{/if}

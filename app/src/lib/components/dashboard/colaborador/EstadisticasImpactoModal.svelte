@@ -146,7 +146,7 @@
 									<div class="relative z-10 flex min-w-0 flex-1 items-center gap-3">
 										<span class="truncate font-medium text-slate-200">{skill.label}</span>
 									</div>
-									<div class="relative z-10 flex-shrink-0 text-right">
+									<div class="relative z-10 shrink-0 text-right">
 										<div class="font-bold text-white">{skill.count}</div>
 										<div class="text-[10px] text-slate-400">{skill.percentage}%</div>
 									</div>
@@ -175,7 +175,7 @@
 									<div class="relative z-10 flex min-w-0 flex-1 items-center gap-3">
 										<span class="truncate font-medium text-slate-200">{loc.label}</span>
 									</div>
-									<div class="relative z-10 flex-shrink-0 text-right">
+									<div class="relative z-10 shrink-0 text-right">
 										<div class="font-bold text-white">{loc.count}</div>
 										<div class="text-[10px] text-slate-400">{loc.percentage}%</div>
 									</div>
@@ -196,7 +196,7 @@
 							<div
 								class="group relative flex items-center gap-4 rounded-xl border border-white/5 bg-slate-900/50 p-4 transition-all hover:border-blue-500/30 hover:bg-blue-500/5 hover:shadow-lg hover:shadow-blue-900/20"
 							>
-								<div class="relative flex-shrink-0">
+								<div class="relative shrink-0">
 									<div
 										class="h-12 w-12 overflow-hidden rounded-full border-2 border-slate-700 transition-colors group-hover:border-blue-500"
 									>

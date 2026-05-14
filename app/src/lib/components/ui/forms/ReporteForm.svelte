@@ -264,7 +264,7 @@
 	<div class="rounded-lg border border-blue-100 bg-blue-50 p-4">
 		<div class="flex gap-3">
 			<svg
-				class="h-6 w-6 flex-shrink-0 text-blue-600"
+				class="h-6 w-6 shrink-0 text-blue-600"
 				fill="none"
 				stroke="currentColor"
 				stroke-width="2"

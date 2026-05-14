@@ -265,7 +265,7 @@
 	<div class="space-y-5">
 		<div class="flex items-center gap-3">
 			<span
-				class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-sky-50"
+				class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-50"
 				aria-hidden="true"
 			>
 				{#if icono}

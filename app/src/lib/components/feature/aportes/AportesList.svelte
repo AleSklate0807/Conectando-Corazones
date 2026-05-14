@@ -153,7 +153,7 @@
 									onclick={() => toggleColaborador(colab.id_usuario)}
 								>
 									<div
-										class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-600 md:h-12 md:w-12 md:rounded-xl"
+										class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-600 md:h-12 md:w-12 md:rounded-xl"
 									>
 										<User size={20} class="md:hidden" />
 										<User size={24} class="hidden md:block" />
@@ -334,7 +334,7 @@
 						<div
 							class="flex w-full items-center gap-2 border-t border-slate-800 pt-4 text-[10px] leading-snug text-slate-500 italic md:text-sm"
 						>
-							<AlertCircle size={14} class="flex-shrink-0 text-blue-500/50" />
+							<AlertCircle size={14} class="shrink-0 text-blue-500/50" />
 							<span>Validación necesaria para el cierre oficial.</span>
 						</div>
 					</div>
@@ -355,7 +355,7 @@
 									class="h-full w-full object-cover opacity-80 transition-opacity hover:opacity-100"
 								/>
 								<div
-									class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent md:from-[#0f1029]/80"
+									class="absolute inset-0 bg-linear-to-t from-slate-900 via-transparent to-transparent md:from-[#0f1029]/80"
 								></div>
 							</div>
 						{:else}
@@ -368,7 +368,7 @@
 									class="h-full w-full object-cover opacity-60 grayscale-[10%] md:opacity-100"
 								/>
 								<div
-									class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent md:from-[#0f1029]/80"
+									class="absolute inset-0 bg-linear-to-t from-slate-900 via-transparent to-transparent md:from-[#0f1029]/80"
 								></div>
 							</div>
 						{/if}
@@ -382,7 +382,7 @@
 								class="h-full w-full object-cover opacity-60 grayscale-[10%] md:opacity-100"
 							/>
 							<div
-								class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent md:from-[#0f1029]/80"
+								class="absolute inset-0 bg-linear-to-t from-slate-900 via-transparent to-transparent md:from-[#0f1029]/80"
 							></div>
 						</div>
 					{/if}

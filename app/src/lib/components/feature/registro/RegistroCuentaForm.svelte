@@ -157,7 +157,7 @@
 			id: 'google',
 			label: 'Google',
 			descripcion: 'Conectate con tu cuenta de Gmail en segundos.',
-			cardClass: 'border-amber-100/70 bg-gradient-to-br from-white via-white to-amber-50/60',
+			cardClass: 'border-amber-100/70 bg-linear-to-br from-white via-white to-amber-50/60',
 			iconClass: 'bg-white',
 			badgeClass: 'bg-amber-100/80 text-amber-700'
 		},
@@ -165,7 +165,7 @@
 			id: 'facebook',
 			label: 'Facebook',
 			descripcion: 'Pronto vas a poder ingresar con tu perfil social.',
-			cardClass: 'border-blue-100/80 bg-gradient-to-br from-white via-white to-blue-50/70',
+			cardClass: 'border-blue-100/80 bg-linear-to-br from-white via-white to-blue-50/70',
 			iconClass: 'bg-white',
 			badgeClass: 'bg-blue-100/80 text-blue-700'
 		},
@@ -173,7 +173,7 @@
 			id: 'microsoft',
 			label: 'Microsoft',
 			descripcion: 'Ideal si usás Outlook o Teams a diario.',
-			cardClass: 'border-slate-200 bg-gradient-to-br from-white via-white to-slate-50',
+			cardClass: 'border-slate-200 bg-linear-to-br from-white via-white to-slate-50',
 			iconClass: 'bg-white',
 			badgeClass: 'bg-slate-200 text-slate-700'
 		},
@@ -181,7 +181,7 @@
 			id: 'apple',
 			label: 'Apple',
 			descripcion: 'Usá tu Apple ID para un acceso seguro.',
-			cardClass: 'border-neutral-200 bg-gradient-to-br from-white via-white to-neutral-100',
+			cardClass: 'border-neutral-200 bg-linear-to-br from-white via-white to-neutral-100',
 			iconClass: 'text-white',
 			badgeClass: 'bg-neutral-900 text-white'
 		}
@@ -1181,7 +1181,7 @@
 						<div class="flex items-start gap-3">
 							{#if metodo.id === 'manual'}
 								<span
-									class="relative inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-[#F5F9FF] text-[#3B82F6]"
+									class="relative inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#F5F9FF] text-[#3B82F6]"
 								>
 									<Mail class="h-6 w-6" strokeWidth={1.6} />
 									<span
@@ -1192,7 +1192,7 @@
 								</span>
 							{:else}
 								<span
-									class="relative inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-[#FFE5E9] text-[#E24D5C]"
+									class="relative inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#FFE5E9] text-[#E24D5C]"
 								>
 									<Globe class="h-6 w-6" strokeWidth={1.4} />
 									<span
@@ -1628,7 +1628,7 @@
 									} peer-focus-visible:outline-2 peer-focus-visible:outline-sky-200`}
 								>
 									<span
-										class={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl text-lg transition-colors ${
+										class={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-lg transition-colors ${
 											tipoInstitucionSeleccion === opcion.value
 												? 'bg-sky-100 text-sky-600'
 												: 'bg-slate-50 text-slate-500 group-hover:bg-sky-50 group-hover:text-sky-400'

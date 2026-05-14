@@ -265,7 +265,7 @@
 					class="font-display mb-6 text-3xl font-bold tracking-tight text-white drop-shadow-sm md:mb-8 md:text-5xl lg:text-6xl"
 				>
 					Panel de <span
-						class="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
+						class="bg-linear-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent"
 						>Administración</span
 					>
 				</h1>
@@ -282,7 +282,7 @@
 						<button
 							class={`rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 ${
 								activeTab === tab.id
-									? 'bg-gradient-to-r from-emerald-500 to-cyan-500 text-white shadow-lg shadow-emerald-500/20 scale-105'
+									? 'bg-linear-to-r from-emerald-500 to-cyan-500 text-white shadow-lg shadow-emerald-500/20 scale-105'
 									: 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white'
 							}`}
 							onclick={() => (activeTab = tab.id)}
@@ -345,7 +345,7 @@
 							bind:value={filtrosUsuarios.fechaAltaDesde}
 						/>
 						<button
-							class="rounded-lg bg-gradient-to-r from-emerald-500 to-cyan-500 px-6 py-2.5 text-sm font-bold text-white shadow-md transition-all hover:opacity-90 active:scale-95"
+							class="rounded-lg bg-linear-to-r from-emerald-500 to-cyan-500 px-6 py-2.5 text-sm font-bold text-white shadow-md transition-all hover:opacity-90 active:scale-95"
 							onclick={refreshUsuarios}
 						>
 							Aplicar filtros

@@ -150,7 +150,7 @@
 	<title>Reportes - Conectando Corazones</title>
 </svelte:head>
 
-<main class="w-full bg-gradient-to-b from-gray-50 to-white px-0 py-20 md:px-12 lg:px-28">
+<main class="w-full bg-linear-to-b from-gray-50 to-white px-0 py-20 md:px-12 lg:px-28">
 	<!-- Encabezado -->
 	<div class="animate-fade-in-up mb-16 text-center">
 		<h1 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
@@ -259,7 +259,7 @@
 													<img
 														src={reporte.imagen_objeto}
 														alt="Foto de perfil"
-														class="h-12 w-12 flex-shrink-0 rounded-full object-cover shadow-sm ring-2 ring-gray-100"
+														class="h-12 w-12 shrink-0 rounded-full object-cover shadow-sm ring-2 ring-gray-100"
 													/>
 												{:else}
 													<User class="h-6 w-6 text-gray-400" />
@@ -268,7 +268,7 @@
 												<img
 													src={reporte.imagen_objeto}
 													alt="Imagen del proyecto"
-													class="h-12 w-12 flex-shrink-0 rounded-xl object-cover shadow-sm ring-2 ring-gray-100"
+													class="h-12 w-12 shrink-0 rounded-xl object-cover shadow-sm ring-2 ring-gray-100"
 												/>
 											{:else}
 												<Folder class="h-6 w-6 text-gray-400" />

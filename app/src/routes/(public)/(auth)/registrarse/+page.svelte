@@ -695,7 +695,7 @@
 		</div>
 
 		<!-- Elementos decorativos de fondo -->
-		<div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent"></div>
+		<div class="absolute inset-0 bg-linear-to-br from-blue-600/10 to-transparent"></div>
 		<div class="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl"></div>
 	</aside>
 

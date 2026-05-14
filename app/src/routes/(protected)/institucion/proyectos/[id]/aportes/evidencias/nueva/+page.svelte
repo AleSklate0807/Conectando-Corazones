@@ -768,7 +768,7 @@
 		>
 			<!-- Header -->
 			<div
-				class="border-b border-slate-100 bg-gradient-to-br from-amber-50 to-orange-50 p-6 md:p-8"
+				class="border-b border-slate-100 bg-linear-to-br from-amber-50 to-orange-50 p-6 md:p-8"
 			>
 				<div class="flex items-start gap-4">
 					<div class="shrink-0 rounded-xl bg-amber-100 p-3 text-amber-600">
@@ -797,7 +797,7 @@
 					</button>
 					<button
 						onclick={confirmarSalida}
-						class="flex-1 rounded-xl bg-gradient-to-r from-red-500 to-red-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-red-200 transition-all hover:from-red-600 hover:to-red-700 hover:shadow-red-300"
+						class="flex-1 rounded-xl bg-linear-to-r from-red-500 to-red-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-red-200 transition-all hover:from-red-600 hover:to-red-700 hover:shadow-red-300"
 					>
 						Descartar cambios
 					</button>
@@ -827,7 +827,7 @@
 			class="w-full max-w-sm overflow-hidden rounded-2xl bg-white shadow-2xl md:rounded-3xl"
 			transition:slide={{ duration: 300 }}
 		>
-			<div class="bg-gradient-to-br from-red-50 to-white p-8 text-center">
+			<div class="bg-linear-to-br from-red-50 to-white p-8 text-center">
 				<div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-red-100 text-red-600">
 					<X size={28} />
 				</div>
@@ -877,7 +877,7 @@
 			class="flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl md:rounded-3xl"
 			transition:slide={{ duration: 300 }}
 		>
-			<div class="border-b border-slate-100 bg-gradient-to-br from-blue-50 to-indigo-50 p-6 md:p-8">
+			<div class="border-b border-slate-100 bg-linear-to-br from-blue-50 to-indigo-50 p-6 md:p-8">
 				<div class="flex items-start justify-between">
 					<div class="flex items-start gap-4">
 						<div class="shrink-0 rounded-xl bg-blue-100 p-3 text-blue-600">

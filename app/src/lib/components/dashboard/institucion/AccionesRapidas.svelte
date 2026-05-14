@@ -145,13 +145,13 @@
 					{accion.disabled
 							? 'pointer-events-none cursor-not-allowed border-white/5 bg-white/5 text-slate-500 opacity-50 grayscale'
 							: accion.primary
-								? 'border border-blue-500/30 bg-gradient-to-r from-blue-600/80 to-blue-500/80 text-white shadow-[0_4px_20px_-4px_rgba(59,130,246,0.5)] hover:-translate-y-0.5 hover:bg-blue-500 hover:shadow-[0_6px_25px_-4px_rgba(59,130,246,0.6)]'
+								? 'border border-blue-500/30 bg-linear-to-r from-blue-600/80 to-blue-500/80 text-white shadow-[0_4px_20px_-4px_rgba(59,130,246,0.5)] hover:-translate-y-0.5 hover:bg-blue-500 hover:shadow-[0_6px_25px_-4px_rgba(59,130,246,0.6)]'
 								: accion.secondary && accion.color === 'rose'
-									? 'border border-rose-500/30 bg-gradient-to-r from-rose-600/80 to-rose-500/80 text-white shadow-[0_4px_20px_-4px_rgba(244,63,94,0.5)] hover:-translate-y-0.5 hover:bg-rose-500 hover:shadow-[0_6px_25px_-4px_rgba(244,63,94,0.6)]'
+									? 'border border-rose-500/30 bg-linear-to-r from-rose-600/80 to-rose-500/80 text-white shadow-[0_4px_20px_-4px_rgba(244,63,94,0.5)] hover:-translate-y-0.5 hover:bg-rose-500 hover:shadow-[0_6px_25px_-4px_rgba(244,63,94,0.6)]'
 									: accion.secondary && accion.color === 'amber'
-										? 'border border-amber-500/30 bg-gradient-to-r from-amber-500/85 to-amber-400/85 text-amber-950 shadow-[0_4px_20px_-4px_rgba(245,158,11,0.45)] hover:-translate-y-0.5 hover:shadow-[0_6px_25px_-4px_rgba(245,158,11,0.55)]'
+										? 'border border-amber-500/30 bg-linear-to-r from-amber-500/85 to-amber-400/85 text-amber-950 shadow-[0_4px_20px_-4px_rgba(245,158,11,0.45)] hover:-translate-y-0.5 hover:shadow-[0_6px_25px_-4px_rgba(245,158,11,0.55)]'
 									: accion.secondary && accion.color === 'sky'
-										? 'border border-sky-500/30 bg-gradient-to-r from-sky-600/80 to-cyan-500/80 text-white shadow-[0_4px_20px_-4px_rgba(14,165,233,0.45)] hover:-translate-y-0.5 hover:shadow-[0_6px_25px_-4px_rgba(14,165,233,0.55)]'
+										? 'border border-sky-500/30 bg-linear-to-r from-sky-600/80 to-cyan-500/80 text-white shadow-[0_4px_20px_-4px_rgba(14,165,233,0.45)] hover:-translate-y-0.5 hover:shadow-[0_6px_25px_-4px_rgba(14,165,233,0.55)]'
 									: 'border border-white/5 bg-white/5 text-slate-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10 hover:text-white'}"
 					>
 						<div
@@ -179,13 +179,13 @@
 					{accion.disabled
 							? 'cursor-not-allowed border-white/5 bg-white/5 text-slate-500 opacity-50 grayscale'
 							: accion.primary
-								? 'border border-blue-500/30 bg-gradient-to-r from-blue-600/80 to-blue-500/80 text-white shadow-[0_4px_20px_-4px_rgba(59,130,246,0.5)] hover:-translate-y-0.5 hover:bg-blue-500 hover:shadow-[0_6px_25px_-4px_rgba(59,130,246,0.6)]'
+								? 'border border-blue-500/30 bg-linear-to-r from-blue-600/80 to-blue-500/80 text-white shadow-[0_4px_20px_-4px_rgba(59,130,246,0.5)] hover:-translate-y-0.5 hover:bg-blue-500 hover:shadow-[0_6px_25px_-4px_rgba(59,130,246,0.6)]'
 								: accion.secondary && accion.color === 'rose'
-									? 'border border-rose-500/30 bg-gradient-to-r from-rose-600/80 to-rose-500/80 text-white shadow-[0_4px_20px_-4px_rgba(244,63,94,0.5)] hover:-translate-y-0.5 hover:bg-rose-500 hover:shadow-[0_6px_25px_-4px_rgba(244,63,94,0.6)]'
+									? 'border border-rose-500/30 bg-linear-to-r from-rose-600/80 to-rose-500/80 text-white shadow-[0_4px_20px_-4px_rgba(244,63,94,0.5)] hover:-translate-y-0.5 hover:bg-rose-500 hover:shadow-[0_6px_25px_-4px_rgba(244,63,94,0.6)]'
 									: accion.secondary && accion.color === 'amber'
-										? 'border border-amber-500/30 bg-gradient-to-r from-amber-500/85 to-amber-400/85 text-amber-950 shadow-[0_4px_20px_-4px_rgba(245,158,11,0.45)] hover:-translate-y-0.5 hover:shadow-[0_6px_25px_-4px_rgba(245,158,11,0.55)]'
+										? 'border border-amber-500/30 bg-linear-to-r from-amber-500/85 to-amber-400/85 text-amber-950 shadow-[0_4px_20px_-4px_rgba(245,158,11,0.45)] hover:-translate-y-0.5 hover:shadow-[0_6px_25px_-4px_rgba(245,158,11,0.55)]'
 									: accion.secondary && accion.color === 'sky'
-										? 'border border-sky-500/30 bg-gradient-to-r from-sky-600/80 to-cyan-500/80 text-white shadow-[0_4px_20px_-4px_rgba(14,165,233,0.45)] hover:-translate-y-0.5 hover:shadow-[0_6px_25px_-4px_rgba(14,165,233,0.55)]'
+										? 'border border-sky-500/30 bg-linear-to-r from-sky-600/80 to-cyan-500/80 text-white shadow-[0_4px_20px_-4px_rgba(14,165,233,0.45)] hover:-translate-y-0.5 hover:shadow-[0_6px_25px_-4px_rgba(14,165,233,0.55)]'
 									: 'border border-white/5 bg-white/5 text-slate-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/10 hover:text-white'}"
 					>
 						<div
@@ -238,15 +238,15 @@
 						{accion.disabled
 							? 'pointer-events-none cursor-not-allowed border-white/10 bg-white/5 text-slate-500 opacity-50 grayscale'
 							: accion.primary
-								? 'border border-blue-500/30 bg-gradient-to-br from-blue-500/90 via-blue-600/90 to-blue-800/90 shadow-blue-500/25 hover:shadow-blue-500/40'
+								? 'border border-blue-500/30 bg-linear-to-br from-blue-500/90 via-blue-600/90 to-blue-800/90 shadow-blue-500/25 hover:shadow-blue-500/40'
 								: accion.secondary && accion.color === 'amber'
-									? 'border border-amber-500/35 bg-gradient-to-br from-amber-400/95 via-amber-500/95 to-amber-600/95 text-amber-950 shadow-amber-500/30 hover:shadow-amber-500/40'
+									? 'border border-amber-500/35 bg-linear-to-br from-amber-400/95 via-amber-500/95 to-amber-600/95 text-amber-950 shadow-amber-500/30 hover:shadow-amber-500/40'
 								: accion.secondary && accion.color === 'sky'
-									? 'border border-sky-500/35 bg-gradient-to-br from-sky-500/90 via-sky-600/90 to-cyan-700/90 text-white shadow-sky-500/30 hover:shadow-sky-500/40'
-									: 'border border-rose-500/30 bg-gradient-to-br from-rose-500/90 via-rose-600/90 to-rose-800/90 shadow-rose-500/25 hover:shadow-rose-500/40'}"
+									? 'border border-sky-500/35 bg-linear-to-br from-sky-500/90 via-sky-600/90 to-cyan-700/90 text-white shadow-sky-500/30 hover:shadow-sky-500/40'
+									: 'border border-rose-500/30 bg-linear-to-br from-rose-500/90 via-rose-600/90 to-rose-800/90 shadow-rose-500/25 hover:shadow-rose-500/40'}"
 					>
 						<div
-							class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+							class="absolute inset-0 bg-linear-to-tr from-white/0 via-white/5 to-white/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
 						></div>
 
 						<Icono size={22} weight="bold" />
@@ -258,16 +258,16 @@
 						onclick={accion.onClick}
 						class="group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-2xl p-4 text-white shadow-lg backdrop-blur-xl transition-all duration-300 active:scale-[0.98]
 						{accion.primary
-							? 'border border-blue-500/30 bg-gradient-to-br from-blue-500/90 via-blue-600/90 to-blue-800/90 shadow-blue-500/25 hover:shadow-blue-500/40'
+							? 'border border-blue-500/30 bg-linear-to-br from-blue-500/90 via-blue-600/90 to-blue-800/90 shadow-blue-500/25 hover:shadow-blue-500/40'
 							: accion.secondary && accion.color === 'amber'
-								? 'border border-amber-500/35 bg-gradient-to-br from-amber-400/95 via-amber-500/95 to-amber-600/95 text-amber-950 shadow-amber-500/30 hover:shadow-amber-500/40'
+								? 'border border-amber-500/35 bg-linear-to-br from-amber-400/95 via-amber-500/95 to-amber-600/95 text-amber-950 shadow-amber-500/30 hover:shadow-amber-500/40'
 							: accion.secondary && accion.color === 'sky'
-								? 'border border-sky-500/35 bg-gradient-to-br from-sky-500/90 via-sky-600/90 to-cyan-700/90 text-white shadow-sky-500/30 hover:shadow-sky-500/40'
-								: 'border border-rose-500/30 bg-gradient-to-br from-rose-500/90 via-rose-600/90 to-rose-800/90 shadow-rose-500/25 hover:shadow-rose-500/40'}"
+								? 'border border-sky-500/35 bg-linear-to-br from-sky-500/90 via-sky-600/90 to-cyan-700/90 text-white shadow-sky-500/30 hover:shadow-sky-500/40'
+								: 'border border-rose-500/30 bg-linear-to-br from-rose-500/90 via-rose-600/90 to-rose-800/90 shadow-rose-500/25 hover:shadow-rose-500/40'}"
 					>
 						<!-- Subtle Shine Effect -->
 						<div
-							class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+							class="absolute inset-0 bg-linear-to-tr from-white/0 via-white/5 to-white/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
 						></div>
 
 						<Icono size={22} weight="bold" />

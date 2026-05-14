@@ -187,7 +187,7 @@
 
 										<!-- Bar -->
 										<div
-											class="w-full max-w-[30px] rounded-t-lg bg-gradient-to-t transition-all duration-700 ease-out hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] sm:max-w-[50px] {getBarGradient(
+											class="w-full max-w-[30px] rounded-t-lg bg-linear-to-t transition-all duration-700 ease-out hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] sm:max-w-[50px] {getBarGradient(
 												institucion.ranking
 											)}"
 											style="height: {height}%;"

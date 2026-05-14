@@ -76,7 +76,7 @@
 			transition:scale={{ duration: 200, start: 0.95 }}
 		>
 			<div
-				class="relative border-b border-gray-100 bg-gradient-to-tr from-sky-50 to-white px-5 pt-6 pb-5 text-center"
+				class="relative border-b border-gray-100 bg-linear-to-tr from-sky-50 to-white px-5 pt-6 pb-5 text-center"
 			>
 				<button
 					type="button"
@@ -90,7 +90,7 @@
 
 				<h2
 					id="modal-colaborar-titulo"
-					class="bg-gradient-to-tr from-sky-600 to-sky-400 bg-clip-text text-xl leading-tight font-extrabold text-transparent sm:text-2xl"
+					class="bg-linear-to-tr from-sky-600 to-sky-400 bg-clip-text text-xl leading-tight font-extrabold text-transparent sm:text-2xl"
 				>
 					¡Tu ayuda transforma vidas!
 				</h2>
@@ -142,7 +142,7 @@
 				</button>
 				<button
 					type="button"
-					class="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-tr from-sky-600 to-sky-400 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-sky-200 transition hover:brightness-110 focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:outline-none active:translate-y-[1px] disabled:pointer-events-none disabled:opacity-50 sm:w-auto"
+					class="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-tr from-sky-600 to-sky-400 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-sky-200 transition hover:brightness-110 focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:outline-none active:translate-y-[1px] disabled:pointer-events-none disabled:opacity-50 sm:w-auto"
 					onclick={enviar}
 					disabled={enviando || mensajeColaboracion.length > 500}
 				>

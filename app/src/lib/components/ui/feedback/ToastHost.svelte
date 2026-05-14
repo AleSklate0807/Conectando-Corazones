@@ -74,11 +74,11 @@
 		>
 			<div class="flex items-start gap-3">
 				<span
-					class={`relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br ${VARIANT_STYLES[toast.variant].iconWrapper}`}
+					class={`relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl bg-linear-to-br ${VARIANT_STYLES[toast.variant].iconWrapper}`}
 					aria-hidden="true"
 				>
 					<span
-						class="absolute inset-0 animate-pulse bg-gradient-to-br from-white/50 to-transparent opacity-50"
+						class="absolute inset-0 animate-pulse bg-linear-to-br from-white/50 to-transparent opacity-50"
 					></span>
 					<IconComponent
 						class={`relative h-5 w-5 ${VARIANT_STYLES[toast.variant].iconClass}`}

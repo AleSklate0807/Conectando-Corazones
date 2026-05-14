@@ -62,7 +62,7 @@
 
 <section
 	bind:this={sectionRef}
-	class="w-full bg-gradient-to-b from-white via-blue-50 to-gray-100 px-4 py-20 sm:px-6 lg:px-8"
+	class="w-full bg-linear-to-b from-white via-blue-50 to-gray-100 px-4 py-20 sm:px-6 lg:px-8"
 	style="
         opacity:{visible ? 1 : 0};
         transform:translateY({visible ? '0' : '40px'}) scale({visible ? 1 : 0.96});

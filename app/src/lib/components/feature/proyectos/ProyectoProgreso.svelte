@@ -137,7 +137,7 @@
 			class={`relative mt-3 ${variant === 'extended' ? 'h-3.5' : 'h-2.5'} w-full rounded-full bg-slate-100 shadow-inner`}
 		>
 			<div
-				class={`absolute inset-y-0 left-0 rounded-full bg-gradient-to-r ${getGradientClass(color)} transition-all duration-700 ease-out`}
+				class={`absolute inset-y-0 left-0 rounded-full bg-linear-to-r ${getGradientClass(color)} transition-all duration-700 ease-out`}
 				style={`width: ${Math.min(progresoTotal, 100)}%`}
 				role="progressbar"
 				aria-valuenow={progresoTotal}

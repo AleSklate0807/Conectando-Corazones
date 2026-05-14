@@ -32,7 +32,7 @@
 <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
 	<!-- Usuarios -->
 	<div
-		class="group relative overflow-hidden rounded-[2rem] border border-blue-500/20 bg-blue-500/10 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10"
+		class="group relative overflow-hidden rounded-4xl border border-blue-500/20 bg-blue-500/10 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/10"
 	>
 		<div
 			class="absolute -top-6 -right-6 h-32 w-32 rounded-full bg-blue-500/10 blur-[40px] transition-all duration-700 group-hover:bg-blue-500/20"
@@ -66,7 +66,7 @@
 
 	<!-- Proyectos -->
 	<div
-		class="group relative overflow-hidden rounded-[2rem] border border-emerald-500/20 bg-emerald-500/10 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-500/10"
+		class="group relative overflow-hidden rounded-4xl border border-emerald-500/20 bg-emerald-500/10 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-500/10"
 	>
 		<div
 			class="absolute -top-6 -right-6 h-32 w-32 rounded-full bg-emerald-500/10 blur-[40px] transition-all duration-700 group-hover:bg-emerald-500/20"
@@ -96,7 +96,7 @@
 	<!-- Reportes -->
 	<a
 		href="/reportes"
-		class="group relative overflow-hidden rounded-[2rem] border border-rose-500/20 bg-rose-500/10 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-rose-500/10 block"
+		class="group relative overflow-hidden rounded-4xl border border-rose-500/20 bg-rose-500/10 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-rose-500/10 block"
 	>
 		<div
 			class="absolute -top-6 -right-6 h-32 w-32 rounded-full bg-rose-500/10 blur-[40px] transition-all duration-700 group-hover:bg-rose-500/20"
@@ -134,7 +134,7 @@
 
 	<!-- Validación -->
 	<div
-		class="group relative overflow-hidden rounded-[2rem] border border-purple-500/20 bg-purple-500/10 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/10"
+		class="group relative overflow-hidden rounded-4xl border border-purple-500/20 bg-purple-500/10 p-6 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/10"
 	>
 		<div
 			class="absolute -top-6 -right-6 h-32 w-32 rounded-full bg-purple-500/10 blur-[40px] transition-all duration-700 group-hover:bg-purple-500/20"

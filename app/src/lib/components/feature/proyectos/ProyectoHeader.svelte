@@ -54,13 +54,13 @@
 		/>
 	{:else}
 		<div
-			class="flex h-full w-full items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-100"
+			class="flex h-full w-full items-center justify-center bg-linear-to-br from-blue-100 to-indigo-100"
 		>
 			<Icon src={Photo} class="h-16 w-16 text-blue-300" />
 		</div>
 	{/if}
 
-	<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+	<div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-transparent"></div>
 
 	{#if $usuario && !esCreador && !esAdministrador}
 		<div class="absolute top-4 right-4 z-10">

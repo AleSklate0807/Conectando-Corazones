@@ -513,17 +513,10 @@
 							goto(`/institucion/solicitar-cierre?proyecto=${proyecto.id_proyecto}`)
 					});
 				}
-			} else {
-				acc.push({
-					label: 'Solicitudes de colaboración',
-					icon: ClipboardDocumentList,
-					onclick: () =>
-						goto(`/colaborador/solicitudes-colaboracion?proyecto=${proyecto.id_proyecto}`)
-				});
 			}
 
 			if (esColaboradorAprobado) {
-				if (estadoCodigo === 'en_curso' || estadoCodigo === 'pendiente_solicitud_cierre') {
+				if (estadoCodigo === 'en_curso') {
 					acc.push({
 						label: 'Agregar aporte',
 						icon: Plus,

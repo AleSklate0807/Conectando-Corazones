@@ -40,7 +40,7 @@
 	import Alert from '$lib/components/ui/feedback/Alert.svelte';
 	import { toastStore } from '$lib/stores/toast';
 	import { guardarReporteLog } from '$lib/utils/util-reportes';
-	import { ChevronDown as ChevronDownIcon, FileText, Lightbulb, Loader2 } from 'lucide-svelte';
+	import { ChevronDown as ChevronDownIcon, ChevronLeft, FileText, Lightbulb, Loader2 } from 'lucide-svelte';
 	import BeneficioFiscalArca from '$lib/components/feature/proyectos/BeneficioFiscalArca.svelte';
 	import { colaboradorPuedeDeducirEnProyecto } from '$lib/domain/use-cases/colaboraciones/colaboradorPuedeDeducirEnProyecto';
 
@@ -189,6 +189,7 @@
 	let puedeRedactarResena = $derived((esCreador || esColaboradorAprobado) && estadoCodigo === 'en_revision');
 	let puedeCrearResena = $derived(puedeRedactarResena && !tieneResenaUsuario);
 	let mensajeResenaBloqueada = 'La reseña solo puede redactarse cuando el proyecto está en revisión.';
+	let vieneDeEvaluarCierre = $derived(page.url.searchParams.get('desde') === 'evaluar-cierre');
 	let resumenTexto = $derived((proyecto?.resumen || '').trim());
 	let aprendizajesTexto = $derived((proyecto?.aprendizajes || '').trim());
 	let listadoAprendizajes = $derived((aprendizajesTexto || '')
@@ -1131,6 +1132,17 @@
 								class="rounded-xl border border-gray-200 bg-white p-4 shadow transition-shadow hover:shadow-lg sm:p-6"
 								aria-labelledby="titulo-resenas-proyecto"
 							>
+								{#if vieneDeEvaluarCierre}
+									<nav class="mb-4">
+										<a
+											href={`/colaborador/proyectos/${proyecto.id_proyecto}/evaluar-cierre`}
+											class="flex items-center text-sm font-medium text-slate-500 transition-colors hover:text-blue-600"
+										>
+											<ChevronLeft class="mr-1 h-4 w-4" />
+											Volver a tu evaluación de cierre
+										</a>
+									</nav>
+								{/if}
 								<div class="flex flex-wrap items-start justify-between gap-4">
 									<div>
 										<h2 id="titulo-resenas-proyecto" class="text-xl font-semibold sm:text-2xl">

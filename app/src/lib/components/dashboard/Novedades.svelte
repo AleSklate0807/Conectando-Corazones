@@ -45,7 +45,7 @@
 		<div class="flex flex-col gap-3 sm:gap-4">
 			{#each novedades as novedad}
 				<div
-					class="group relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-slate-900 shadow-lg outline-1 outline-white/10 transition-all hover:-translate-y-1 hover:shadow-2xl hover:outline-white/20 sm:aspect-[2.5/1]"
+					class="group relative aspect-video w-full overflow-hidden rounded-2xl bg-slate-900 shadow-lg outline-1 outline-white/10 transition-all hover:-translate-y-1 hover:shadow-2xl hover:outline-white/20 sm:aspect-2.5/1"
 				>
 					{#if novedad.imagen}
 						<img

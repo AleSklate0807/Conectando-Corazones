@@ -70,7 +70,7 @@
 	}>();
 
 	const _sbfFallback = writable(false);
-	const sbfStore = soloBeneficiosFiscales ?? _sbfFallback;
+	let sbfStore = $derived(soloBeneficiosFiscales ?? _sbfFallback);
 
 	let localidades = $derived(calcularLocalidadesDisponibles(proyectos, $provinciaSeleccionada));
 

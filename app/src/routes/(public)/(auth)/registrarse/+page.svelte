@@ -1,4 +1,4 @@
-<script lang="ts">
+﻿<script lang="ts">
 	import RegistroCuentaForm from '$lib/components/feature/registro/RegistroCuentaForm.svelte';
 	import RolCard from '$lib/components/feature/registro/RolCard.svelte';
 	import Stepper from '$lib/components/ui/Stepper.svelte';
@@ -861,35 +861,37 @@
 							/>
 
 							{#if metodoWizard !== 'omitido'}
-								<div class="mt-6">
-									<CertificacionArca
-										wizardMode
-										onsubmit={() => {}}
-										onArchivoChange={(f) => (archivoArcaWizard = f)}
-									/>
-								</div>
+								<div class="mx-auto w-full max-w-5xl">
+									<div class="mt-6">
+										<CertificacionArca
+											wizardMode
+											onsubmit={() => {}}
+											onArchivoChange={(f) => (archivoArcaWizard = f)}
+										/>
+									</div>
 
-								{#if errorVerifWizard}
-									<p role="alert" class="mt-4 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
-										{errorVerifWizard}
-									</p>
-								{/if}
+									{#if errorVerifWizard}
+										<p role="alert" class="mt-4 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-700">
+											{errorVerifWizard}
+										</p>
+									{/if}
 
-								<div class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-end">
-									<Button
-										type="button"
-										variant="secondary"
-										label="Cancelar"
-										onclick={() => { resetFeedback(); setEtapaConPersistencia('formulario'); }}
-										customClass="w-full sm:w-auto"
-									/>
-									<Button
-										type="button"
-										label="Enviar"
-										onclick={manejarEnvioVerificacionWizard}
-										disabled={enviandoVerif}
-										customClass="w-full sm:w-auto"
-									/>
+									<div class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-end">
+										<Button
+											type="button"
+											variant="secondary"
+											label="Cancelar"
+											onclick={() => { resetFeedback(); setEtapaConPersistencia('formulario'); }}
+											customClass="w-full sm:w-auto"
+										/>
+										<Button
+											type="button"
+											label="Enviar"
+											onclick={manejarEnvioVerificacionWizard}
+											disabled={enviandoVerif}
+											customClass="w-full sm:w-auto"
+										/>
+									</div>
 								</div>
 							{/if}
 						</div>

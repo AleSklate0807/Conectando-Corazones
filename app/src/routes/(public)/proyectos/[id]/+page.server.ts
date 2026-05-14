@@ -48,6 +48,8 @@ export const load: PageServerLoad = async ({ params, locals, url }) => {
 		return {
 			proyecto: null,
 			chatAviso: false,
+			conFinesLucro: false,
+			tieneReportePendiente: false,
 			error:
 				'Hubo un problema al cargar los detalles del proyecto. Por favor, intentá nuevamente más tarde.'
 		};

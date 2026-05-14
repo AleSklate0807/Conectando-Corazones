@@ -53,7 +53,7 @@
 			</div>
 			<div class="mx-auto mb-12 max-w-4xl text-center">
 				<div
-					class="relative inline-block aspect-[4/3] min-h-[320px] overflow-hidden rounded-[2.5rem] border-4 border-white/80 shadow-2xl transition-transform duration-500 hover:scale-95"
+					class="relative inline-block aspect-4/3 min-h-[320px] overflow-hidden rounded-[2.5rem] border-4 border-white/80 shadow-2xl transition-transform duration-500 hover:scale-95"
 				>
 					<img
 						src="/img/manosUnidas.jpg"

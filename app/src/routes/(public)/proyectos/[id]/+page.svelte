@@ -86,6 +86,7 @@
 			: undefined
 	);
 	let misAportes: ColaboracionTipoParticipacion[] = $derived(colaboracionUsuario?.colaboraciones_tipo_participacion || []);
+	let estadoCodigo = $derived(proyecto ? getEstadoCodigo(proyecto.estado, proyecto.estado_id) : 'en_curso');
 
 	let puedeVerBeneficioFiscal = $derived(
 		colaboradorPuedeDeducirEnProyecto({
@@ -93,7 +94,7 @@
 			institucionVerificacionArca: proyecto?.esDeducible
 				? { tipo: 'arca' as const, estado: 'aprobada' as const, fecha_vencimiento: new Date('2099-12-31') }
 				: null,
-			colaboradorConFinesLucro: data.conFinesLucro,
+			colaboradorConFinesLucro: data.conFinesLucro ?? false,
 			colaboracionDelUsuario: colaboracionUsuario
 				? {
 						estado: colaboracionUsuario.estado ?? '',
@@ -181,7 +182,6 @@
 		);
 	}
 
-	let estadoCodigo = $derived(proyecto ? getEstadoCodigo(proyecto.estado, proyecto.estado_id) : 'en_curso');
 	let clasesChipEstado = $derived(clasesEstado(estadoCodigo));
 	let puedeVerResenas = $derived(
 		estadoCodigo === 'completado' || estadoCodigo === 'en_revision' || esCreador

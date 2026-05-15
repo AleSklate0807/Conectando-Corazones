@@ -274,7 +274,9 @@ export const actions: Actions = {
 					});
 				},
 				{
-					isolationLevel: Prisma.TransactionIsolationLevel.Serializable
+					isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
+					timeout: 15000,
+					maxWait: 5000
 				}
 			);
 
@@ -293,6 +295,12 @@ export const actions: Actions = {
 				dispararAnalisisProyectoCompletado(proyectoId);
 			}
 
+			console.log('[evaluar-cierre:aprobar] tx commit OK', {
+				proyectoId,
+				solicitudId,
+				usuarioId: user.id_usuario
+			});
+
 			return {
 				success: true,
 				message:
@@ -300,9 +308,18 @@ export const actions: Actions = {
 						? 'Tu voto fue registrado. El proyecto quedó completado.'
 						: 'Tu voto fue registrado correctamente.'
 			};
-		} catch (error) {
-			const errorMessage = error instanceof Error ? error.message : 'Error interno';
-			return fail(400, { error: errorMessage });
+		} catch (error: any) {
+			console.error('[evaluar-cierre:aprobar] Error al registrar evaluación:', {
+				proyectoId,
+				solicitudId,
+				usuarioId: user.id_usuario,
+				message: error?.message,
+				code: error?.code,
+				stack: error?.stack
+			});
+			return fail(400, {
+				error: error?.message ?? 'No se pudo registrar tu voto. Intentalo nuevamente.'
+			});
 		}
 	},
 
@@ -339,7 +356,9 @@ export const actions: Actions = {
 					});
 				},
 				{
-					isolationLevel: Prisma.TransactionIsolationLevel.Serializable
+					isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
+					timeout: 15000,
+					maxWait: 5000
 				}
 			);
 
@@ -365,6 +384,12 @@ export const actions: Actions = {
 				});
 			}
 
+			console.log('[evaluar-cierre:rechazar] tx commit OK', {
+				proyectoId,
+				solicitudId,
+				usuarioId: user.id_usuario
+			});
+
 			return {
 				success: true,
 				message:
@@ -372,9 +397,18 @@ export const actions: Actions = {
 						? 'Tu rechazo fue registrado. El proyecto pasó a auditoría.'
 						: 'Tu rechazo fue registrado. El proyecto volvió a pendiente de solicitud de cierre.'
 			};
-		} catch (error) {
-			const errorMessage = error instanceof Error ? error.message : 'Error interno';
-			return fail(400, { error: errorMessage });
+		} catch (error: any) {
+			console.error('[evaluar-cierre:rechazar] Error al registrar evaluación:', {
+				proyectoId,
+				solicitudId,
+				usuarioId: user.id_usuario,
+				message: error?.message,
+				code: error?.code,
+				stack: error?.stack
+			});
+			return fail(400, {
+				error: error?.message ?? 'No se pudo registrar tu voto. Intentalo nuevamente.'
+			});
 		}
 	},
 

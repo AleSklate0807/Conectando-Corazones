@@ -41,3 +41,4 @@ export async function ejecutarEnTransaccionExistenteOTotal<T>(
 
 	return callback(db);
 }
+

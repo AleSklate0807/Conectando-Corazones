@@ -4,10 +4,7 @@ import { PrismaPg } from '@prisma/adapter-pg';
 import { env } from '$env/dynamic/private';
 
 const connectionString =
-	process.env.DIRECT_URL ||
-	process.env.DB_POOLER_URL ||
-	process.env.DATABASE_URL ||
-	env.DATABASE_URL;
+	process.env.DB_POOLER_URL || process.env.DATABASE_URL || env.DATABASE_URL;
 
 const pool = new Pool({
 	connectionString,
@@ -27,8 +24,9 @@ if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
 
 export type PrismaDbClient = PrismaClient | Prisma.TransactionClient;
 
+
 export function esClientePrisma(db: PrismaDbClient): db is PrismaClient {
-	return '$transaction' in db;
+	return '$connect' in db;
 }
 
 export async function ejecutarEnTransaccionExistenteOTotal<T>(
@@ -41,4 +39,3 @@ export async function ejecutarEnTransaccionExistenteOTotal<T>(
 
 	return callback(db);
 }
-

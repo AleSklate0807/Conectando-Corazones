@@ -252,13 +252,24 @@ export const actions: Actions = {
 					return solicitudCreada;
 				},
 				{
-					isolationLevel: Prisma.TransactionIsolationLevel.Serializable
+					isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
+					timeout: 15000,
+					maxWait: 5000
 				}
 			);
 
 			return { success: true, solicitud };
 		} catch (error: any) {
-			return fail(400, { message: error.message });
+			console.error('[solicitar-cierre] Error al crear solicitud:', {
+				proyectoId,
+				usuarioId: user.id_usuario,
+				message: error?.message,
+				code: error?.code,
+				stack: error?.stack
+			});
+			return fail(400, {
+				message: error?.message ?? 'No se pudo procesar la solicitud. Intentalo nuevamente.'
+			});
 		}
 	}
 };

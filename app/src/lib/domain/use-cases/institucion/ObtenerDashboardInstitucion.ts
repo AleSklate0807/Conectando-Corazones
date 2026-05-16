@@ -17,7 +17,7 @@ export class ObtenerDashboardInstitucion {
 		private colaboracionRepo: ColaboracionRepository,
 		private usuarioRepo: UsuarioRepository,
 		private resenaRepo: ResenaRepository
-	) {}
+	) { }
 
 	private obtenerEstadoVerificacionActual(institucion: Usuario): EstadoVerificacion | null {
 		const verificacionesGlobales = (institucion.verificaciones ?? []).filter(
@@ -49,7 +49,12 @@ export class ObtenerDashboardInstitucion {
 		};
 	}
 
-	async execute(institucionId: number): Promise<InstitucionDashboardData> {
+	async execute(
+		institucionId: number,
+		opciones?: { desde?: Date | null }
+	): Promise<InstitucionDashboardData> {
+		const desde = opciones?.desde ?? null;
+
 		const [institucion, proyectos] = await Promise.all([
 			this.usuarioRepo.findById(institucionId),
 			this.proyectoRepo.findByInstitucionId(institucionId)
@@ -72,7 +77,20 @@ export class ObtenerDashboardInstitucion {
 			c.estaPendiente()
 		);
 
+		// Filtros por período
+		const proyectosEnPeriodo = desde
+			? proyectos.filter((p) => p.created_at && new Date(p.created_at) >= desde)
+			: proyectos;
+
+		const colaboracionesAprobadasEnPeriodo = desde
+			? colaboracionesAprobadas.filter((c) => c.created_at && c.created_at >= desde)
+			: colaboracionesAprobadas;
+
 		const hoy = new Date();
+		const inicioMes = new Date(hoy.getFullYear(), hoy.getMonth(), 1);
+		const proyectosNuevosEsteMes = proyectos.filter(
+			(p) => p.created_at && new Date(p.created_at) >= inicioMes
+		).length;
 
 		const proyectosConFecha = proyectos.filter((p) => p.fecha_fin_tentativa);
 		const proximoCierre = proyectosConFecha.reduce(
@@ -100,22 +118,29 @@ export class ObtenerDashboardInstitucion {
 		} = this.obtenerMetaVerificacion(institucion);
 		const estaVerificado = estadoVerificacion === 'aprobada';
 
+		// Filtrado por período: card de colaboradores activos
 		const colaboradoresUnicos = new Set(
-			colaboracionesAprobadas.map((c) => c.colaborador_id).filter(Boolean)
+			colaboracionesAprobadasEnPeriodo.map((c) => c.colaborador_id).filter(Boolean)
 		);
 
+		// Filtrados por período: card de proyectos + modal, card de colaboradores + modal, torta, top colaboradores
 		const estadisticasProyectos = this.calcularEstadisticasProyectos(
-			proyectos,
-			colaboracionesAprobadas
+			proyectosEnPeriodo,
+			colaboracionesAprobadasEnPeriodo
 		);
-		const estadisticasCalendario = this.calcularEstadisticasCalendario(proyectos, institucion);
 		const estadisticasColaboradores = await this.calcularEstadisticasColaboradores(
 			proyectos,
-			colaboracionesAprobadas
+			colaboracionesAprobadasEnPeriodo
 		);
+		const estadisticasAyuda = this.calcularEstadisticasAyuda(
+			colaboracionesAprobadasEnPeriodo,
+			proyectosEnPeriodo
+		);
+		const topColaboradores = await this.calcularTopColaboradores(colaboracionesAprobadasEnPeriodo);
+
+		// Sin filtrar: agenda, seguimiento objetivos, actividad reciente, reseñas, aspectos a mejorar
+		const estadisticasCalendario = this.calcularEstadisticasCalendario(proyectos, institucion);
 		const seguimientoObjetivos = this.calcularSeguimientoObjetivos(proyectos);
-		const estadisticasAyuda = this.calcularEstadisticasAyuda(colaboracionesAprobadas, proyectos);
-		const topColaboradores = await this.calcularTopColaboradores(colaboracionesAprobadas);
 		const actividadReciente = this.obtenerActividadReciente(proyectos, todasColaboraciones);
 		const ultimasResenas = await this.obtenerUltimasResenas(institucionId);
 		const aspectosMejorar = this.generarAspectosMejorar(proyectos);
@@ -141,7 +166,8 @@ export class ObtenerDashboardInstitucion {
 				bio: institucion.descripcion || 'Sin descripción disponible.'
 			},
 			metricas: {
-				proyectosTotales: proyectos.length,
+				proyectosTotales: proyectosEnPeriodo.length,
+				nuevosProyectos: proyectosNuevosEsteMes,
 				colaboradoresActivos: colaboradoresUnicos.size,
 				diasProximoCierre,
 				solicitudesPendientes: colaboracionesPendientes.length,
@@ -186,16 +212,16 @@ export class ObtenerDashboardInstitucion {
 		const promedioProgreso =
 			proyectosConProgreso.length > 0
 				? proyectosConProgreso.reduce((sum, p) => {
-						const progreso = (p.participacion_permitida || []).reduce(
-							(total: number, pp: ParticipacionPermitida) => {
-								const objetivo = Number(pp.objetivo) || 0;
-								const actual = Number(pp.actual) || 0;
-								return total + (objetivo > 0 ? (actual / objetivo) * 100 : 0);
-							},
-							0
-						);
-						return sum + progreso / ((p.participacion_permitida || []).length || 1);
-					}, 0) / proyectosConProgreso.length
+					const progreso = (p.participacion_permitida || []).reduce(
+						(total: number, pp: ParticipacionPermitida) => {
+							const objetivo = Number(pp.objetivo) || 0;
+							const actual = Number(pp.actual) || 0;
+							return total + (objetivo > 0 ? (actual / objetivo) * 100 : 0);
+						},
+						0
+					);
+					return sum + progreso / ((p.participacion_permitida || []).length || 1);
+				}, 0) / proyectosConProgreso.length
 				: 0;
 
 		const proyectosEnAuditoria = proyectos

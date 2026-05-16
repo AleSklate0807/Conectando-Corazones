@@ -8,7 +8,9 @@ import type { Colaboracion } from '$lib/domain/entities/Colaboracion';
 import type { Proyecto } from '$lib/domain/entities/Proyecto';
 import type { Usuario } from '$lib/domain/entities/Usuario';
 import type { EstadoVerificacion } from '$lib/domain/types/Verificacion';
+import { ESTADO_LABELS } from '$lib/domain/types/Estado';
 import { obtenerNombreCompleto } from '$lib/utils/util-usuarios';
+import { getColorEstadoHex } from '$lib/utils/util-estados';
 import { obtenerUltimaVerificacion } from '$lib/utils/util-verificacion';
 
 export class ObtenerDashboardInstitucion {
@@ -249,7 +251,7 @@ export class ObtenerDashboardInstitucion {
 			.map((p) => ({
 				id: p.id_proyecto?.toString() || '',
 				titulo: p.titulo,
-				estado: this.getLabelEstado(p.estado || ''),
+				estado: ESTADO_LABELS[p.estado as keyof typeof ESTADO_LABELS] ?? p.estado ?? 'Desconocido',
 				progreso: Math.round(this.calcularProgresoProyecto(p)),
 				beneficiarios: Number(p.beneficiarios) || 0,
 				imagen: p.url_portada || undefined
@@ -284,25 +286,24 @@ export class ObtenerDashboardInstitucion {
 	}
 
 	private calcularDistribucionEstado(proyectos: Proyecto[]) {
-		const estados = {
-			en_curso: { label: 'En curso', count: 0, color: '#3b82f6' },
-			en_revision: { label: 'En revisión', count: 0, color: '#f59e0b' },
-			completado: { label: 'Completado', count: 0, color: '#10b981' },
-			cancelado: { label: 'Cancelado', count: 0, color: '#ef4444' }
-		};
-
-		proyectos.forEach((p) => {
-			const estado = p.estado as keyof typeof estados;
-			if (estados[estado]) {
-				estados[estado].count++;
-			}
-		});
+		const conteos = proyectos.reduce(
+			(acc, p) => {
+				const estado = p.estado || 'desconocido';
+				acc[estado] = (acc[estado] || 0) + 1;
+				return acc;
+			},
+			{} as Record<string, number>
+		);
 
 		const total = proyectos.length || 1;
 
-		return Object.values(estados).map((e) => ({
-			...e,
-			percentage: Math.round((e.count / total) * 100)
+		const ordenEstados = ['en_curso', 'pendiente_solicitud_cierre', 'en_revision', 'completado', 'cancelado', 'en_auditoria'];
+
+		return ordenEstados.map((estado) => ({
+			label: ESTADO_LABELS[estado as keyof typeof ESTADO_LABELS] ?? estado,
+			count: conteos[estado] || 0,
+			percentage: Math.round(((conteos[estado] || 0) / total) * 100),
+			color: getColorEstadoHex(estado)
 		}));
 	}
 
@@ -365,7 +366,7 @@ export class ObtenerDashboardInstitucion {
 						? p.fecha_fin_tentativa.toISOString().split('T')[0]
 						: (p.fecha_fin_tentativa as string),
 				estado: p.estado || 'desconocido',
-				color: this.getColorEstado(p.estado || '')
+				color: getColorEstadoHex(p.estado || '')
 			}));
 
 		const proximosVencimientos = proyectos
@@ -394,30 +395,6 @@ export class ObtenerDashboardInstitucion {
 			projectTimeline: projectTimeline as any,
 			proximosVencimientos: proximosVencimientos as any
 		};
-	}
-
-	private getColorEstado(estado: string): string {
-		const colores: Record<string, string> = {
-			en_curso: '#3b82f6',
-			en_revision: '#f59e0b',
-			completado: '#10b981',
-			cancelado: '#ef4444',
-			pendiente_solicitud_cierre: '#8b5cf6'
-		};
-		return colores[estado] || '#6b7280';
-	}
-
-	private getLabelEstado(estado: string): string {
-		const labels: Record<string, string> = {
-			en_curso: 'En curso',
-			en_revision: 'En revisión',
-			completado: 'Completado',
-			cancelado: 'Cancelado',
-			pendiente_solicitud_cierre: 'Cierre pendiente',
-			borrador: 'Borrador',
-			en_auditoria: 'En auditoría'
-		};
-		return labels[estado] || 'Desconocido';
 	}
 
 	private async calcularEstadisticasColaboradores(

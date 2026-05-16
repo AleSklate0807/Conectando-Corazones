@@ -15,18 +15,21 @@
 	import { cubicOut } from 'svelte/easing';
 	import type { ComponentType } from 'svelte';
 
-	let { 
-		metricas, 
-		onclickProyectos = () => {}, 
-		onclickInstituciones = () => {}, 
-		onclickAgenda = () => {} 
+	let {
+		metricas,
+		mostrarBadgeNuevas = true,
+		onclickProyectos = () => {},
+		onclickInstituciones = () => {},
+		onclickAgenda = () => {}
 	} = $props<{
 		metricas: {
 			proyectosActivos: number;
+			nuevosProyectos: number;
 			institucionesAlcanzadas: number;
 			nuevasInstituciones: number;
 			proximoCierre: number;
 		};
+		mostrarBadgeNuevas?: boolean;
 		onclickProyectos?: () => void;
 		onclickInstituciones?: () => void;
 		onclickAgenda?: () => void;
@@ -40,11 +43,11 @@
 	const tInstituciones = tweened(0, { duration: 2000, easing: cubicOut });
 	const tCierre = tweened(0, { duration: 2000, easing: cubicOut });
 
-	function handleReveal() {
+	$effect(() => {
 		tProyectos.set(metricas.proyectosActivos);
 		tInstituciones.set(metricas.institucionesAlcanzadas);
 		tCierre.set(metricas.proximoCierre);
-	}
+	});
 
 	// Función para generar mensaje contextual según días restantes
 	function getMensajeCierre(dias: number): {
@@ -107,7 +110,6 @@
 	<button
 		onclick={handleClickProyectos}
 		use:reveal={{ threshold: 0.2 }}
-		onreveal={handleReveal}
 		class="reveal-hidden group relative w-full cursor-pointer overflow-hidden rounded-4xl border border-emerald-500/20 bg-emerald-500/10 p-6 text-left backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-500/10"
 	>
 		<div
@@ -126,13 +128,15 @@
 					<FolderOpen size={24} />
 				</div>
 			</div>
-			<div class="mt-4">
-				<span
-					class="inline-flex items-center rounded-full bg-emerald-500/20 px-2.5 py-0.5 text-xs font-medium text-emerald-300"
-				>
-					+2 nuevos este mes
-				</span>
-			</div>
+			{#if mostrarBadgeNuevas}
+				<div class="mt-4">
+					<span
+						class="inline-flex items-center rounded-full bg-emerald-500/20 px-2.5 py-0.5 text-xs font-medium text-emerald-300"
+					>
+						+{metricas.nuevosProyectos} nuevos este mes
+					</span>
+				</div>
+			{/if}
 		</div>
 	</button>
 
@@ -160,11 +164,14 @@
 					<Users size={24} />
 				</div>
 			</div>
-			<div class="mt-4">
-				<span class="text-sm text-slate-400">
-					<span class="font-bold text-blue-400">+{metricas.nuevasInstituciones}</span> nuevas este mes
-				</span>
-			</div>
+			{#if mostrarBadgeNuevas}
+				<div class="mt-4">
+					<span class="text-sm text-slate-400">
+						<span class="font-bold text-blue-400">+{metricas.nuevasInstituciones}</span> nuevas este
+						mes
+					</span>
+				</div>
+			{/if}
 		</div>
 	</button>
 

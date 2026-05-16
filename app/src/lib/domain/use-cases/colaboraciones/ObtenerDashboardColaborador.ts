@@ -17,7 +17,12 @@ export class ObtenerDashboardColaborador {
 		private chatRepo: ChatRepository
 	) {}
 
-	async execute(colaboradorId: number): Promise<ColaboradorDashboardData> {
+	async execute(
+		colaboradorId: number,
+		opciones?: { desde?: Date | null }
+	): Promise<ColaboradorDashboardData> {
+		const desde = opciones?.desde ?? null;
+
 		const [colaborador, colaboraciones, proyectos] = await Promise.all([
 			this.usuarioRepo.findById(colaboradorId),
 			this.colaboracionRepo.findByColaborador(colaboradorId),
@@ -31,12 +36,37 @@ export class ObtenerDashboardColaborador {
 		const colaboracionesAprobadas = colaboraciones.filter((c) => c.estaAprobada());
 		const colaboracionesPendientes = colaboraciones.filter((c) => c.estaPendiente());
 
-		const proyectosColaborador = proyectos.filter((p) =>
-			colaboraciones.some((c) => c.proyecto_id === p.id_proyecto && c.estaAprobada())
+		// Filtros por período (desde = null ⇒ todo el tiempo)
+		const colaboracionesEnPeriodo = desde
+			? colaboraciones.filter((c) => c.created_at && c.created_at >= desde)
+			: colaboraciones;
+
+		// Set con IDs de proyectos donde el usuario tiene colaboración aprobada DENTRO del período.
+		// Lookup O(1) en el filtro de proyectos => complejidad total O(N+M) en lugar de O(N·M).
+		const idsProyectosAprobadosEnPeriodo = new Set<number>(
+			colaboracionesEnPeriodo
+				.filter((c) => c.estaAprobada())
+				.map((c) => c.proyecto_id)
+				.filter((id): id is number => typeof id === 'number')
+		);
+
+		const proyectosColaboradorEnPeriodo = proyectos.filter(
+			(p) => p.id_proyecto != null && idsProyectosAprobadosEnPeriodo.has(p.id_proyecto)
+		);
+
+		// Histórico (sin filtrar por período) — necesario para secciones que NO se filtran:
+		// seguimiento de objetivos, proyectos comunidad, etc.
+		const idsProyectosAprobadosTotales = new Set<number>(
+			colaboracionesAprobadas
+				.map((c) => c.proyecto_id)
+				.filter((id): id is number => typeof id === 'number')
+		);
+		const proyectosColaborador = proyectos.filter(
+			(p) => p.id_proyecto != null && idsProyectosAprobadosTotales.has(p.id_proyecto)
 		);
 
 		const institucionesUnicas = new Set(
-			proyectosColaborador.map((p) => p.institucion_id).filter(Boolean)
+			proyectosColaboradorEnPeriodo.map((p) => p.institucion_id).filter(Boolean)
 		);
 
 		const hoy = new Date();
@@ -52,6 +82,13 @@ export class ObtenerDashboardColaborador {
 				.map((p) => p.institucion_id)
 				.filter(Boolean)
 		);
+
+		const proyectosNuevosEsteMes = proyectosColaborador.filter((p) => {
+			const colabProyecto = colaboraciones.find(
+				(c) => c.proyecto_id === p.id_proyecto && c.estaAprobada()
+			);
+			return colabProyecto?.created_at && colabProyecto.created_at >= inicioMes;
+		}).length;
 
 		const proyectosConFecha = proyectosColaborador.filter((p) => p.fecha_fin_tentativa);
 		const proximoCierre = proyectosConFecha.reduce(
@@ -92,24 +129,34 @@ export class ObtenerDashboardColaborador {
 					? colaborador.razon_social || 'Organización'
 					: 'Colaborador/a';
 
+		// Filtradas por período: card de proyectos + modal, card de instituciones + modal
 		const estadisticasProyectos = this.calcularEstadisticasProyectos(
-			proyectosColaborador,
-			colaboraciones
+			proyectosColaboradorEnPeriodo,
+			colaboracionesEnPeriodo
 		);
+		const estadisticasInstituciones = this.calcularEstadisticasInstituciones(
+			proyectosColaboradorEnPeriodo,
+			colaboracionesEnPeriodo
+		);
+
+		// Sin filtrar: agenda/próximos cierres y seguimiento de objetivos (en UI)
 		const estadisticasCalendario = this.calcularEstadisticasCalendario(
 			proyectosColaborador,
 			colaborador
 		);
-		const estadisticasInstituciones = this.calcularEstadisticasInstituciones(
-			proyectosColaborador,
-			colaboraciones
-		);
-
 		const seguimientoObjetivos = this.calcularSeguimientoObjetivos(
 			proyectosColaborador,
 			colaboraciones
 		);
-		const estadisticasAyuda = this.calcularEstadisticasAyuda(colaboraciones);
+
+		// Versión filtrada por período del seguimiento — solo se usa en la exportación PDF.
+		// Si no hay filtro, reutiliza la versión histórica (mismo array).
+		const seguimientoObjetivosEnPeriodo = desde
+			? this.calcularSeguimientoObjetivos(proyectosColaboradorEnPeriodo, colaboracionesEnPeriodo)
+			: seguimientoObjetivos;
+
+		// Filtrado por período: gráfico de torta "Tipos de Ayuda"
+		const estadisticasAyuda = this.calcularEstadisticasAyuda(colaboracionesEnPeriodo);
 
 		const [proyectosComunidad, ultimasResenas, heatmapActividad] = await Promise.all([
 			this.calcularProyectosRecomendados(colaborador, proyectosColaborador),
@@ -131,7 +178,8 @@ export class ObtenerDashboardColaborador {
 				bio: colaborador.descripcion
 			},
 			metricas: {
-				proyectosTotales: proyectosColaborador.length,
+				proyectosTotales: proyectosColaboradorEnPeriodo.length,
+				nuevosProyectos: proyectosNuevosEsteMes,
 				institucionesAlcanzadas: institucionesUnicas.size,
 				nuevasInstituciones: institucionesNuevasEsteMes.size,
 				diasProximoCierre,
@@ -144,6 +192,7 @@ export class ObtenerDashboardColaborador {
 				estadisticasInstituciones
 			},
 			seguimientoObjetivos,
+			seguimientoObjetivosEnPeriodo,
 			estadisticasAyuda,
 			topColaboradores: [],
 			ultimasResenas,
@@ -423,6 +472,7 @@ export class ObtenerDashboardColaborador {
 		const aprobadas = colaboraciones.filter((c) => c.estaAprobada()).length;
 		const pendientes = colaboraciones.filter((c) => c.estaPendiente()).length;
 		const rechazadas = colaboraciones.filter((c) => c.estaRechazada()).length;
+		const anuladas = colaboraciones.filter((c) => c.estaAnulada()).length;
 		const total = colaboraciones.length;
 
 		return {
@@ -431,6 +481,7 @@ export class ObtenerDashboardColaborador {
 				pendientes,
 				aprobadas,
 				rechazadas,
+				anuladas,
 				total
 			}
 		};

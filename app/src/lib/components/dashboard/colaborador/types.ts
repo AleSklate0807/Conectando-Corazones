@@ -69,8 +69,24 @@ export interface EstadisticasInstituciones {
 		pendientes: number;
 		aprobadas: number;
 		rechazadas: number;
+		anuladas: number;
 		total: number;
 	};
+}
+
+export interface SeguimientoProyecto {
+	id: string;
+	nombre: string;
+	fechaFin: string;
+	objetivos: {
+		id: string;
+		descripcion: string;
+		tipo: 'monetaria' | 'voluntariado' | 'especie';
+		progreso: number;
+		actual: number;
+		meta: number;
+		unidad: string;
+	}[];
 }
 
 export interface ColaboradorDashboardData {
@@ -83,6 +99,7 @@ export interface ColaboradorDashboardData {
 	};
 	metricas: {
 		proyectosTotales: number;
+		nuevosProyectos: number;
 		institucionesAlcanzadas: number;
 		nuevasInstituciones: number;
 		diasProximoCierre: number;
@@ -100,20 +117,10 @@ export interface ColaboradorDashboardData {
 		estadisticasCalendario?: EstadisticasCalendario;
 		estadisticasInstituciones?: EstadisticasInstituciones;
 	};
-	seguimientoObjetivos: {
-		id: string;
-		nombre: string;
-		fechaFin: string;
-		objetivos: {
-			id: string;
-			descripcion: string; // por ejemplo: "Recaudación"
-			tipo: 'monetaria' | 'voluntariado' | 'especie';
-			progreso: number; // %
-			actual: number;
-			meta: number;
-			unidad: string; // por ejemplo: "$" o "voluntarios"
-		}[];
-	}[];
+	seguimientoObjetivos: SeguimientoProyecto[];
+	/** Misma estructura que seguimientoObjetivos pero filtrada por el período seleccionado.
+	 * Solo se usa en la exportación PDF; la UI sigue mostrando la versión histórica. */
+	seguimientoObjetivosEnPeriodo: SeguimientoProyecto[];
 	estadisticasAyuda: {
 		voluntariado: number; // Horas, días o veces según la especie
 		unidadVoluntariado: string; // 'horas', 'dias', 'persona'

@@ -73,6 +73,7 @@ export interface InstitucionDashboardData {
 	};
 	metricas: {
 		proyectosTotales: number;
+		nuevosProyectos: number;
 		colaboradoresActivos: number;
 		diasProximoCierre: number;
 		solicitudesPendientes: number;

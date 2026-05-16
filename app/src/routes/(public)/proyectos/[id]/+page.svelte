@@ -1211,7 +1211,7 @@
 											<button
 												type="button"
 												disabled
-												class="inline-flex h-11 flex-1 cursor-wait items-center justify-center gap-2 rounded-xl bg-orange-100 font-semibold text-orange-700 decoration-inherit opacity-80 shadow-sm focus-visible:outline-hidden active:translate-y-px"
+												class="inline-flex h-11 flex-1 cursor-not-allowed items-center justify-center gap-2 rounded-xl bg-orange-100 font-semibold text-orange-700 decoration-inherit opacity-80 shadow-sm focus-visible:outline-hidden active:translate-y-px"
 												aria-label="Solicitud anulada"
 											>
 												<Icon src={XCircle} class="h-4 w-4" aria-hidden="true" />

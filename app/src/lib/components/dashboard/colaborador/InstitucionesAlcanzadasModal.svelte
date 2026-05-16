@@ -228,7 +228,7 @@
 					<div class="grid gap-8 md:grid-cols-2">
 						<!-- Gráfico Circular (Donut) -->
 						<div class="relative flex items-center justify-center py-4">
-							<svg viewBox="0 0 36 36" class="h-48 w-48 rotate-[-90deg] drop-shadow-2xl">
+							<svg viewBox="0 0 36 36" class="h-48 w-48 -rotate-90 drop-shadow-2xl">
 								<!-- Circle Background -->
 								<path
 									class="text-slate-800/50"

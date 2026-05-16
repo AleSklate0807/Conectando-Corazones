@@ -4,7 +4,9 @@ import type { UsuarioRepository } from '$lib/domain/repositories/UsuarioReposito
 import type { ResenaRepository } from '$lib/domain/repositories/ResenaRepository';
 import type { HistorialDeCambiosRepository } from '$lib/domain/repositories/HistorialDeCambiosRepository';
 import type { ChatRepository } from '$lib/domain/repositories/ChatRepository';
+import { ESTADO_LABELS } from '$lib/domain/types/Estado';
 import { HEATMAP_SEMANAS } from '$lib/utils/constants';
+import { getColorEstadoHex } from '$lib/utils/util-estados';
 import type { ColaboradorDashboardData } from '$lib/components/dashboard/colaborador/types';
 
 export class ObtenerDashboardColaborador {
@@ -348,27 +350,14 @@ export class ObtenerDashboardColaborador {
 		);
 
 		const total = proyectos.length || 1;
-		const colores: Record<string, string> = {
-			en_curso: '#3b82f6',
-			pendiente_solicitud_cierre: '#f59e0b',
-			en_revision: '#8b5cf6',
-			completado: '#10b981'
-		};
 
-		const labels: Record<string, string> = {
-			en_curso: 'En curso',
-			pendiente_solicitud_cierre: 'Pendiente de cierre',
-			en_revision: 'En revisión',
-			completado: 'Completado'
-		};
-
-		const ordenEstados = ['en_curso', 'pendiente_solicitud_cierre', 'en_revision', 'completado'];
+		const ordenEstados = ['en_curso', 'pendiente_solicitud_cierre', 'en_revision', 'completado', 'cancelado', 'en_auditoria'];
 
 		return ordenEstados.map((estado) => ({
-			label: labels[estado] || this.formatearEstado(estado),
+			label: ESTADO_LABELS[estado as keyof typeof ESTADO_LABELS] ?? estado,
 			count: (estados[estado] as number) || 0,
 			percentage: Math.round((((estados[estado] as number) || 0) / total) * 100),
-			color: colores[estado] || '#6b7280'
+			color: getColorEstadoHex(estado)
 		}));
 	}
 
@@ -405,7 +394,7 @@ export class ObtenerDashboardColaborador {
 				fechaInicio: p.created_at,
 				fechaFin: p.fecha_fin_tentativa || '',
 				estado: p.estado || 'desconocido',
-				color: this.getColorEstado(p.estado)
+				color: getColorEstadoHex(p.estado)
 			}));
 
 		const proximosVencimientos = proyectos
@@ -641,28 +630,6 @@ export class ObtenerDashboardColaborador {
 				especie: proyectosPorTipo.especie.size
 			}
 		};
-	}
-
-	private formatearEstado(estado: string): string {
-		const mapeo: Record<string, string> = {
-			en_curso: 'En curso',
-			en_revision: 'En revisión',
-			completado: 'Completado',
-			cancelado: 'Cancelado',
-			borrador: 'Borrador'
-		};
-		return mapeo[estado] || estado;
-	}
-
-	private getColorEstado(estado: string): string {
-		const colores: Record<string, string> = {
-			en_curso: '#3b82f6',
-			en_revision: '#f59e0b',
-			completado: '#10b981',
-			cancelado: '#ef4444',
-			borrador: '#6b7280'
-		};
-		return colores[estado] || '#6b7280';
 	}
 
 	private async calcularProyectosRecomendados(colaborador: any, proyectosColaborador: any[]) {

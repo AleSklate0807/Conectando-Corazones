@@ -171,14 +171,14 @@
 	function clasesEstado(estado: EstadoDescripcion) {
 		return (
 			{
-				borrador: 'text-slate-600 bg-slate-100',
-				en_curso: 'text-green-600 bg-green-100',
-				pendiente_solicitud_cierre: 'text-orange-600 bg-orange-100',
-				en_revision: 'text-gray-600 bg-gray-100',
-				en_auditoria: 'text-gray-600 bg-gray-100',
-				completado: 'text-blue-600 bg-blue-100',
-				cancelado: 'text-gray-600 bg-gray-100'
-			}[estado] || 'text-gray-600 bg-gray-100'
+				borrador: 'text-slate-700 bg-slate-100',
+				en_curso: 'text-emerald-700 bg-emerald-100',
+				pendiente_solicitud_cierre: 'text-amber-700 bg-amber-100',
+				en_revision: 'text-blue-700 bg-blue-100',
+				en_auditoria: 'text-purple-700 bg-purple-100',
+				completado: 'text-gray-700 bg-gray-100',
+				cancelado: 'text-red-700 bg-red-100'
+			}[estado] ?? 'text-gray-700 bg-gray-100'
 		);
 	}
 

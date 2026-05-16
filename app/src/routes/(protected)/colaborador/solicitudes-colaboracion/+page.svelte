@@ -4,6 +4,7 @@
 		Clock,
 		CheckCircle2,
 		XCircle,
+		Ban,
 		Search,
 		Calendar,
 		Building2,
@@ -18,7 +19,7 @@
 
 	let { data }: { data: PageData } = $props();
 
-	let activeTab: 'pendiente' | 'aprobada' | 'rechazada' = $state('pendiente');
+	let activeTab: 'pendiente' | 'aprobada' | 'rechazada' | 'anulada' = $state('pendiente');
 	let searchTerm = $state('');
 
 	let filteredColaboraciones = $derived(data.colaboraciones.filter((c) => {
@@ -50,6 +51,13 @@
 			icon: XCircle,
 			activeClass: 'bg-white text-rose-600 shadow-sm ring-1 ring-black/5',
 			inactiveClass: 'text-gray-500 hover:text-rose-600 hover:bg-white/50'
+		},
+		{
+			id: 'anulada',
+			label: 'Anuladas',
+			icon: Ban,
+			activeClass: 'bg-white text-slate-600 shadow-sm ring-1 ring-black/5',
+			inactiveClass: 'text-gray-500 hover:text-slate-600 hover:bg-white/50'
 		}
 	];
 
@@ -164,7 +172,7 @@
 						in:fly={{ y: 20, duration: 400, delay: i * 50 }}
 						class="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-blue-500/20"
 					>
-						<div class="relative aspect-[16/9] w-full overflow-hidden bg-gray-100">
+						<div class="relative aspect-video w-full overflow-hidden bg-gray-100">
 							<img
 								src={colab.proyecto.url_portada}
 								alt={colab.proyecto.titulo}
@@ -189,6 +197,13 @@
 									>
 										<CheckCircle2 class="h-3 w-3" />
 										Aprobada
+									</span>
+								{:else if colab.estado === 'anulada'}
+									<span
+										class="inline-flex items-center gap-1.5 rounded-full bg-slate-500/90 px-2.5 py-1 text-xs font-semibold text-white shadow-sm backdrop-blur-md"
+									>
+										<Ban class="h-3 w-3" />
+										Anulada
 									</span>
 								{:else}
 									<span

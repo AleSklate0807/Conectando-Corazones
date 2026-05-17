@@ -45,7 +45,6 @@
 >
 	<div class="mb-6 flex items-center gap-2">
 		<h2 class="text-xl font-semibold tracking-tight text-white">Actividades recientes</h2>
-		<!-- TODO: implementar módulo de historial de cambios -->
 		<History size={18} class="text-slate-400" />
 	</div>
 

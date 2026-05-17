@@ -7,7 +7,8 @@ import type { InstitucionDashboardData } from '$lib/components/dashboard/institu
 import type { Colaboracion } from '$lib/domain/entities/Colaboracion';
 import type { Proyecto } from '$lib/domain/entities/Proyecto';
 import type { Usuario } from '$lib/domain/entities/Usuario';
-import type { EstadoVerificacion } from '$lib/domain/types/Verificacion';
+import type { EstadoVerificacion, Verificacion } from '$lib/domain/types/Verificacion';
+import { esArcaVigente } from '$lib/domain/types/Verificacion';
 import { ESTADO_LABELS } from '$lib/domain/types/Estado';
 import { obtenerNombreCompleto } from '$lib/utils/util-usuarios';
 import { getColorEstadoHex } from '$lib/utils/util-estados';
@@ -344,13 +345,41 @@ export class ObtenerDashboardInstitucion {
 	private calcularEstadisticasCalendario(proyectos: Proyecto[], institucion: Usuario) {
 		const hoy = new Date();
 
-		const verificacion = {
-			estado: 'verificada' as const,
-			fechaRenovacion: new Date(hoy.getFullYear() + 1, hoy.getMonth(), hoy.getDate())
-				.toISOString()
-				.split('T')[0],
-			diasRestantes: 365
+		// Estado del certificado ARCA (RG 2681):
+		const arcasAprobadas = ((institucion.verificaciones ?? []) as Verificacion[]).filter(
+			(v) => v.tipo === 'arca' && v.estado === 'aprobada' && v.fecha_vencimiento
+		);
+		const arcaMasReciente = arcasAprobadas.sort(
+			(a, b) =>
+				new Date(b.fecha_vencimiento!).getTime() - new Date(a.fecha_vencimiento!).getTime()
+		)[0];
+
+		let verificacion: {
+			estado: 'vigente' | 'vencido' | 'sin_registro';
+			fechaRenovacion: string | null;
+			diasRestantes: number | null;
 		};
+
+		if (arcaMasReciente && esArcaVigente(arcaMasReciente, hoy)) {
+			const fechaVenc = new Date(arcaMasReciente.fecha_vencimiento!);
+			verificacion = {
+				estado: 'vigente',
+				fechaRenovacion: fechaVenc.toISOString().split('T')[0],
+				diasRestantes: Math.ceil((fechaVenc.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24))
+			};
+		} else if (arcaMasReciente) {
+			verificacion = {
+				estado: 'vencido',
+				fechaRenovacion: new Date(arcaMasReciente.fecha_vencimiento!).toISOString().split('T')[0],
+				diasRestantes: null
+			};
+		} else {
+			verificacion = {
+				estado: 'sin_registro',
+				fechaRenovacion: null,
+				diasRestantes: null
+			};
+		}
 
 		const projectTimeline = proyectos
 			.filter((p) => p.created_at && p.fecha_fin_tentativa)
@@ -417,7 +446,8 @@ export class ObtenerDashboardInstitucion {
 		const ubicacionCount = new Map<string, number>();
 		const topColaboradoresMap = new Map<number, { count: number; proyectos: Set<number> }>();
 
-		// Cargar datos detallados de colaboradores únicos
+		// Cargar datos detallados de colaboradores únicos (solo ubicación; las categorías
+		// se cuentan desde los proyectos colaborados, no desde el perfil del usuario)
 		await Promise.all(
 			Array.from(colaboradoresUnicosIds).map(async (id) => {
 				if (!id) return;
@@ -425,15 +455,6 @@ export class ObtenerDashboardInstitucion {
 					const usuario = await this.usuarioRepo.findById(id);
 					if (!usuario) return;
 
-					// Contar categorías preferidas
-					if (usuario.categorias_preferidas) {
-						usuario.categorias_preferidas.forEach((catPref: any) => {
-							const categoria = catPref.categoria?.descripcion || 'Otra';
-							categoriasCount.set(categoria, (categoriasCount.get(categoria) || 0) + 1);
-						});
-					}
-
-					// Contar ubicación (Localidad, Provincia)
 					if (usuario.localidad) {
 						const loc = usuario.localidad.nombre;
 						const prov = usuario.localidad.provincia?.nombre;
@@ -445,6 +466,26 @@ export class ObtenerDashboardInstitucion {
 				}
 			})
 		);
+
+		// Distribución por categorías: cuenta 1 por cada par (colaboración aprobada,
+		// categoría del proyecto colaborado). Un proyecto con N categorías suma N veces.
+		const categoriasPorProyecto = new Map<number, string[]>();
+		for (const p of proyectos) {
+			if (p.id_proyecto == null) continue;
+			const cats = ((p as any).categorias ?? [])
+				.map((c: any) => c.descripcion)
+				.filter((d: any): d is string => typeof d === 'string' && d.length > 0);
+			if (cats.length > 0) categoriasPorProyecto.set(p.id_proyecto, cats);
+		}
+
+		for (const c of colaboraciones) {
+			if (c.proyecto_id == null) continue;
+			const cats = categoriasPorProyecto.get(c.proyecto_id);
+			if (!cats) continue;
+			for (const cat of cats) {
+				categoriasCount.set(cat, (categoriasCount.get(cat) || 0) + 1);
+			}
+		}
 
 		// Calcular Distribución de Categorías (Top 3 + Otros)
 		const totalCategorias = Array.from(categoriasCount.values()).reduce((a, b) => a + b, 0) || 1;
@@ -522,10 +563,24 @@ export class ObtenerDashboardInstitucion {
 			})
 		);
 
+		// Tasa de retención: % de colaboradores únicos con ≥2 colaboraciones aprobadas
+		const conteoPorColaborador = new Map<number, number>();
+		for (const c of colaboraciones) {
+			if (c.colaborador_id == null) continue;
+			conteoPorColaborador.set(
+				c.colaborador_id,
+				(conteoPorColaborador.get(c.colaborador_id) || 0) + 1
+			);
+		}
+		const totalUnicosRetencion = conteoPorColaborador.size;
+		const recurrentes = Array.from(conteoPorColaborador.values()).filter((n) => n >= 2).length;
+		const retencion =
+			totalUnicosRetencion > 0 ? Math.round((recurrentes / totalUnicosRetencion) * 100) : 0;
+
 		return {
 			totalActivos: colaboradoresUnicosIds.size,
 			nuevosEsteMes: colaboradoresNuevos.size,
-			retencion: 92, // Placeholder o calcular según lógica específica
+			retencion,
 			distribucionCategorias,
 			distribucionUbicacion,
 			topColaboradores
@@ -635,39 +690,47 @@ export class ObtenerDashboardInstitucion {
 	}
 
 	private obtenerActividadReciente(proyectos: any[], colaboraciones: any[]) {
-		const actividades: any[] = [];
+		// Unificar eventos manteniendo la fecha como Date, ordenar desc por fecha,
+		// recortar a 4 y recién entonces formatear para display.
+		type Evento = {
+			id: string;
+			titulo: string;
+			descripcion: string;
+			fechaDate: Date;
+			tipo: 'proyecto' | 'colaboracion';
+		};
 
-		proyectos.slice(0, 2).forEach((p) => {
-			if (p.created_at) {
-				actividades.push({
-					id: `proyecto-${p.id_proyecto}`,
-					titulo: 'Nuevo proyecto creado',
-					descripcion: `Se ha publicado correctamente "${p.titulo}".`,
-					fecha: this.formatearFechaRelativa(new Date(p.created_at)),
-					tipo: 'proyecto' as const
-				});
-			}
-		});
+		const eventos: Evento[] = [];
 
-		colaboraciones.slice(0, 2).forEach((c) => {
-			if (c.created_at) {
-				actividades.push({
-					id: `colaboracion-${c.id_colaboracion}`,
-					titulo: 'Colaboración recibida',
-					descripcion: 'Se ha recibido una nueva colaboración.',
-					fecha: this.formatearFechaRelativa(new Date(c.created_at)),
-					tipo: 'colaboracion' as const
-				});
-			}
-		});
+		for (const p of proyectos) {
+			if (!p.created_at) continue;
+			eventos.push({
+				id: `proyecto-${p.id_proyecto}`,
+				titulo: 'Nuevo proyecto creado',
+				descripcion: `Se ha publicado correctamente "${p.titulo}".`,
+				fechaDate: new Date(p.created_at),
+				tipo: 'proyecto'
+			});
+		}
 
-		return actividades
-			.sort((a, b) => {
-				const fechaA = this.parsearFechaRelativa(a.fecha);
-				const fechaB = this.parsearFechaRelativa(b.fecha);
-				return fechaB.getTime() - fechaA.getTime();
-			})
-			.slice(0, 4);
+		for (const c of colaboraciones) {
+			if (!c.created_at) continue;
+			eventos.push({
+				id: `colaboracion-${c.id_colaboracion}`,
+				titulo: 'Colaboración recibida',
+				descripcion: 'Se ha recibido una nueva colaboración.',
+				fechaDate: new Date(c.created_at),
+				tipo: 'colaboracion'
+			});
+		}
+
+		return eventos
+			.sort((a, b) => b.fechaDate.getTime() - a.fechaDate.getTime())
+			.slice(0, 4)
+			.map(({ fechaDate, ...rest }) => ({
+				...rest,
+				fecha: this.formatearFechaRelativa(fechaDate)
+			}));
 	}
 
 	private formatearFechaRelativa(fecha: Date): string {
@@ -681,21 +744,6 @@ export class ObtenerDashboardInstitucion {
 		if (dias === 1) return 'Ayer';
 		if (dias < 7) return `Hace ${dias} días`;
 		return fecha.toLocaleDateString('es-AR');
-	}
-
-	private parsearFechaRelativa(fechaStr: string): Date {
-		const ahora = new Date();
-		if (fechaStr.includes('minutos')) return new Date(ahora.getTime() - 30 * 60 * 1000);
-		if (fechaStr.includes('hora')) {
-			const horas = parseInt(fechaStr.match(/\d+/)?.[0] || '1');
-			return new Date(ahora.getTime() - horas * 60 * 60 * 1000);
-		}
-		if (fechaStr === 'Ayer') return new Date(ahora.getTime() - 24 * 60 * 60 * 1000);
-		if (fechaStr.includes('días')) {
-			const dias = parseInt(fechaStr.match(/\d+/)?.[0] || '2');
-			return new Date(ahora.getTime() - dias * 24 * 60 * 60 * 1000);
-		}
-		return new Date(fechaStr);
 	}
 
 	private async obtenerUltimasResenas(institucionId: number) {

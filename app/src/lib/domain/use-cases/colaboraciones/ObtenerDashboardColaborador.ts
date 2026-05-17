@@ -196,7 +196,6 @@ export class ObtenerDashboardColaborador {
 			seguimientoObjetivos,
 			seguimientoObjetivosEnPeriodo,
 			estadisticasAyuda,
-			topColaboradores: [],
 			ultimasResenas,
 			heatmapActividad,
 			proyectosComunidad

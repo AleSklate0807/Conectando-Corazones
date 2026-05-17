@@ -133,13 +133,6 @@ export interface ColaboradorDashboardData {
 			especie: number; // Cantidad de proyectos
 		};
 	};
-	topColaboradores: {
-		id: string;
-		nombre: string;
-		avatarUrl?: string; // opcional
-		aportes: number;
-		rol: string;
-	}[];
 	ultimasResenas: {
 		id: string;
 		usuario: string;

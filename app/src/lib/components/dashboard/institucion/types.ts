@@ -22,9 +22,9 @@ export interface EstadisticasProyectos {
 
 export interface EstadisticasCalendario {
 	verificacion: {
-		estado: 'verificada' | 'pendiente' | 'expirado';
-		fechaRenovacion: string;
-		diasRestantes: number;
+		estado: 'vigente' | 'vencido' | 'sin_registro';
+		fechaRenovacion: string | null;
+		diasRestantes: number | null;
 	};
 	projectTimeline: {
 		id: string;

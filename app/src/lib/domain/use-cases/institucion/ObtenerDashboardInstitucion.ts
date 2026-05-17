@@ -522,10 +522,24 @@ export class ObtenerDashboardInstitucion {
 			})
 		);
 
+		// Tasa de retención: % de colaboradores únicos con ≥2 colaboraciones aprobadas
+		const conteoPorColaborador = new Map<number, number>();
+		for (const c of colaboraciones) {
+			if (c.colaborador_id == null) continue;
+			conteoPorColaborador.set(
+				c.colaborador_id,
+				(conteoPorColaborador.get(c.colaborador_id) || 0) + 1
+			);
+		}
+		const totalUnicosRetencion = conteoPorColaborador.size;
+		const recurrentes = Array.from(conteoPorColaborador.values()).filter((n) => n >= 2).length;
+		const retencion =
+			totalUnicosRetencion > 0 ? Math.round((recurrentes / totalUnicosRetencion) * 100) : 0;
+
 		return {
 			totalActivos: colaboradoresUnicosIds.size,
 			nuevosEsteMes: colaboradoresNuevos.size,
-			retencion: 92, // Placeholder o calcular según lógica específica
+			retencion,
 			distribucionCategorias,
 			distribucionUbicacion,
 			topColaboradores

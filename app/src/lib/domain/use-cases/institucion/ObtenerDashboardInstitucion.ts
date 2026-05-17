@@ -690,39 +690,47 @@ export class ObtenerDashboardInstitucion {
 	}
 
 	private obtenerActividadReciente(proyectos: any[], colaboraciones: any[]) {
-		const actividades: any[] = [];
+		// Unificar eventos manteniendo la fecha como Date, ordenar desc por fecha,
+		// recortar a 4 y recién entonces formatear para display.
+		type Evento = {
+			id: string;
+			titulo: string;
+			descripcion: string;
+			fechaDate: Date;
+			tipo: 'proyecto' | 'colaboracion';
+		};
 
-		proyectos.slice(0, 2).forEach((p) => {
-			if (p.created_at) {
-				actividades.push({
-					id: `proyecto-${p.id_proyecto}`,
-					titulo: 'Nuevo proyecto creado',
-					descripcion: `Se ha publicado correctamente "${p.titulo}".`,
-					fecha: this.formatearFechaRelativa(new Date(p.created_at)),
-					tipo: 'proyecto' as const
-				});
-			}
-		});
+		const eventos: Evento[] = [];
 
-		colaboraciones.slice(0, 2).forEach((c) => {
-			if (c.created_at) {
-				actividades.push({
-					id: `colaboracion-${c.id_colaboracion}`,
-					titulo: 'Colaboración recibida',
-					descripcion: 'Se ha recibido una nueva colaboración.',
-					fecha: this.formatearFechaRelativa(new Date(c.created_at)),
-					tipo: 'colaboracion' as const
-				});
-			}
-		});
+		for (const p of proyectos) {
+			if (!p.created_at) continue;
+			eventos.push({
+				id: `proyecto-${p.id_proyecto}`,
+				titulo: 'Nuevo proyecto creado',
+				descripcion: `Se ha publicado correctamente "${p.titulo}".`,
+				fechaDate: new Date(p.created_at),
+				tipo: 'proyecto'
+			});
+		}
 
-		return actividades
-			.sort((a, b) => {
-				const fechaA = this.parsearFechaRelativa(a.fecha);
-				const fechaB = this.parsearFechaRelativa(b.fecha);
-				return fechaB.getTime() - fechaA.getTime();
-			})
-			.slice(0, 4);
+		for (const c of colaboraciones) {
+			if (!c.created_at) continue;
+			eventos.push({
+				id: `colaboracion-${c.id_colaboracion}`,
+				titulo: 'Colaboración recibida',
+				descripcion: 'Se ha recibido una nueva colaboración.',
+				fechaDate: new Date(c.created_at),
+				tipo: 'colaboracion'
+			});
+		}
+
+		return eventos
+			.sort((a, b) => b.fechaDate.getTime() - a.fechaDate.getTime())
+			.slice(0, 4)
+			.map(({ fechaDate, ...rest }) => ({
+				...rest,
+				fecha: this.formatearFechaRelativa(fechaDate)
+			}));
 	}
 
 	private formatearFechaRelativa(fecha: Date): string {
@@ -738,22 +746,7 @@ export class ObtenerDashboardInstitucion {
 		return fecha.toLocaleDateString('es-AR');
 	}
 
-	private parsearFechaRelativa(fechaStr: string): Date {
-		const ahora = new Date();
-		if (fechaStr.includes('minutos')) return new Date(ahora.getTime() - 30 * 60 * 1000);
-		if (fechaStr.includes('hora')) {
-			const horas = parseInt(fechaStr.match(/\d+/)?.[0] || '1');
-			return new Date(ahora.getTime() - horas * 60 * 60 * 1000);
-		}
-		if (fechaStr === 'Ayer') return new Date(ahora.getTime() - 24 * 60 * 60 * 1000);
-		if (fechaStr.includes('días')) {
-			const dias = parseInt(fechaStr.match(/\d+/)?.[0] || '2');
-			return new Date(ahora.getTime() - dias * 24 * 60 * 60 * 1000);
-		}
-		return new Date(fechaStr);
-	}
-
-	private async obtenerUltimasResenas(institucionId: number) {
+private async obtenerUltimasResenas(institucionId: number) {
 		const resenas = await this.resenaRepo.findByObjetoAprobadas('usuario', institucionId, 5);
 
 		return resenas.map((r) => ({

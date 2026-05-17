@@ -7,7 +7,8 @@ import type { InstitucionDashboardData } from '$lib/components/dashboard/institu
 import type { Colaboracion } from '$lib/domain/entities/Colaboracion';
 import type { Proyecto } from '$lib/domain/entities/Proyecto';
 import type { Usuario } from '$lib/domain/entities/Usuario';
-import type { EstadoVerificacion } from '$lib/domain/types/Verificacion';
+import type { EstadoVerificacion, Verificacion } from '$lib/domain/types/Verificacion';
+import { esArcaVigente } from '$lib/domain/types/Verificacion';
 import { ESTADO_LABELS } from '$lib/domain/types/Estado';
 import { obtenerNombreCompleto } from '$lib/utils/util-usuarios';
 import { getColorEstadoHex } from '$lib/utils/util-estados';
@@ -344,13 +345,41 @@ export class ObtenerDashboardInstitucion {
 	private calcularEstadisticasCalendario(proyectos: Proyecto[], institucion: Usuario) {
 		const hoy = new Date();
 
-		const verificacion = {
-			estado: 'verificada' as const,
-			fechaRenovacion: new Date(hoy.getFullYear() + 1, hoy.getMonth(), hoy.getDate())
-				.toISOString()
-				.split('T')[0],
-			diasRestantes: 365
+		// Estado del certificado ARCA (RG 2681):
+		const arcasAprobadas = ((institucion.verificaciones ?? []) as Verificacion[]).filter(
+			(v) => v.tipo === 'arca' && v.estado === 'aprobada' && v.fecha_vencimiento
+		);
+		const arcaMasReciente = arcasAprobadas.sort(
+			(a, b) =>
+				new Date(b.fecha_vencimiento!).getTime() - new Date(a.fecha_vencimiento!).getTime()
+		)[0];
+
+		let verificacion: {
+			estado: 'vigente' | 'vencido' | 'sin_registro';
+			fechaRenovacion: string | null;
+			diasRestantes: number | null;
 		};
+
+		if (arcaMasReciente && esArcaVigente(arcaMasReciente, hoy)) {
+			const fechaVenc = new Date(arcaMasReciente.fecha_vencimiento!);
+			verificacion = {
+				estado: 'vigente',
+				fechaRenovacion: fechaVenc.toISOString().split('T')[0],
+				diasRestantes: Math.ceil((fechaVenc.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24))
+			};
+		} else if (arcaMasReciente) {
+			verificacion = {
+				estado: 'vencido',
+				fechaRenovacion: new Date(arcaMasReciente.fecha_vencimiento!).toISOString().split('T')[0],
+				diasRestantes: null
+			};
+		} else {
+			verificacion = {
+				estado: 'sin_registro',
+				fechaRenovacion: null,
+				diasRestantes: null
+			};
+		}
 
 		const projectTimeline = proyectos
 			.filter((p) => p.created_at && p.fecha_fin_tentativa)

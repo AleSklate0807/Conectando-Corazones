@@ -417,7 +417,8 @@ export class ObtenerDashboardInstitucion {
 		const ubicacionCount = new Map<string, number>();
 		const topColaboradoresMap = new Map<number, { count: number; proyectos: Set<number> }>();
 
-		// Cargar datos detallados de colaboradores únicos
+		// Cargar datos detallados de colaboradores únicos (solo ubicación; las categorías
+		// se cuentan desde los proyectos colaborados, no desde el perfil del usuario)
 		await Promise.all(
 			Array.from(colaboradoresUnicosIds).map(async (id) => {
 				if (!id) return;
@@ -425,15 +426,6 @@ export class ObtenerDashboardInstitucion {
 					const usuario = await this.usuarioRepo.findById(id);
 					if (!usuario) return;
 
-					// Contar categorías preferidas
-					if (usuario.categorias_preferidas) {
-						usuario.categorias_preferidas.forEach((catPref: any) => {
-							const categoria = catPref.categoria?.descripcion || 'Otra';
-							categoriasCount.set(categoria, (categoriasCount.get(categoria) || 0) + 1);
-						});
-					}
-
-					// Contar ubicación (Localidad, Provincia)
 					if (usuario.localidad) {
 						const loc = usuario.localidad.nombre;
 						const prov = usuario.localidad.provincia?.nombre;
@@ -445,6 +437,26 @@ export class ObtenerDashboardInstitucion {
 				}
 			})
 		);
+
+		// Distribución por categorías: cuenta 1 por cada par (colaboración aprobada,
+		// categoría del proyecto colaborado). Un proyecto con N categorías suma N veces.
+		const categoriasPorProyecto = new Map<number, string[]>();
+		for (const p of proyectos) {
+			if (p.id_proyecto == null) continue;
+			const cats = ((p as any).categorias ?? [])
+				.map((c: any) => c.descripcion)
+				.filter((d: any): d is string => typeof d === 'string' && d.length > 0);
+			if (cats.length > 0) categoriasPorProyecto.set(p.id_proyecto, cats);
+		}
+
+		for (const c of colaboraciones) {
+			if (c.proyecto_id == null) continue;
+			const cats = categoriasPorProyecto.get(c.proyecto_id);
+			if (!cats) continue;
+			for (const cat of cats) {
+				categoriasCount.set(cat, (categoriasCount.get(cat) || 0) + 1);
+			}
+		}
 
 		// Calcular Distribución de Categorías (Top 3 + Otros)
 		const totalCategorias = Array.from(categoriasCount.values()).reduce((a, b) => a + b, 0) || 1;

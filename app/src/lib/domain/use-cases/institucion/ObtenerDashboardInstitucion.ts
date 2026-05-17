@@ -746,7 +746,7 @@ export class ObtenerDashboardInstitucion {
 		return fecha.toLocaleDateString('es-AR');
 	}
 
-private async obtenerUltimasResenas(institucionId: number) {
+	private async obtenerUltimasResenas(institucionId: number) {
 		const resenas = await this.resenaRepo.findByObjetoAprobadas('usuario', institucionId, 5);
 
 		return resenas.map((r) => ({

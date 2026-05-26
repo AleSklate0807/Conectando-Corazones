@@ -148,6 +148,14 @@ export class ObtenerDashboardInstitucion {
 		const ultimasResenas = await this.obtenerUltimasResenas(institucionId);
 		const aspectosMejorar = this.generarAspectosMejorar(proyectos);
 
+		const proyectosParaEvidencia = proyectos
+			.filter((p) => p.estado === 'en_curso' || p.estado === 'pendiente_solicitud_cierre')
+			.map((p) => ({
+				id: p.id_proyecto?.toString() || '',
+				titulo: p.titulo,
+				estado: ESTADO_LABELS[p.estado as keyof typeof ESTADO_LABELS] ?? p.estado ?? 'Desconocido'
+			}));
+
 		return {
 			info: {
 				nombre: (institucion as any).nombre_legal || institucion.nombre || 'Institución',
@@ -185,7 +193,8 @@ export class ObtenerDashboardInstitucion {
 			topColaboradores,
 			actividadReciente,
 			ultimasResenas,
-			aspectosMejorar
+			aspectosMejorar,
+			proyectosParaEvidencia
 		};
 	}
 

@@ -117,6 +117,11 @@ export interface ColaboradorDashboardData {
 		estadisticasCalendario?: EstadisticasCalendario;
 		estadisticasInstituciones?: EstadisticasInstituciones;
 	};
+	proyectosParaEvidencia?: {
+		id: string;
+		titulo: string;
+		estado: string;
+	}[];
 	seguimientoObjetivos: SeguimientoProyecto[];
 	/** Misma estructura que seguimientoObjetivos pero filtrada por el período seleccionado.
 	 * Solo se usa en la exportación PDF; la UI sigue mostrando la versión histórica. */

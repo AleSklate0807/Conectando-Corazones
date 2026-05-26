@@ -8,7 +8,8 @@
 		Clock,
 		Calendar,
 		CheckCircle2,
-		Smile
+		Smile,
+		PartyPopper
 	} from 'lucide-svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import { tweened } from 'svelte/motion';
@@ -56,7 +57,14 @@
 		colorTexto: string;
 		colorIcono: string;
 	} {
-		if (dias === 0) {
+		if (dias < 0) {
+			return {
+				texto: 'Sin próximos cierres',
+				Icono: PartyPopper,
+				colorTexto: 'text-amber-400/60',
+				colorIcono: 'text-amber-500/60'
+			};
+		} else if (dias === 0) {
 			return {
 				texto: '¡Hoy es el día!',
 				Icono: Flame,
@@ -190,7 +198,11 @@
 				<div>
 					<p class="text-sm font-medium tracking-wider text-amber-400 uppercase">Próximo cierre</p>
 					<h3 class="mt-2 text-4xl font-bold tracking-tight text-white">
-						{Math.floor($tCierre)} <span class="text-lg font-medium text-slate-400">días</span>
+						{#if metricas.proximoCierre < 0}
+							— <span class="text-lg font-medium text-slate-400"></span>
+						{:else}
+							{Math.floor($tCierre)} <span class="text-lg font-medium text-slate-400">días</span>
+						{/if}
 					</h3>
 				</div>
 				<div class="rounded-2xl bg-amber-500/20 p-3 text-amber-400">

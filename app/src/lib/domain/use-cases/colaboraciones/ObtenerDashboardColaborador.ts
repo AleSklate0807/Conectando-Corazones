@@ -4,7 +4,7 @@ import type { UsuarioRepository } from '$lib/domain/repositories/UsuarioReposito
 import type { ResenaRepository } from '$lib/domain/repositories/ResenaRepository';
 import type { HistorialDeCambiosRepository } from '$lib/domain/repositories/HistorialDeCambiosRepository';
 import type { ChatRepository } from '$lib/domain/repositories/ChatRepository';
-import { ESTADO_LABELS } from '$lib/domain/types/Estado';
+import { ESTADO_LABELS, ESTADOS_ACTIVOS_PROYECTO } from '$lib/domain/types/Estado';
 import { HEATMAP_SEMANAS } from '$lib/utils/constants';
 import { getColorEstadoHex } from '$lib/utils/util-estados';
 import type { ColaboradorDashboardData } from '$lib/components/dashboard/colaborador/types';
@@ -92,7 +92,9 @@ export class ObtenerDashboardColaborador {
 			return colabProyecto?.created_at && colabProyecto.created_at >= inicioMes;
 		}).length;
 
-		const proyectosConFecha = proyectosColaborador.filter((p) => p.fecha_fin_tentativa);
+		const proyectosConFecha = proyectosColaborador.filter(
+			(p) => p.fecha_fin_tentativa && ESTADOS_ACTIVOS_PROYECTO.includes(p.estado as any)
+		);
 		const proximoCierre = proyectosConFecha.reduce(
 			(min, p) => {
 				if (!p.fecha_fin_tentativa) return min;
@@ -105,7 +107,7 @@ export class ObtenerDashboardColaborador {
 
 		const diasProximoCierre = proximoCierre
 			? Math.ceil((proximoCierre.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24))
-			: 0;
+			: -1;
 
 		const proyectosParaCierre = proyectosColaborador
 			.filter((p) => p.estado === 'en_revision')
@@ -407,7 +409,7 @@ export class ObtenerDashboardColaborador {
 
 		const proximosVencimientos = proyectos
 			.filter((p) => {
-				if (!p.fecha_fin_tentativa) return false;
+				if (!p.fecha_fin_tentativa || !ESTADOS_ACTIVOS_PROYECTO.includes(p.estado || '')) return false;
 				const fechaFin = new Date(p.fecha_fin_tentativa);
 				return fechaFin > hoy;
 			})

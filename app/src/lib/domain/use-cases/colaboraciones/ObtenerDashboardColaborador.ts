@@ -166,6 +166,14 @@ export class ObtenerDashboardColaborador {
 			this.calcularHeatmapActividad(colaboradorId)
 		]);
 
+		const proyectosParaEvidencia = proyectosColaborador
+			.filter((p) => p.estado === 'en_curso' || p.estado === 'pendiente_solicitud_cierre')
+			.map((p) => ({
+				id: p.id_proyecto?.toString() || '',
+				titulo: p.titulo,
+				estado: ESTADO_LABELS[p.estado as keyof typeof ESTADO_LABELS] ?? p.estado ?? 'Desconocido'
+			}));
+
 		return {
 			info: {
 				nombre: `${colaborador.nombre} ${colaborador.apellido}`,
@@ -198,7 +206,8 @@ export class ObtenerDashboardColaborador {
 			estadisticasAyuda,
 			ultimasResenas,
 			heatmapActividad,
-			proyectosComunidad
+			proyectosComunidad,
+			proyectosParaEvidencia
 		};
 	}
 
@@ -298,7 +307,7 @@ export class ObtenerDashboardColaborador {
 			.map((p) => ({
 				id: p.id_proyecto?.toString() || '',
 				titulo: p.titulo,
-				estado: p.estado || 'desconocido',
+				estado: ESTADO_LABELS[p.estado as keyof typeof ESTADO_LABELS] ?? p.estado ?? 'Desconocido',
 				progreso: p.progreso,
 				beneficiarios: Number(p.beneficiarios) || 0,
 				imagen: p.url_portada

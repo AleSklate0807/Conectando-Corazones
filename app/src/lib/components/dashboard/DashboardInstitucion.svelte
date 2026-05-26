@@ -558,7 +558,7 @@
 
 	<GestionarEvidenciasModal
 		show={showEvidenceModal}
-		proyectos={data.metricas.estadisticasProyectos?.proyectosDestacados || []}
+		proyectos={data.proyectosParaEvidencia || []}
 		onClose={() => (showEvidenceModal = false)}
 	/>
 </div>

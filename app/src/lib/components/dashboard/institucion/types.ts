@@ -83,6 +83,11 @@ export interface InstitucionDashboardData {
 		estadisticasProyectos?: EstadisticasProyectos;
 		estadisticasCalendario?: EstadisticasCalendario;
 	};
+	proyectosParaEvidencia?: {
+		id: string;
+		titulo: string;
+		estado: string;
+	}[];
 	seguimientoObjetivos: {
 		id: string;
 		nombre: string;

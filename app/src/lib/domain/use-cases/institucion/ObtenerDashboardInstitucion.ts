@@ -9,7 +9,7 @@ import type { Proyecto } from '$lib/domain/entities/Proyecto';
 import type { Usuario } from '$lib/domain/entities/Usuario';
 import type { EstadoVerificacion, Verificacion } from '$lib/domain/types/Verificacion';
 import { esArcaVigente } from '$lib/domain/types/Verificacion';
-import { ESTADO_LABELS } from '$lib/domain/types/Estado';
+import { ESTADO_LABELS, ESTADOS_ACTIVOS_PROYECTO } from '$lib/domain/types/Estado';
 import { obtenerNombreCompleto } from '$lib/utils/util-usuarios';
 import { getColorEstadoHex } from '$lib/utils/util-estados';
 import { obtenerUltimaVerificacion } from '$lib/utils/util-verificacion';
@@ -95,7 +95,9 @@ export class ObtenerDashboardInstitucion {
 			(p) => p.created_at && new Date(p.created_at) >= inicioMes
 		).length;
 
-		const proyectosConFecha = proyectos.filter((p) => p.fecha_fin_tentativa);
+		const proyectosConFecha = proyectos.filter(
+			(p) => p.fecha_fin_tentativa && ESTADOS_ACTIVOS_PROYECTO.includes(p.estado as any)
+		);
 		const proximoCierre = proyectosConFecha.reduce(
 			(min, p) => {
 				if (!p.fecha_fin_tentativa) return min;
@@ -108,7 +110,7 @@ export class ObtenerDashboardInstitucion {
 
 		const diasProximoCierre = proximoCierre
 			? Math.ceil((proximoCierre.getTime() - hoy.getTime()) / (1000 * 60 * 60 * 24))
-			: 0;
+			: -1;
 
 		const proyectosPendienteCierre = proyectos.filter(
 			(p) => p.estado === 'pendiente_solicitud_cierre'
@@ -408,7 +410,7 @@ export class ObtenerDashboardInstitucion {
 			}));
 
 		const proximosVencimientos = proyectos
-			.filter((p) => p.fecha_fin_tentativa)
+			.filter((p) => p.fecha_fin_tentativa && ESTADOS_ACTIVOS_PROYECTO.includes(p.estado as any))
 			.map((p) => {
 				const fechaFin = new Date(p.fecha_fin_tentativa as string);
 				return {

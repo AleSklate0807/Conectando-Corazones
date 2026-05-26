@@ -10,22 +10,13 @@ import { analizarProyecto } from '$lib/domain/use-cases/analizarProyecto';
 import { notificarProyectoEnAuditoriaAdmin } from '$lib/server/servicio-notificaciones-admin';
 import { prisma } from '$lib/infrastructure/prisma/client';
 import { Prisma } from '@prisma/client';
+import { waitUntil } from '@vercel/functions';
 
+export const config = {
+	maxDuration: 30
+};
 
 const evaluacionRepo = new PostgresEvaluacionRepository();
-
-function dispararAnalisisProyectoCompletado(proyectoId: number) {
-	setTimeout(async () => {
-		try {
-			const result = await analizarProyecto(proyectoId);
-			if (!result.success && result.error) {
-				console.error(`[IA] Error en análisis del proyecto ${proyectoId}:`, result.error);
-			}
-		} catch (error) {
-			console.error(`[IA] Excepción no controlada en background task del proyecto ${proyectoId}:`, error);
-		}
-	}, 0);
-}
 
 /**
  * Evaluación de solicitudes de cierre por parte del colaborador.
@@ -292,7 +283,11 @@ export const actions: Actions = {
 			});
 
 			if (proyectoActualizado?.estado?.descripcion === 'completado') {
-				dispararAnalisisProyectoCompletado(proyectoId);
+				waitUntil(
+					analizarProyecto(proyectoId).catch((err) => {
+						console.error(`[IA] Error al generar análisis del proyecto ${proyectoId}:`, err);
+					})
+				);
 			}
 
 			console.log('[evaluar-cierre:aprobar] tx commit OK', {

@@ -4,7 +4,7 @@
 	import { Info, CheckCircle2, AlertTriangle, ShieldAlert, X } from 'lucide-svelte';
 	import type { ComponentType } from 'svelte';
 
-	let toasts = $state<ToastMessage[]>([]);
+	let toasts = $derived($toastStore);
 	type VariantConfig = {
 		border: string;
 		iconWrapper: string;
@@ -45,15 +45,7 @@
 		}
 	};
 
-	const unsubscribe = toastStore.subscribe((items) => {
-		toasts = items;
-	});
 
-	$effect(() => {
-		if (toasts.length === 0) {
-			unsubscribe();
-		}
-	});
 
 	function closeToast(id: string) {
 		toastStore.dismiss(id);

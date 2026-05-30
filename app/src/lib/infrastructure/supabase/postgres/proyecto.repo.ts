@@ -647,4 +647,57 @@ export class PostgresProyectoRepository implements ProyectoRepository {
 			}
 		});
 	}
+
+	async findByIdLean(
+		id: number
+	): Promise<{ id_proyecto: number; estado: string | null; institucion_id: number | null } | null> {
+		const p = await this.db.proyecto.findUnique({
+			where: { id_proyecto: id },
+			select: {
+				id_proyecto: true,
+				institucion_id: true,
+				estado: { select: { descripcion: true } }
+			}
+		});
+		return p
+			? {
+					id_proyecto: p.id_proyecto,
+					institucion_id: p.institucion_id,
+					estado: p.estado?.descripcion ?? null
+			  }
+			: null;
+	}
+
+	async updateEstadoLean(id: number, nuevoEstado: string): Promise<void> {
+		const estadoObj = await this.db.estado.findUnique({
+			where: { descripcion: nuevoEstado }
+		});
+		if (!estadoObj) throw new Error(`Estado ${nuevoEstado} no encontrado`);
+
+		await this.db.proyecto.update({
+			where: { id_proyecto: id },
+			data: { estado_id: estadoObj.id_estado },
+			select: { id_proyecto: true }
+		});
+	}
+
+	async checkObjetivosAlcanzados(id: number): Promise<boolean> {
+		const participaciones = await this.db.participacionPermitida.findMany({
+			where: { id_proyecto: id },
+			select: {
+				objetivo: true,
+				colaboraciones_tipo_participacion: {
+					select: { cantidad: true }
+				}
+			}
+		});
+		if (participaciones.length === 0) return false;
+		return participaciones.every((p) => {
+			const actual = p.colaboraciones_tipo_participacion.reduce(
+				(sum, c) => sum + Number(c.cantidad || 0),
+				0
+			);
+			return actual >= Number(p.objetivo);
+		});
+	}
 }

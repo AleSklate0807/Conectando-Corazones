@@ -206,4 +206,18 @@ export class PostgresColaboracionRepository implements ColaboracionRepository {
 			return [];
 		}
 	}
+
+	async existsAprobada(proyectoId: number, colaboradorId: number): Promise<boolean> {
+		const c = await this.db.colaboracion.findFirst({
+			where: { proyecto_id: proyectoId, colaborador_id: colaboradorId, estado: 'aprobada' },
+			select: { id_colaboracion: true }
+		});
+		return !!c;
+	}
+
+	async countAprobadas(proyectoId: number): Promise<number> {
+		return this.db.colaboracion.count({
+			where: { proyecto_id: proyectoId, estado: 'aprobada' }
+		});
+	}
 }

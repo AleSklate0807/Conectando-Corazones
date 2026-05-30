@@ -7,13 +7,14 @@
 	import type { PageData } from './$types';
 	import { fade } from 'svelte/transition';
 	import { AlertTriangle, CheckCircle, FileText, Info, ShieldAlert } from 'lucide-svelte';
+	import { goto } from '$app/navigation';
+	import { toastStore } from '$lib/stores/toast';
 
 	let { data }: { data: PageData } = $props();
 
 	let mounted = $state(false);
 	let proyectoSeleccionado = $state<string>('');
 	let enviandoSolicitud = $state(false);
-	let solicitudEnviada = $state(false);
 	let modalReporteAbierto = $state(false);
 	let errorSolicitud = $state<string | null>(null);
 	let checks = $state({
@@ -220,7 +221,12 @@
 
 			errorSolicitud = null;
 			enviandoSolicitud = false;
-			solicitudEnviada = true;
+
+			toastStore.show({
+				variant: 'success',
+				title: '¡Solicitud enviada!',
+				message: 'Tu solicitud de cierre ha sido enviada exitosamente para revisión.'
+			});
 
 			checks = {
 				evidenciasSuficientes: false,
@@ -229,13 +235,11 @@
 				noRequiereMasEvidencias: false,
 				conformidadRevision: false
 			};
+			proyectoSeleccionado = '';
 
-			setTimeout(() => {
-				solicitudEnviada = false;
-				const url = new URL(window.location.href);
-				url.searchParams.delete('proyecto');
-				window.location.href = url.toString();
-			}, 3000);
+			const url = new URL(window.location.href);
+			url.searchParams.delete('proyecto');
+			goto(url.pathname, { invalidateAll: true });
 		} catch (err) {
 			console.error('Error inesperado al enviar la solicitud de cierre', err);
 			enviandoSolicitud = false;
@@ -304,19 +308,6 @@
 				>
 					Ver mis proyectos
 				</button>
-			</div>
-		{:else if solicitudEnviada}
-			<div
-				class="rounded-2xl border border-green-200 bg-green-50 p-8 text-center shadow-sm"
-				in:fade
-			>
-				<div class="mb-4 inline-flex items-center justify-center rounded-full bg-green-100 p-3">
-					<CheckCircle class="h-8 w-8 text-green-600" />
-				</div>
-				<h3 class="mb-2 text-2xl font-bold text-green-800">¡Solicitud enviada!</h3>
-				<p class="text-green-700">
-					Tu solicitud de cierre ha sido enviada exitosamente para revisión.
-				</p>
 			</div>
 		{:else}
 			<div class="grid grid-cols-1 gap-8 lg:grid-cols-3">

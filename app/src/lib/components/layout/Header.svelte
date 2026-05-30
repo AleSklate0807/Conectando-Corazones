@@ -61,7 +61,7 @@
 	const verificacionAprobada = $derived($isInstitucionVerificada);
 
 	const emailUsuario = $derived(
-		page.data.session?.user?.email || 'Sin email'
+		page.data.loginEmail || 'Sin email'
 	);
 
 	const nombreCompleto = $derived(

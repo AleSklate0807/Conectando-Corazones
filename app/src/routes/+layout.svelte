@@ -63,7 +63,7 @@
 	});
 
 	$effect(() => {
-		syncAuthState(data.usuario ? new Usuario(data.usuario) : null);
+		syncAuthState(data.usuario ? new Usuario(data.usuario) : null, data.loginEmail as string | null);
 	});
 
 	$effect(() => {

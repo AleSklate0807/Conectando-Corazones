@@ -10,7 +10,8 @@
 		isAdmin,
 		isInstitucion,
 		isColaborador,
-		isInstitucionVerificada
+		isInstitucionVerificada,
+		userLoginEmail
 	} from '$lib/stores/auth';
 	import { layoutStore } from '$lib/stores/layout';
 	import {
@@ -61,7 +62,7 @@
 	const verificacionAprobada = $derived($isInstitucionVerificada);
 
 	const emailUsuario = $derived(
-		page.data.loginEmail || 'Sin email'
+		$userLoginEmail || 'Sin email'
 	);
 
 	const nombreCompleto = $derived(

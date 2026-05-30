@@ -61,8 +61,7 @@
 	const verificacionAprobada = $derived($isInstitucionVerificada);
 
 	const emailUsuario = $derived(
-		$usuarioStore?.contactos?.find((c) => c.tipo_contacto === 'email' && c.etiqueta === 'principal')
-			?.valor || 'Sin email'
+		page.data.session?.user?.email || 'Sin email'
 	);
 
 	const nombreCompleto = $derived(

@@ -116,14 +116,15 @@ export class RegistrationService {
 
 			authUserId = authData.user.id;
 
-			// 2. Crear usuario en Base de Datos Local
-			// Asegurar que el email de registro siempre quede con etiqueta 'principal'.
-			const contactos = input.perfil.contactos.filter((c) => c.tipo_contacto !== 'email');
-			contactos.push({
-				tipo_contacto: 'email',
-				valor: input.email,
-				etiqueta: 'principal'
-			});
+			// Asegurar que el email esté en contactos con valores canónicos
+			const contactos = [...input.perfil.contactos];
+			if (!contactos.some((c) => c.tipo_contacto === 'email' && c.valor === input.email)) {
+				contactos.push({
+					tipo_contacto: 'email',
+					valor: input.email,
+					etiqueta: 'principal'
+				});
+			}
 
 			const contactosParaValidar = contactos.map(
 				(c) =>
